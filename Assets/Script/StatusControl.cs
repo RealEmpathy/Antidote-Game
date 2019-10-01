@@ -5,17 +5,17 @@ using UnityEngine;
 public class StatusControl : MonoBehaviour
 {
     //control hp and stamina lvls
-    public float Hp;               //Not a constant value that will help with statements
+    public float Hp;              //Not a constant value that will help with statements
     private float MaxHp;          //static value that will not change
-    public float stamina;        //actual Max stamina
-    private float MaxStamina;   //not a constant value: set by the player
+    public float stamina;         //actual Max stamina
+    private float MaxStamina;     //not a constant value: set by the player
     public float StaminaModifier;   //static value calculated when the program runs
-    public float HuntVar;          //static value set by the player (works togather with Susvival variable)
-    public float Survival;        // static value that will be calculated when the program runs
+    public float HuntVar;           //static value set by the player (works togather with Susvival variable)
+    public float Survival;          // static value that will be calculated when the program runs
 
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
-    public GameObject CellPrefab;   // the prefab of the new cell
+    public GameObject CellPrefab;    // the prefab of the new cell
 
 
 
@@ -32,6 +32,18 @@ public class StatusControl : MonoBehaviour
         MaxHp = Hp;
         Survival = (100 - HuntVar);
         MaxStamina = stamina;
+        
+
+        if (MaxStamina > HuntVar)
+        {
+            // start with:
+            //Reproduction = true;
+        }
+        else if (HuntVar > MaxStamina)
+        {
+            // start with:
+            //Hunt = true;
+        }
         //Option of starting with reproduction on
         //Reproduction = true;
         //Hunt = true;
@@ -41,17 +53,16 @@ public class StatusControl : MonoBehaviour
 
     void Update()
     {
-
-        // Controll life time and destroy when life is 0
-
-        // high hp and high stamina = reproduction on
-
-        HpManager();
+        //desice what state are we in
 
 
+        HpManager(); //control and update Hp and stamina variables
+
+        if (Hp <= 0) // control when the cell die 
+            Dead();
 
 
-       
+        // switch between the fuctions
 
         if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
         {
@@ -61,18 +72,15 @@ public class StatusControl : MonoBehaviour
         else
         if (HuntVar < StaminaModifier)
         {
-            
+
             Reproduction = false;
             //Hunt();
-            
+
         }
-
-        if (Hp <= 0)
-            Dead();
     }
-    //top part here might be done
+ 
 
-  
+    //logic when hitting another cell
     private void OnTriggerEnter2D(Collider2D other)
     {
         /*Create a prefab for Good Cells with the exat name:
