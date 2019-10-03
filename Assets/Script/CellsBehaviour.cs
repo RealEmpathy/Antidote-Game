@@ -15,6 +15,7 @@ public class CellsBehaviour : MonoBehaviour
     public float speed = 200f;
     public float nextWayPointDistance = 3f;
 
+    public bool testing;
 
     Path path;
 

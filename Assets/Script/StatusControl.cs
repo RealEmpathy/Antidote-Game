@@ -12,20 +12,36 @@ public class StatusControl : MonoBehaviour
     public float StaminaModifier;   //static value calculated when the program runs
     public float HuntVar;           //static value set by the player (works togather with Susvival variable)
     public float Survival;          // static value that will be calculated when the program runs
+    private float timer = 10;
 
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
     public GameObject CellPrefab;    // the prefab of the new cell
 
-
-
     private bool Reproduction = false;
     private bool Hunt = false;
     private bool flocking = false;
+    private bool heal = false;
+    private bool executeOnce = false;
 
 
     private void Start()
     {
+        // ObjectCell.GetComponent<Seek>().enabled = false();
+        //AIDestination aIDestination = GetComponent<aiDestination>();
+        //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
+
+
+        //THE EXAMPLE WORKED
+        //THE EXAMPLE WORKED
+        // mention is a reference to the other function
+       // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
+        CellsBehaviour mention = GetComponent<CellsBehaviour>();
+        mention.testing = true;
+        //THE EXAMPLE WORKED
+        //THE EXAMPLE WORKED
+
+
         // calculating the actual modifiers before running
 
         StaminaModifier = (100 - stamina);
@@ -37,12 +53,12 @@ public class StatusControl : MonoBehaviour
         if (MaxStamina > HuntVar)
         {
             // start with:
-            //Reproduction = true;
+            Reproduction = true;
         }
         else if (HuntVar > MaxStamina)
         {
             // start with:
-            //Hunt = true;
+            Hunt = true;
         }
         //Option of starting with reproduction on
         //Reproduction = true;
@@ -58,12 +74,27 @@ public class StatusControl : MonoBehaviour
 
         HpManager(); //control and update Hp and stamina variables
 
-        if (Hp <= 0) // control when the cell die 
+        if (Hp <= 0) // control when the cell die
             Dead();
 
-
         // switch between the fuctions
+        if (Hunt == true)
+        {
+            HuntFunciton();
+        }
+        if(Reproduction ==  true)
+        {
+            Reproduce();
+        }
+        if(heal == true)
+        {
+            Healing();
+        }
 
+
+        
+         // will change code from the bottom 
+        //or maybe delete it 
         if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
         {
             Reproduction = true;
@@ -98,7 +129,7 @@ public class StatusControl : MonoBehaviour
                 {
                     if (Reproduction == true)
                     {
-                        Reproduce();
+                        SpawnChild();
                     }
 
                 }
@@ -158,7 +189,7 @@ public class StatusControl : MonoBehaviour
                 {
                     if (Reproduction == true)
                     {
-                        Reproduce();
+                        SpawnChild();
                     }
 
                 }
@@ -221,7 +252,7 @@ public class StatusControl : MonoBehaviour
                 {
                     if (Reproduction == true)
                     {
-                        Reproduce();
+                        SpawnChild();
                     }
 
                 }
@@ -265,31 +296,68 @@ public class StatusControl : MonoBehaviour
         }
     }
 
-
-
-    void Reproduce()
+    void SpawnChild()
     {
-        // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } ... /// private bool red //// private bool neutral ) 
-        // switch script to flock
-        // desable seek script
-        //start flocking and reproduction
-
-
+        //Reproducing
         stamina = stamina - 20;
         spawPos = CellPrefab.GetComponent<Transform>();
         Instantiate(CellPrefab, this.transform.position, this.transform.rotation);
         Reproduction = false;
     }
 
-    /*void Hunt()
+    void Reproduce()
+    {
+        
+        // start flocking and reproduction
+        if(stamina> StaminaModifier)
+        {
+            //ObjectCell.GetComponent<AIDestinationSetter>().enabled = false;
+            
+
+            if (executeOnce == true)
+            {
+                // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } ... /// private bool red //// private bool neutral ) 
+               
+                // desable seek script    
+                // switch script to flock
+
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    executeOnce = false;
+                }  
+            }
+            
+        }
+        else
+        {
+            executeOnce = true;
+            timer = 10;
+            Reproduction = false;
+        }
+
+    }
+
+    void HuntFunciton()
     {
         // desable flock
         // switch script to seek
         //start flocking and reproduction
 
-    }*/
+
+        // include a fuction to change the bool condition
+
+        //Hunt = false;
+        //Reproduction == true;
+        //executeOnce = true;
+    }
 
     //destroy the game object
+    void Healing()
+    {
+
+    }
+
     void Dead()
     {
         Destroy(this.transform.parent.gameObject);

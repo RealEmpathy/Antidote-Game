@@ -19,6 +19,7 @@ namespace Pathfinding
         /// <summary>The object that the AI should move to</summary>
         public Transform target;
         public Transform target2Flee;
+        public bool flee = false;
         IAstarAI ai;
 
         void OnEnable()
@@ -39,9 +40,16 @@ namespace Pathfinding
         /// <summary>Updates the AI's destination every frame</summary>
         void Update()
         {
-            if (target != null && ai != null) ai.destination = target.position;
+            if(flee == false)
+            {
+                if (target != null && ai != null) ai.destination = target.position;
+            }
             //enable target2Flee for the new target to take place
-            //if (target2Flee != null && ai != null) ai.destination = target2.position;
+            if (flee == true)
+            {
+                if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
+            }
+            
         }
     }
 }
