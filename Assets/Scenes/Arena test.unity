@@ -153,7 +153,7 @@ MonoBehaviour:
     type: 3}
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 10
-  startingCount: 50
+  startingCount: 10
   driveFactor: 10
   maxSpeed: 5
   neighborRadius: 1.5

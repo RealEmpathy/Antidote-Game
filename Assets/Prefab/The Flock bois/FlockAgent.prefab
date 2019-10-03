@@ -86,6 +86,7 @@ MonoBehaviour:
   CellPrefab: {fileID: 7194852656724551375}
   speed: 150
   nextWayPointDistance: 3
+  testing: 0
 --- !u!50 &7194852656724551370
 Rigidbody2D:
   serializedVersion: 4
@@ -212,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 8347201611676189533, guid: 769b8ea7c65bf7c4db508dac4c027cb9, type: 3}
-  target2: {fileID: 8347201611676189533, guid: a57686b7a3e06fa419cfe7933c20809b, type: 3}
+  target2Flee: {fileID: 8347201611676189533}
+  flee: 0
 --- !u!1 &7194852657847218089
 GameObject:
   m_ObjectHideFlags: 0

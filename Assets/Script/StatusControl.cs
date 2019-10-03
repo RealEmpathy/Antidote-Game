@@ -24,22 +24,30 @@ public class StatusControl : MonoBehaviour
     private bool heal = false;
     private bool executeOnce = false;
 
+    private GameObject scriptControll;
+
 
     private void Start()
     {
+        scriptControll = this.gameObject;
+
+
         // ObjectCell.GetComponent<Seek>().enabled = false();
         //AIDestination aIDestination = GetComponent<aiDestination>();
         //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
 
 
-        //THE EXAMPLE WORKED
-        //THE EXAMPLE WORKED
+        //TESTING EXAMPLE
+        //TESTING EXAMPLE
         // mention is a reference to the other function
-       // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
-        CellsBehaviour mention = GetComponent<CellsBehaviour>();
-        mention.testing = true;
-        //THE EXAMPLE WORKED
-        //THE EXAMPLE WORKED
+        // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
+        //CellsBehaviour mention = GetComponent<CellsBehaviour>();
+
+        //Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+        //mention.flee = true;
+
+        //TESTING EXAMPLE
+        //TESTING EXAMPLE
 
 
         // calculating the actual modifiers before running
@@ -305,37 +313,61 @@ public class StatusControl : MonoBehaviour
         Reproduction = false;
     }
 
+ 
     void Reproduce()
     {
         
         // start flocking and reproduction
         if(stamina> StaminaModifier)
         {
-            //ObjectCell.GetComponent<AIDestinationSetter>().enabled = false;
-            
-
-            if (executeOnce == true)
+            // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } /// private bool red //// private bool neutral ) 
+            if(timer > 0)
             {
-                // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } ... /// private bool red //// private bool neutral ) 
-               
-                // desable seek script    
-                // switch script to flock
-
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    executeOnce = false;
-                }  
+                FindYourKind(timer);
             }
-            
+            else
+            {
+                // desable seek script 
+
+                //TESTING THE SCRIPT BELOW
+                scriptControll.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
+                scriptControll.GetComponent<Pathfinding.AIPath>().enabled = false;
+                scriptControll.GetComponent<Pathfinding.Seeker>().enabled = false;
+
+                // switch script to flock
+                scriptControll.GetComponent<FlockAgent>().enabled = true;
+
+            }
+
+
         }
         else
         {
             executeOnce = true;
             timer = 10;
             Reproduction = false;
+            heal = true;
         }
 
+    }
+    float FindYourKind(float timer)
+    {
+        if (timer == 7)
+        {
+            timer -= Time.deltaTime;
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.flee = true;
+        }
+        else
+            timer -= Time.deltaTime;
+
+
+        return timer;
+    }
+    void HuntYourEnemy()
+    {
+        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+        mention.flee = false;
     }
 
     void HuntFunciton()

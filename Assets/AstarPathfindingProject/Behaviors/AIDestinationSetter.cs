@@ -17,8 +17,9 @@ namespace Pathfinding
     public class AIDestinationSetter : VersionedMonoBehaviour
     {
         /// <summary>The object that the AI should move to</summary>
-        public Transform target;
-        public Transform target2Flee;
+      
+        public Transform target;   /// THIS WERE TAKING changed to private to test how the tags are going to work
+        public Transform target2Flee;  /// THIS WERE TAKING changed to private to test how the tags are going to work
         public bool flee = false;
         IAstarAI ai;
 
@@ -40,16 +41,64 @@ namespace Pathfinding
         /// <summary>Updates the AI's destination every frame</summary>
         void Update()
         {
-            if(flee == false)
+            //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
+            /* if(flee == false)
+             {
+                 if (target != null && ai != null) ai.destination = target.position;
+             }
+             //enable target2Flee for the new target to take place
+             if (flee == true)
+             {
+                 if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
+             }*/
+            //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE 
+
+
+
+
+            if (flee == false)
             {
-                if (target != null && ai != null) ai.destination = target.position;
+                if (this.gameObject.tag == "GoodCells")
+                {
+                    //Debug.Log("this is a Good cell hunting Bad cells");
+                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                }
+
+                if (this.gameObject.tag == "BadCells")
+                {
+                    //Debug.Log("this is a Bad cell hunting Neutral cells");
+                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
+                }
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    //Debug.Log("this is a Neutral cell hunting Bad cells");
+                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                }
             }
-            //enable target2Flee for the new target to take place
+
             if (flee == true)
             {
-                if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
+                if (this.gameObject.tag == "GoodCells")
+                {
+                    //Debug.Log("this is a Good cell hunting Bad cells");
+                    target = GameObject.FindGameObjectWithTag("GoodCells").GetComponent<Transform>();
+                }
+
+                if (this.gameObject.tag == "BadCells")
+                {
+                    //Debug.Log("this is a Bad cell hunting Neutral cells");
+                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                }
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    //Debug.Log("this is a Neutral cell hunting Bad cells");
+                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
+                }
             }
-            
+
+
+
+
         }
     }
 }
