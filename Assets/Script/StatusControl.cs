@@ -12,24 +12,25 @@ public class StatusControl : MonoBehaviour
     public float StaminaModifier;   //static value calculated when the program runs
     public float HuntVar;           //static value set by the player (works togather with Susvival variable)
     public float Survival;          // static value that will be calculated when the program runs
-    private float timer = 10;
+    private float timer = 7;
 
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
     public GameObject CellPrefab;    // the prefab of the new cell
 
-    private bool Reproduction = false;
-    private bool Hunt = false;
-    private bool flocking = false;
-    private bool heal = false;
-    private bool executeOnce = false;
+    public bool Reproduction = false;
+    public bool Hunt = false;
+    public bool flocking = false;
+    public bool heal = false;
+    public bool executeOnce = false;
+    public bool lastStand = false;
 
-    private GameObject scriptControll;
+    private GameObject scriptControl;
 
 
     private void Start()
     {
-        scriptControll = this.gameObject;
+        scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
 
 
         // ObjectCell.GetComponent<Seek>().enabled = false();
@@ -98,10 +99,15 @@ public class StatusControl : MonoBehaviour
         {
             Healing();
         }
+        if(lastStand == true)
+        {
+
+            lastStandFunction();
+        }
 
 
         
-         // will change code from the bottom 
+/*         // will change code from the bottom 
         //or maybe delete it 
         if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
         {
@@ -115,7 +121,7 @@ public class StatusControl : MonoBehaviour
             Reproduction = false;
             //Hunt();
 
-        }
+        }*/
     }
  
 
@@ -133,14 +139,18 @@ public class StatusControl : MonoBehaviour
             if (this.gameObject.tag == "GoodCells")
             {
                 int i = Random.Range(0, 100);
-                if (i > 20) 
+                if (lastStand == false) // come back here here here here here
                 {
-                    if (Reproduction == true)
+                    if (i > 20)
                     {
-                        SpawnChild();
-                    }
+                        if (Reproduction == true)
+                        {
+                            SpawnChild();
+                        }
 
+                    }
                 }
+
             }
             //and the cell colliding is a Bad cell
             if (this.gameObject.tag == "BadCells")
@@ -318,33 +328,18 @@ public class StatusControl : MonoBehaviour
     {
         
         // start flocking and reproduction
-        if(stamina> StaminaModifier)
+        if(stamina > StaminaModifier)
         {
             // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } /// private bool red //// private bool neutral ) 
-            if(timer > 0)
+            if(timer >= -1)
             {
                 FindYourKind(timer);
             }
-            else
-            {
-                // desable seek script 
-
-                //TESTING THE SCRIPT BELOW
-                scriptControll.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
-                scriptControll.GetComponent<Pathfinding.AIPath>().enabled = false;
-                scriptControll.GetComponent<Pathfinding.Seeker>().enabled = false;
-
-                // switch script to flock
-                scriptControll.GetComponent<FlockAgent>().enabled = true;
-
-            }
-
-
         }
         else
         {
             executeOnce = true;
-            timer = 10;
+            timer = 7;
             Reproduction = false;
             heal = true;
         }
@@ -352,42 +347,99 @@ public class StatusControl : MonoBehaviour
     }
     float FindYourKind(float timer)
     {
-        if (timer == 7)
+        if (timer >= 7)
         {
             timer -= Time.deltaTime;
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.flee = true;
         }
-        else
+        if(timer > 0)
+        {
             timer -= Time.deltaTime;
+        }
+           
+        if(timer <= 0)
+        {
+            // desable seek script 
 
+            //TESTING THE SCRIPT BELOW
+            scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
+            scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
+            scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;
+
+            // switch script to flock
+            scriptControl.GetComponent<FlockAgent>().enabled = true;
+            flocking = true;
+        }
 
         return timer;
     }
     void HuntYourEnemy()
     {
+        // desable flock
+        scriptControl.GetComponent<FlockAgent>().enabled = false;
+        // switch script to seek
+        scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
+        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = true;
+        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;
+        
+        //make sure we are hunting the right target
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flee = false;
+        flocking = false;
     }
 
     void HuntFunciton()
     {
-        // desable flock
-        // switch script to seek
-        //start flocking and reproduction
+        if(Hp>Survival)
+        {    
+            HuntYourEnemy();
+        }
+        else if (Hp<Survival)
+        {
+            Hunt = false;
+            Reproduction = true;
+            executeOnce = true;
+        }
 
-
-        // include a fuction to change the bool condition
-
-        //Hunt = false;
-        //Reproduction == true;
-        //executeOnce = true;
     }
 
     //destroy the game object
     void Healing()
     {
+        if(Hp>Survival)
+        {
+            Hunt = true;
+        }else
+        if(Hp<Survival)
+        {
+            if(flocking == false)
+            {
+                FindYourKind(timer);
+            }else
+            {
+                //continue flocking
+            }
 
+        }else
+        if((stamina<=0)&&(Hp<Survival))
+        {
+            lastStand = true;
+        }
+
+    }
+
+    void lastStandFunction()
+    {
+        if(HuntVar >= 65)
+        {
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.lastStand = true;
+        }
+        else
+        {
+
+        }
     }
 
     void Dead()

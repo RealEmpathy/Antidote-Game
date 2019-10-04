@@ -21,6 +21,7 @@ namespace Pathfinding
         public Transform target;   /// THIS WERE TAKING changed to private to test how the tags are going to work
         public Transform target2Flee;  /// THIS WERE TAKING changed to private to test how the tags are going to work
         public bool flee = false;
+        public bool lastStand = false;
         IAstarAI ai;
 
         void OnEnable()
@@ -55,47 +56,68 @@ namespace Pathfinding
 
 
 
+            if(lastStand == false)
+            { 
+                if (flee == false)
+                {
+                    if (this.gameObject.tag == "GoodCells")
+                    {
+                        //Debug.Log("this is a Good cell hunting Bad cells");
+                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                    }
 
-            if (flee == false)
+                    if (this.gameObject.tag == "BadCells")
+                    {
+                        //Debug.Log("this is a Bad cell hunting Neutral cells");
+                        target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
+                    }
+                    if (this.gameObject.tag == "NeutralCells")
+                    {
+                        //Debug.Log("this is a Neutral cell hunting Bad cells");
+                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                    }
+                }
+
+                if (flee == true)
+                {
+                    if (this.gameObject.tag == "GoodCells")
+                    {
+                        //Debug.Log("this is a Good cell hunting Bad cells");
+                        target = GameObject.FindGameObjectWithTag("GoodCells").GetComponent<Transform>();
+                    }
+
+                    if (this.gameObject.tag == "BadCells")
+                    {
+                        //Debug.Log("this is a Bad cell hunting Neutral cells");
+                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                    }
+                    if (this.gameObject.tag == "NeutralCells")
+                    {
+                        //Debug.Log("this is a Neutral cell hunting Bad cells");
+                        target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
+                    }
+                }
+            }
+            else 
+            if (lastStand == true)
             {
                 if (this.gameObject.tag == "GoodCells")
                 {
                     //Debug.Log("this is a Good cell hunting Bad cells");
-                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
+                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
                 }
 
                 if (this.gameObject.tag == "BadCells")
                 {
                     //Debug.Log("this is a Bad cell hunting Neutral cells");
-                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
-                }
-                if (this.gameObject.tag == "NeutralCells")
-                {
-                    //Debug.Log("this is a Neutral cell hunting Bad cells");
-                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                }
-            }
-
-            if (flee == true)
-            {
-                if (this.gameObject.tag == "GoodCells")
-                {
-                    //Debug.Log("this is a Good cell hunting Bad cells");
                     target = GameObject.FindGameObjectWithTag("GoodCells").GetComponent<Transform>();
                 }
-
-                if (this.gameObject.tag == "BadCells")
-                {
-                    //Debug.Log("this is a Bad cell hunting Neutral cells");
-                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                }
                 if (this.gameObject.tag == "NeutralCells")
                 {
                     //Debug.Log("this is a Neutral cell hunting Bad cells");
-                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
+                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
                 }
             }
-
 
 
 

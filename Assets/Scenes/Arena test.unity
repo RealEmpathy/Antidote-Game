@@ -182,7 +182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 494336598}
   - component: {fileID: 494336601}
-  - component: {fileID: 494336600}
   - component: {fileID: 494336599}
   m_Layer: 9
   m_Name: Wall block
@@ -199,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494336597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0606, y: -0.08144, z: 0}
-  m_LocalScale: {x: 0.36055678, y: 0.074485295, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.93, y: 2.29, z: 2.13}
   m_Children: []
   m_Father: {fileID: 1935641239}
   m_RootOrder: 1
@@ -212,7 +211,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494336597}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -221,74 +220,29 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.11205918, y: 1.368596}
-      - {x: 0.09025509, y: 2.229761}
-      - {x: -0.20785533, y: 2.2188601}
-      - {x: -0.12128508, y: 2.2225182}
-      - {x: -0.077265635, y: 2.1855023}
-      - {x: -0.031136714, y: 2.0588822}
-      - {x: 0.0186239, y: 1.9031835}
-      - {x: 0.03290517, y: 1.7482524}
-      - {x: 0.06200718, y: 1.523479}
-      - {x: 0.06801647, y: 1.0452456}
-      - {x: 0.060569704, y: 0.57574296}
-      - {x: 0.034486365, y: 0.33551976}
-      - {x: 0.010919498, y: 0.19829129}
-      - {x: -0.041268002, y: 0.012295385}
-      - {x: -0.122930944, y: -0.044045426}
-      - {x: 0.108492, y: -0.08109182}
-      - {x: 0.15733932, y: 0.0019650408}
-      - {x: 0.16693872, y: 0.29001623}
-      - {x: 0.14113377, y: 1.0704727}
---- !u!60 &494336600
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494336597}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.40898696, y: 0.8351853}
-      - {x: -0.4034569, y: 1.5256754}
-      - {x: -0.36348706, y: 1.8066187}
-      - {x: -0.32142103, y: 2.0105314}
-      - {x: -0.25041658, y: 2.1526706}
-      - {x: -0.20004487, y: 2.2231317}
-      - {x: -0.41413274, y: 2.219241}
-      - {x: -0.4860269, y: 1.311073}
-      - {x: -0.4881179, y: 0.03283504}
-      - {x: -0.28395557, y: -0.12670137}
-      - {x: -0.054703135, y: -0.036049925}
-      - {x: -0.13114476, y: -0.049973056}
-      - {x: -0.20884967, y: -0.060998492}
-      - {x: -0.25900814, y: -0.02259662}
-      - {x: -0.33951446, y: 0.21135478}
+    - - {x: -0.09888943, y: 0.059069477}
+      - {x: 0.097571865, y: 0.058135707}
+      - {x: 0.09787842, y: -0.037442334}
+      - {x: 0.1359169, y: 0.04798414}
+      - {x: 0.11865903, y: 0.09391126}
+      - {x: -0.113006786, y: 0.13736725}
+      - {x: -0.18282978, y: -0.123798296}
+      - {x: 0.005155656, y: -0.24826322}
+      - {x: 0.12542641, y: -0.0957405}
+      - {x: 0.12186919, y: -0.040020864}
+      - {x: 0.107491374, y: -0.015755787}
+      - {x: 0.09717861, y: -0.03719118}
+      - {x: 0.095867656, y: -0.058585826}
+      - {x: -0.09258583, y: -0.059263896}
 --- !u!50 &494336601
 Rigidbody2D:
   serializedVersion: 4
@@ -790,7 +744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACQn+u1RPc0WwIAAP8EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoUxhDq4txYI6YEkE9rJxRfZWmMNsuTRR4Bk+O9dyQY7Lhfk9/bjvdXan4RLU0Nuld5ozraKAfkxIv5Mvo068hFOdK/kjn/ANeaNM1v6IBpiXqnlCvGpTzOqAqt5/lPuhQ+OEHSSF0pXa7aHpTLWIFxQYQAprazPlgh9jsgJ/8aJTznjaXbvTx94SqLRBY85SAu6FxpNojjC3zxpU64JTbyTuaBVDcyL79KSyX0bnkxmIVCisTYmmngbuRKCm1YXsec6+N7VJWjwxhmnaDNo8eEl8H1pveR+7nNRGLCtKk3PK65xWk1R8ks1I6yoOTTS3qlwvs19vAiimqLb//jxNNCFVtXjte808j1syfPDKz3n1NjejPvw6qtwJ49UHGgm4K0E+aQ2WjnJkLTa+VRnYLbqHm/WliXkhw5vpA5AV3cjjwb34z1cgvvTUvAqC4P/3gA7ocK4wx6Axqv5jYLDlpi2BKJexV8Df+i+v04t8cC1sUi1LqWXlymnfShZh5l5N84ulZYQ4FZ0DZIKe37BMnZ4hQOu13bAPFD/4rTNW+76PgxSAtzFR9GAelHH22WZUh23YMpnZwWX0In2xBPOaamkbDasP5Nr2s7pgua9tL3j7OtqkSxh8eyOZvN5PE2SBRvPposki+OY3mXZYk5jEnaPS/RJxUsjtB0P3prsikvcs+v3ZLTRtA7bzjQ9bvhHpXoj57JQu1wDyOemwk04aGyCryVbM44D2oG1XIb7Jp8pESo/AEtvhdLgdH2ymqZdlZTU/F1Zj6RkGT4gKbmQyz9QSwMEFAAACAgAAJCf685beIRsAAAAdwAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSs9BRUEovSizIKAYKGII4pZkpIHa0UpJlipmRcWKSiYmZoaWlRYqukaGFZZKZmVmicVKShUmimVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAkJ/rtUT3NFsCAAD/BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAkJ/rzlt4hGwAAAB3AAAACQAkAAAAAAAAAAAAAACoAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAF8DAAAAAA==
+    dataString: UEsDBBQAAAgIAACQn+vdwCvrUgIAAPgEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziWDHeJCby0hpIckTGgnF19ka401yJJHH+Ejw3/vSraxQycnxL63q/d2V/4gXJoacqv0SnP2pBiQHyPiz+TbqAcf4UC3Sm74CTrOG2e29CQaOK/UcoXxyKcZVYHVPP8pt8KTJxh0khdKV0u2hYUy1mC4oMIAQlpZny0x9DEiB/wZz33KEU/xd3864Wk+GZ3xmIO0oHtqR+xoDcvJXNCqBuYl9+Q4uklafjS7mQaqREMta3Lj5edKCG5aPcQe6+B3U5egwRtmnKK9oMHTS+Db0vriw9yXojBgW12aHu+5xi41Rckv1bSuombXiHunwvlr7qI4iGqKPv2Hj6MAF1pVj9290cTfYUue717pMafGDno7DN9/Fu7knoodzQS8lSCf1UorJxmCVjuf6gzE9/3fi7VFCfmujzdSr4Ku/npC3sM5uD8sBK+y0Pi7JrARKrQ7zB80juY3Cg7bYdoSGPUq/hr4Q7fDNWqBB66NRah1Kb28TDntqWQZeubdOLtQWoIeVqhBUmGPa6xjr2d4hX2d9UD9i2lvb7HuIVylhHDPn0yuoLXaX6ZlSrV/AlO+OCu4hL7VHnjGRi2UlM2KDS11aRunC5oP0raOs8+7RbI5S+Jbmk2nSTSfz9g4jmbzLEkSeptlsylNSFg+LtEnFetGaNseHJvsi0tctO5DMlppWod1Z5ruV/xUKdMzuSzUJtcA8qWpcBEOGi/Bd8mWjGODNmAtl2Hg5CMlQuU7YOmlUBqcLg9W07SvkpKavyvrIylZhC9HSs7k/A9QSwMEFAAACAgAAJCf685beIRsAAAAdwAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSs9BRUEovSizIKAYKGII4pZkpIHa0UpJlipmRcWKSiYmZoaWlRYqukaGFZZKZmVmicVKShUmimVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAkJ/r3cAr61ICAAD4BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAkJ/rzlt4hGwAAAB3AAAACQAkAAAAAAAAAAAAAACfAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFYDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
