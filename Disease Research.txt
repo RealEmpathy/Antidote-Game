@@ -1,0 +1,65 @@
+Illness: the ill health the person identifies themselves with, often based on self reported mental or physical symptoms.
+Disease: a condition that is diagnosed by a physician or other medical expert.
+Illness: refers to the subjective response ot the patiant to being unwell
+Disease: refers to abnormalities of the structure and function of body organs and systems
+Disease: tends to be seen as its own "thing", a lot of the time because of recurring symptoms and traits a disease seems to have its own identity.
+
+Types of infections:
+- Bacterial
+- Fungal
+- Viral
+- Protozoan
+- Parasitic
+- Prion
+
+Upon trying to figure out the difference of these in medical terms it seems it can more or less be broken down into something like this:
+An illness is something a person thinks they have, whether or not they actually exhibit symptoms of anything.
+A disease is what a person is diagnosed with, whether or not they have been/are currently feeling unhealthy.
+
+Diseases: a disorder of structure or function in a human, animal, or plant, especially one that produces specific signs or symptoms or that affects a specific location and is not simply a direct result of physical injury.
+Infectious diseases are caused by organisms (bacteria, viruses, fungi, or parasites)
+Can be passed in multiple ways
+Can have many different signs or symptoms depending on the organism that causes the infection, however typically fever ,fatigue, diarrhea, muscle aches, and coughing shared symptoms
+According to wikipedia the term disease in humans is used to address any condition that causes pain, dysfunction, distress, social problems, or death.
+Another way to define disease is any condition that impairs the normal functioning of the body.
+What is seen as a disease can vary depending on culture
+Emerging infectious diseases are diseases that have recently appeared within a population and is either rapidly increasign or threatens to start increasing in the near future
+Infectious diseases are more likely to show up and spread in the modern day because of people traveling a lot further, coming into close contact with animals, and living in more densely packed areas
+2 things must be achieved for an emerging disease to become established. 1) it has to be introduced into a vulnerable population, 2) it has to have the ability to readily spread from person to person
+For a disease to re-emerge, it has to have either start to spread after evolving to gaining resistances to medicines, or it needs to strike in an area that has low vaccine coverage
+There is still currently a lot of work being done in understanding emerging and re-emerging diseases in order to figure out things like how they cause illness, and how they acquire resistances so that we can hopefully make a vaccine for a form that we know is coming
+There are three types of diseases: 1) effects both rich and poor countries with a large number of cases in both, 2)  effects both rich and poor countries with a majority of cases coming from developing countries, 3) effects are primarily focused, if not solely focused, on devopling countries
+With the help of DALYs (Disability Adjusted Life Years) another way to define this is: 1) rating 0.0 - 3.0, this means that a disease burden is no more than 3 times higher in low/middle income countries than in high income. Type 2 increases that rating to 3.0 - 35, and type is 35+
+
+Influenza
+First well described outbreak was in 1580
+may have been acquired during the domestication of animals
+the worst recorded outbreak was a worldwide one during 1918 when it was being spread by birds. it it estimated that about 500 million people or 1/3rd of the worlds population had it at some point during this outbreak. Deaths totalled at an estimated 50 million worldwide.
+Unlike most diseases influenza can be contracted multiple times in one lifetime because of how fast it changes. there have been at least 4 different version of the flu that have caused pandemics since 1918. (h1n1, h2n2, h3n2, and h1n1 that was distantly related to the 1918 variant)
+People are most contagious in the first 3-4 days after the illness begins, however it can be spread anywhere from 1 day before symptoms show to 7 days after.
+the flu can cause an onset or worsening of other conditions that affect the nasal area, lungs, or the heart
+the flu is also hard to destinguish from other viral or bacterial repiratory illnesses just based on the symptoms
+the 2009 h1n1 virus traveled around the world faster than any other virus in history
+
+Ebola
+Believed to be spread from bats to various other creatures
+Is spread through body fluids, but it is extremely lethal (cases having anywhere from a 25% - 90% lethality, most people just say the average is about 50%)
+There are currently six virus species within the ebolavirus genus: Zaire, Bundibugyo, Sudan, Tai Forest, Reston, and Bombali.
+The incubation period is anywhere from 2-21 days, but people can not begin to spread it until they develop the symptoms.
+As long a person blood contains the virus they can infect other people, even if the infected is currently dead.
+It is apparently difficult to clincally distinguish EVD from other diseases such as Malaria, Typhoid Fever, and Meningitis.
+Currently there is no treatment for EVD, however treatment of some of the individual symptoms can help improve survival.
+There is currently (2018-2019) an outbreak where they are doing a multi-drug randomized control trial in an attempt to figure out the effectiveness of various drugs against EVD.
+There is a test vaccine currently out that was released in 2015 and seemed rather effective in a group of 11,841 people, and it also seems to be highly effective in against the current outbreak.
+It is also recommended that male survivors practice safer sex for about 12 months after having EVD on the chance that their semen still carry traces of the disease.
+
+Misc
+There was a case in 2015 around a single traveler that caused close to 200 people to become infected with a virus in about 2 months
+According to jech.bmj.com there are three levels of severity for feeling ill. the largest one is having an illness due to it only needing to be self confirmed. the middle level is having a disease, this is only smaller than the level above because this means that someone has gone in to a medical professional and been diagnosed with something. The smallest level is sickness, this is when someone has fallen ill and can not work due to the sickness being able to spread, or being unable to do what they must at work. This is the smallest because most common things dont hinder our capabilites of working, and have medicines that will help keep them from spreading.
+Another way that illness and disease have been seperated is: Illness is something a man has, disease is something an organ has.
+In an older study (1972, size unknown) 91% of adults that were given a random interview had reported having one or more abnormal symptoms in the two weeks leading up to the interview
+Just an interesting tidbit about the power of the human mind:
+there was a 60 year old lady who had been admitted to the hospital, who had the belief that the chest was connected to the mouth and urethra through pipes. When she found out she had water in her lungs, she began vomitting and  unrinated frequently, but upon being taught the proper anatomy of the body, it stopped.
+
+(random thought, it seems most infectious diseases start from species jumping ((most common is bird to mammal)) and it also spreads fast)
+(another idea, the h5n1 virus ((bird flu)) is extremely deadly but could pass from person to person easily and its said that if a strand of the flu came out with the leathality of the h5n1 with the ability to spread like the h1n1 that it would be a major problem for human health, so we could maybe use something like this in our game)

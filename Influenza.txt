@@ -1,0 +1,15 @@
+What happens in the body when you have the Flu?
+
+Flu's Groove:
+- First things first, the Flu gets into your body from either inhaling the virus particles while they are in the air, or after touching something that has been infected by someone who has already been infected
+- Once inside the virus travels down the respiratory tract and binds to cells that line the airways in the lungs. This is where they take control of cells and start getting their own proteins replicated in order to spread.
+
+Most of the symptoms of the flu are actually caused when the immune system activates in order to start fighting it off.
+- The body contains cells such as Macrophages and Neutrophils and the main function of these cells is to raise the alarm if they sense the presence of a virus. Upon the alarm being sounded hormone-like molecules called Cytokines and Chemokines race off to alert the rest of the body.
+- Cytokines orchestrate components of the immune system to help fight off the virus while Chemokines direct the components to the location of the infection. One such component are the T Lymphocytes (a.k.a. T Cells or Soldier Cells) which are a type of white blood cell that fights infections. When T Cells recognize Influenza proteins they begin to gather and proliferate in the lymph nodes which causes them to swell and as a result be painful.
+- After a few days in the lymph nodes the T Cells start to make their way down to the lungs to combat the virus. The body's main reaction at this point is to start coughing to try and clear the airways of the mucus that is blocking it up from the T Cells movements.
+
+Where do all the other symptoms come from?
+- One of the Cytokines that is activated to combat the Flu is called Interleukin-1. This Cytokine is important for developing the T Cells that fight the Flu, however Interleukin-1 also affects the Hypothalamus, or the area of the brain that regulates body temperature, which results in fevers and headaches.
+- Another of the Cytokines that fights the Flu is called Tumor Necrosis Factor Alpha. It has direct antiviral effects, but also causes fevers, appetite loss, fatigue, and weakness.
+- The Flu infection leads to an increase in the expression of muscle-degrading genes and a decrease in expression of muscle-building genes in the legs. It also hinders walking and leg strength, which can be bad for people with weaker immune systems. It is believed this might also be caused by your body fighting back, but nothing has been confirmed.
