@@ -146,6 +146,12 @@ MonoBehaviour:
   Survival: 0
   spawPos: {fileID: 8347201611676189533}
   CellPrefab: {fileID: 8347201611676189534}
+  Reproduction: 0
+  Hunt: 0
+  flocking: 0
+  heal: 0
+  executeOnce: 0
+  lastStand: 0
 --- !u!58 &1999315212662511377
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -215,6 +221,7 @@ MonoBehaviour:
   target: {fileID: 8347201611676189533, guid: 769b8ea7c65bf7c4db508dac4c027cb9, type: 3}
   target2Flee: {fileID: 8347201611676189533}
   flee: 0
+  lastStand: 0
 --- !u!1 &7194852657847218089
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +318,7 @@ GameObject:
   - component: {fileID: 5594473464838577125}
   m_Layer: 9
   m_Name: FlockAgent
-  m_TagString: GoodCells
+  m_TagString: NeutralCells
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -133,6 +133,12 @@ MonoBehaviour:
   Survival: 0
   spawPos: {fileID: 8347201611676189533}
   CellPrefab: {fileID: 8347201611676189534}
+  Reproduction: 0
+  Hunt: 0
+  flocking: 0
+  heal: 0
+  executeOnce: 0
+  lastStand: 0
 --- !u!114 &9191526515881614724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +316,7 @@ GameObject:
   - component: {fileID: 5594473464838577125}
   m_Layer: 9
   m_Name: FlockAgent Good
-  m_TagString: BadCells
+  m_TagString: GoodCells
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

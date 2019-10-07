@@ -22,7 +22,7 @@ public class StatusControl : MonoBehaviour
     public bool Hunt = false;
     public bool flocking = false;
     public bool heal = false;
-    public bool executeOnce = false;
+   // public bool executeOnce = false;
     public bool lastStand = false;
 
     private GameObject scriptControl;
@@ -63,11 +63,17 @@ public class StatusControl : MonoBehaviour
         {
             // start with:
             Reproduction = true;
+            Hunt = false;
+            heal = false;
+            lastStand = false;
         }
         else if (HuntVar > MaxStamina)
         {
             // start with:
             Hunt = true;
+            Reproduction = false;
+            heal = false;
+            lastStand = false;
         }
         //Option of starting with reproduction on
         //Reproduction = true;
@@ -83,25 +89,29 @@ public class StatusControl : MonoBehaviour
 
         HpManager(); //control and update Hp and stamina variables
 
-        if (Hp <= 0) // control when the cell die
+        if (Hp <= 0)
+        {// control when the cell die
             Dead();
-
+        }
         // switch between the fuctions
         if (Hunt == true)
         {
+            Debug.Log("Hunt is on");
             HuntFunciton();
         }
         if(Reproduction ==  true)
         {
+            Debug.Log("Reproduction is on");
             Reproduce();
         }
         if(heal == true)
         {
+            Debug.Log("Heal is on");
             Healing();
         }
         if(lastStand == true)
         {
-
+            Debug.Log("Last stand is on");
             lastStandFunction();
         }
 
@@ -298,7 +308,7 @@ public class StatusControl : MonoBehaviour
         if (Hp > 0 && stamina > 0)
         {
             stamina -= Time.deltaTime;
-            if (Hp >= MaxHp)// check to not allow over healing
+            if (Hp >= MaxHp)  // check to not allow over healing
             {
                 // Hp is at it's current Max
             }
@@ -309,7 +319,7 @@ public class StatusControl : MonoBehaviour
             }
         }
         if (Hp > 0 && stamina <= 0)
-        {// Check when Stamina runs out
+        {   // Check when Stamina runs out
             Hp -= Time.deltaTime;
         }
     }
@@ -338,7 +348,7 @@ public class StatusControl : MonoBehaviour
         }
         else
         {
-            executeOnce = true;
+            //executeOnce = true;
             timer = 7;
             Reproduction = false;
             heal = true;
@@ -392,14 +402,14 @@ public class StatusControl : MonoBehaviour
     void HuntFunciton()
     {
         if(Hp>Survival)
-        {    
+        {  
             HuntYourEnemy();
         }
         else if (Hp<Survival)
         {
             Hunt = false;
             Reproduction = true;
-            executeOnce = true;
+           // executeOnce = true;
         }
 
     }
