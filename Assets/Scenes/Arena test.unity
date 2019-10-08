@@ -144,15 +144,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241911072}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36908d71186d4b4aae73b4c5321b97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 5594473464838577125, guid: 08f24b9f47b5573459908510d6a4f55d,
+  agentPrefab: {fileID: 5594473464838577125, guid: 6e77230d6011f794c83aff768cbb5aed,
     type: 3}
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
-  size: 10
+  size: 30
   startingCount: 10
   driveFactor: 10
   maxSpeed: 5
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36908d71186d4b4aae73b4c5321b97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 5594473464838577125, guid: 769b8ea7c65bf7c4db508dac4c027cb9,
+  agentPrefab: {fileID: 5594473464838577125, guid: c5be8abf84941ba439dac6eb89c6b768,
     type: 3}
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30

@@ -92,6 +92,7 @@ public class StatusControl : MonoBehaviour
         if (Hp <= 0)
         {// control when the cell die
             Dead();
+            Debug.Log(this.name +" is Dead");
         }
         // switch between the fuctions
         if (Hunt == true)
@@ -145,30 +146,45 @@ public class StatusControl : MonoBehaviour
         //if we are colliding with a Good cell
         if (other.gameObject.tag == "GoodCells")
         {
+            //if we are colliding with a Good cell
             //and the cell colliding is another Good cell
             if (this.gameObject.tag == "GoodCells")
             {
                 int i = Random.Range(0, 100);
-                if (lastStand == false) // come back here here here here here
+               
+                if (i > 20)
                 {
-                    if (i > 20)
+                    if (Reproduction == true)
                     {
-                        if (Reproduction == true)
-                        {
-                            SpawnChild();
-                        }
-
+                        SpawnChild();
                     }
+
                 }
 
             }
+            //if we are colliding with a Good cell
+            //and the cell colliding is Neutral cell
+            if (this.gameObject.tag == "NeutralCells")
+            {
+                int i = Random.Range(0, 100);
+                if (lastStand == true)   
+                {
+                    if (i > 20)
+                    {
+                       
+                    }
+
+                }
+
+            }
+            //if we are colliding with a Good cell
             //and the cell colliding is a Bad cell
             if (this.gameObject.tag == "BadCells")
             {
                 int i = Random.Range(0, 100);
-                if (i > 50)//chace to hit might very according to aggressive lvls?
+                if (i > 50) //chace to hit might very according to aggressive lvls?
                 {
-                    if (stamina >= StaminaModifier)
+                    if (stamina >= MaxStamina)
                     {
                         stamina = 100;
                     }
@@ -188,13 +204,14 @@ public class StatusControl : MonoBehaviour
         //if we are colliding with a Neutral cell
         if (other.gameObject.tag == "NeutralCells")
         {
+            //if we are colliding with a Neutral cell
             //and the cell colliding is a Bad cell
             if (this.gameObject.tag == "BadCells")
             {
                 int i = Random.Range(0, 100);
                 if (i > 20)
                 {
-                    if (stamina >= StaminaModifier)
+                    if (stamina >= MaxStamina)
                     {
                         stamina = 100;
                     }
@@ -208,7 +225,7 @@ public class StatusControl : MonoBehaviour
                     Hp = Hp - 5;
                 }
             }
-
+            //if we are colliding with a Neutral cell
             //and the cell colliding is another Neutral cell
             if (this.gameObject.tag == "NeutralCells")
             {
@@ -222,6 +239,28 @@ public class StatusControl : MonoBehaviour
 
                 }
             }
+            //if we are colliding with a Neutral cell
+            //and the cell colliding is another Good cell
+            if (this.gameObject.tag == "GoodCells")
+            {
+                int i = Random.Range(0, 100);
+                if(lastStand == true)
+                {
+                    if (i > 20)
+                    {
+                        if (stamina >= MaxStamina)
+                        {
+                            stamina = 100;
+                        }
+                        else
+                        {
+                            stamina = stamina + 10;
+                        }
+
+                    }
+                }
+                
+            }
 
 
 
@@ -230,13 +269,14 @@ public class StatusControl : MonoBehaviour
         //if we are colliding with a Bad cell
         if (other.gameObject.tag == "BadCells")
         {
+            //if we are colliding with a Bad cell
             //and the cell colliding is a Good cell
             if (this.gameObject.tag == "GoodCells")
             {
                 int i = Random.Range(0, 100);
                 if (i > 50)
                 {
-                    if (stamina >= StaminaModifier)
+                    if (stamina >= MaxStamina)
                     {
                         stamina = 100;
                     }
@@ -251,13 +291,14 @@ public class StatusControl : MonoBehaviour
                 }
             }
 
+            //if we are colliding with a Bad cell
             //and the cell colliding is a Neutral cell
             if (this.gameObject.tag == "NeutralCells")
             {
                 int i = Random.Range(0, 100);
                 if (i > 90)
                 {
-                    if (stamina >= StaminaModifier)
+                    if (stamina >= MaxStamina)
                     {
                         stamina = 100;
                     }
@@ -272,6 +313,7 @@ public class StatusControl : MonoBehaviour
                 }
             }
 
+            //if we are colliding with a Bad cell
             //and the cell colliding is another Bad cell
             if (this.gameObject.tag == "BadCells")
             {
@@ -291,16 +333,6 @@ public class StatusControl : MonoBehaviour
         }
 
     }
-
-    void StateSwitcher()
-    {
-        if(Hunt == true)
-        {
-            //GetComponent("Flock Agent").enable = false;
-        }
-
-    }
-
 
 
     void HpManager()
