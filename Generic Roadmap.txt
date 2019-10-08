@@ -1,0 +1,13 @@
+ROADMAP
+
+By Nanocon we would like to have:
+- A functional simulation
+	- Changable attributes
+- A main menu desk
+- A document people can read while others play describing the key plot points of a potential campaign
+- Art assests implemented into the simulation
+- A poster with our logo, key game features, and discord link
+- A discord server that is mostly set up and ready for the public
+- Employee dossiers for people to look at
+	- templates of dossiers for people who want to fill out their own for potential character ideas
+- Our current government letters printed for people to read
