@@ -33,7 +33,6 @@ public class Flock : MonoBehaviour
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
-
         for (int i = 0; i < startingCount; i++)
         {
             FlockAgent newAgent = Instantiate(

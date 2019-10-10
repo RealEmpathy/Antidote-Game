@@ -52,9 +52,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00015115738, y: -0.076539874}
+  m_Offset: {x: 0.0036726296, y: 0.08544731}
   serializedVersion: 2
-  m_Radius: 0.68123305
+  m_Radius: 0.38190898
 --- !u!114 &5594473464838577125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,13 +84,18 @@ MonoBehaviour:
   StaminaModifier: 0
   HuntVar: 50
   Survival: 0
+  timer: 7
+  waitTime: 3
   spawPos: {fileID: 8347201611676189533}
   CellPrefab: {fileID: 8347201611676189534}
   Reproduction: 0
   Hunt: 0
   flocking: 0
   heal: 0
+  executeBeforeStart: 0
   lastStand: 0
+  imortal: 1
+  startFight: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,9 +190,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09829134}
+  m_Offset: {x: 0, y: -0.08076179}
   serializedVersion: 2
-  m_Radius: 0.947949
+  m_Radius: 0.6422106
 --- !u!50 &4301183645556323961
 Rigidbody2D:
   serializedVersion: 4

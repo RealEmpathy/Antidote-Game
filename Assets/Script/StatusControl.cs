@@ -12,7 +12,8 @@ public class StatusControl : MonoBehaviour
     public float StaminaModifier;   //static value calculated when the program runs
     public float HuntVar;           //static value set by the player (works togather with Susvival variable)
     public float Survival;          // static value that will be calculated when the program runs
-    private float timer = 7;
+    public float timer = 7;
+    public int waitTime = 3;
 
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
@@ -22,8 +23,10 @@ public class StatusControl : MonoBehaviour
     public bool Hunt = false;
     public bool flocking = false;
     public bool heal = false;
-   // public bool executeOnce = false;
+    public bool executeBeforeStart = false;
     public bool lastStand = false;
+    public bool imortal = true;
+    public bool startFight = false;
 
     private GameObject scriptControl;
 
@@ -51,70 +54,88 @@ public class StatusControl : MonoBehaviour
         //TESTING EXAMPLE
 
 
-        // calculating the actual modifiers before running
-
-        StaminaModifier = (100 - stamina);
-        MaxHp = Hp;
-        Survival = (100 - HuntVar);
-        MaxStamina = stamina;
         
 
-        if (MaxStamina > HuntVar)
-        {
-            // start with:
-            Reproduction = true;
-            Hunt = false;
-            heal = false;
-            lastStand = false;
-        }
-        else if (HuntVar > MaxStamina)
-        {
-            // start with:
-            Hunt = true;
-            Reproduction = false;
-            heal = false;
-            lastStand = false;
-        }
-        //Option of starting with reproduction on
-        //Reproduction = true;
-        //Hunt = true;
     }
 
-
+   
 
     void Update()
     {
-        //desice what state are we in
+        if (startFight == false)
+        {
+            timer -= Time.deltaTime;
+            if(timer<=0)
+            {
+                timer = waitTime;
+                // might have to take this out
+                if (MaxStamina > HuntVar)
+                {
+                    // start with:
+                    Reproduction = true;
+                    Hunt = false;
+                    heal = false;
+                    lastStand = false;
+                }
+                else if (HuntVar > MaxStamina)
+                {
+                    // start with:
+                    Hunt = true;
+                    Reproduction = false;
+                    heal = false;
+                    lastStand = false;
+                }
+                startFight = true;
+                imortal = false;
 
+                // calculating the actual modifiers before running
+                StaminaModifier = (100 - stamina);
+                MaxHp = Hp;
+                Survival = (100 - HuntVar);
+                MaxStamina = stamina;
+            }
+            if (executeBeforeStart == false)
+            {
+                JustFlock();
+                flocking = true;
+                executeBeforeStart = true;
+            }
+        }
+        
 
-        HpManager(); //control and update Hp and stamina variables
+        if (imortal == false)
+        {
+            HpManager(); //control and update Hp and stamina variables
 
-        if (Hp <= 0)
-        {// control when the cell die
-            Dead();
-            Debug.Log(this.name +" is Dead");
+            if (Hp <= 0)
+            {// control when the cell die
+                Dead();
+                Debug.Log(this.name + " is Dead");
+            }
+            // switch between the fuctions
+            if (Hunt == true)
+            {
+                Debug.Log("Hunt is on");
+                HuntFunciton();
+            }
+            if (Reproduction == true)
+            {
+                Debug.Log("Reproduction is on");
+                Reproduce();
+            }
+            if (heal == true)
+            {
+                Debug.Log("Heal is on");
+                Healing();
+            }
+            if (lastStand == true)
+            {
+                Debug.Log("Last stand is on");
+                lastStandFunction();
+            }
         }
-        // switch between the fuctions
-        if (Hunt == true)
-        {
-            Debug.Log("Hunt is on");
-            HuntFunciton();
-        }
-        if(Reproduction ==  true)
-        {
-            Debug.Log("Reproduction is on");
-            Reproduce();
-        }
-        if(heal == true)
-        {
-            Debug.Log("Heal is on");
-            Healing();
-        }
-        if(lastStand == true)
-        {
-            Debug.Log("Last stand is on");
-            lastStandFunction();
-        }
+
+        
 
 
         
@@ -142,195 +163,94 @@ public class StatusControl : MonoBehaviour
         /*Create a prefab for Good Cells with the exat name:
                                                           GoodCells
         */
-
-        //if we are colliding with a Good cell
-        if (other.gameObject.tag == "GoodCells")
+        if(imortal == false)
         {
             //if we are colliding with a Good cell
-            //and the cell colliding is another Good cell
-            if (this.gameObject.tag == "GoodCells")
+            if (other.gameObject.tag == "GoodCells")
             {
-                int i = Random.Range(0, 100);
-               
-                if (i > 20)
+                //if we are colliding with a Good cell
+                //and the cell colliding is another Good cell
+                if (this.gameObject.tag == "GoodCells")
                 {
-                    if (Reproduction == true)
-                    {
-                        SpawnChild();
-                    }
+                    CellReproduction();
+                }
 
+                //if we are colliding with a Good cell
+                //and the cell colliding is Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    if (lastStand == true)
+                        DamagingGreenCells();
+                }
+
+                //if we are colliding with a Good cell
+                //and the cell colliding is a Bad cell
+                if (this.gameObject.tag == "BadCells")
+                {
+                    BadCellAttack();
                 }
 
             }
-            //if we are colliding with a Good cell
-            //and the cell colliding is Neutral cell
-            if (this.gameObject.tag == "NeutralCells")
-            {
-                int i = Random.Range(0, 100);
-                if (lastStand == true)   
-                {
-                    if (i > 20)
-                    {
-                       
-                    }
 
-                }
-
-            }
-            //if we are colliding with a Good cell
-            //and the cell colliding is a Bad cell
-            if (this.gameObject.tag == "BadCells")
-            {
-                int i = Random.Range(0, 100);
-                if (i > 50) //chace to hit might very according to aggressive lvls?
-                {
-                    if (stamina >= MaxStamina)
-                    {
-                        stamina = 100;
-                    }
-                    else
-                    {
-                        stamina = stamina + 10;
-                    }
-                }
-                if (i < 50)
-                {
-                    Hp = Hp - 20;
-                }
-            }
-            
-        }
-
-        //if we are colliding with a Neutral cell
-        if (other.gameObject.tag == "NeutralCells")
-        {
             //if we are colliding with a Neutral cell
-            //and the cell colliding is a Bad cell
-            if (this.gameObject.tag == "BadCells")
+            if (other.gameObject.tag == "NeutralCells")
             {
-                int i = Random.Range(0, 100);
-                if (i > 20)
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is a Bad cell
+                if (this.gameObject.tag == "BadCells")
                 {
-                    if (stamina >= MaxStamina)
-                    {
-                        stamina = 100;
-                    }
-                    else
-                    {
-                        stamina = stamina + 10;
-                    }
+                    DamagingGreenCells();
                 }
-                if (i < 20)
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is another Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
                 {
-                    Hp = Hp - 5;
+                    CellReproduction()
                 }
-            }
-            //if we are colliding with a Neutral cell
-            //and the cell colliding is another Neutral cell
-            if (this.gameObject.tag == "NeutralCells")
-            {
-                int i = Random.Range(0, 100);
-                if (i > 10)
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is another Good cell
+                if (this.gameObject.tag == "GoodCells")
                 {
-                    if (Reproduction == true)
+                    if (lastStand == true)
                     {
-                        SpawnChild();
+                        DamagingGreenCells();
                     }
 
                 }
-            }
-            //if we are colliding with a Neutral cell
-            //and the cell colliding is another Good cell
-            if (this.gameObject.tag == "GoodCells")
-            {
-                int i = Random.Range(0, 100);
-                if(lastStand == true)
-                {
-                    if (i > 20)
-                    {
-                        if (stamina >= MaxStamina)
-                        {
-                            stamina = 100;
-                        }
-                        else
-                        {
-                            stamina = stamina + 10;
-                        }
-
-                    }
-                }
-                
-            }
 
 
 
-        }
-
-        //if we are colliding with a Bad cell
-        if (other.gameObject.tag == "BadCells")
-        {
-            //if we are colliding with a Bad cell
-            //and the cell colliding is a Good cell
-            if (this.gameObject.tag == "GoodCells")
-            {
-                int i = Random.Range(0, 100);
-                if (i > 50)
-                {
-                    if (stamina >= MaxStamina)
-                    {
-                        stamina = 100;
-                    }
-                    else
-                    {
-                        stamina = stamina + 10;
-                    }
-                }
-                if (i < 50)
-                {
-                    Hp = Hp - 20;
-                }
             }
 
             //if we are colliding with a Bad cell
-            //and the cell colliding is a Neutral cell
-            if (this.gameObject.tag == "NeutralCells")
+            if (other.gameObject.tag == "BadCells")
             {
-                int i = Random.Range(0, 100);
-                if (i > 90)
+                //if we are colliding with a Bad cell
+                //and the cell colliding is a Good cell
+                if (this.gameObject.tag == "GoodCells")
                 {
-                    if (stamina >= MaxStamina)
-                    {
-                        stamina = 100;
-                    }
-                    else
-                    {
-                        stamina = stamina + 10;
-                    }
+                    GoodCellAttack();
                 }
-                if (i < 90)
+
+                //if we are colliding with a Bad cell
+                //and the cell colliding is a Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
                 {
-                    Hp = Hp - 5;
+                    GreenCellAttack();
                 }
+
+                //if we are colliding with a Bad cell
+                //and the cell colliding is another Bad cell
+                if (this.gameObject.tag == "BadCells")
+                {
+                    CellReproduction();
+                }
+
+
+
             }
-
-            //if we are colliding with a Bad cell
-            //and the cell colliding is another Bad cell
-            if (this.gameObject.tag == "BadCells")
-            {
-                int i = Random.Range(0, 100);
-                if (i > 20)
-                {
-                    if (Reproduction == true)
-                    {
-                        SpawnChild();
-                    }
-
-                }
-            }
-
-            
-
         }
+        
 
     }
 
@@ -381,15 +301,25 @@ public class StatusControl : MonoBehaviour
         else
         {
             //executeOnce = true;
-            timer = 7;
+            timer = waitTime;
             Reproduction = false;
             heal = true;
         }
 
     }
+    void JustFlock()
+    {
+        //TESTING THE SCRIPT BELOW
+        scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
+        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
+        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;
+
+        // switch script to flock
+        scriptControl.GetComponent<FlockAgent>().enabled = true;
+    }
     float FindYourKind(float timer)
     {
-        if (timer >= 7)
+        if (timer >= waitTime)
         {
             timer -= Time.deltaTime;
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
@@ -411,7 +341,7 @@ public class StatusControl : MonoBehaviour
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
-            flocking = true;
+            
         }
 
         return timer;
@@ -430,6 +360,8 @@ public class StatusControl : MonoBehaviour
         mention.flee = false;
         flocking = false;
     }
+
+    
 
     void HuntFunciton()
     {
@@ -480,7 +412,7 @@ public class StatusControl : MonoBehaviour
         }
         else
         {
-
+            JustFlock(); //where the cell goes ot die
         }
     }
 
@@ -488,4 +420,100 @@ public class StatusControl : MonoBehaviour
     {
         Destroy(this.transform.parent.gameObject);
     }
+
+
+    void GoodCellAttack()
+    {
+        int i = Random.Range(0, 100);
+        if (i > 50)
+        {
+            if (stamina >= MaxStamina)
+            {
+                stamina = 100;
+            }
+            else
+            {
+                stamina = stamina + 10;
+            }
+        }
+        if (i < 50)
+        {
+            Hp = Hp - 20;
+        }
+    }
+
+    void BadCellAttack()
+    {
+        int i = Random.Range(0, 100);
+        if (i > 50)
+        {
+            if (stamina >= MaxStamina)
+            {
+                stamina = 100;
+            }
+            else
+            {
+                stamina = stamina + 10;
+            }
+        }
+        if (i < 50)
+        {
+            Hp = Hp - 20; // amount of damage
+        }
+    }
+
+    void GreenCellAttack()
+    {
+        int i = Random.Range(0, 100);
+        if (i > 80)
+        {
+            if (stamina >= MaxStamina)
+            {
+                stamina = 100;
+            }
+            else
+            {
+                stamina = stamina + 10;
+            }
+        }
+        if (i < 20)
+        {
+            Hp = Hp - 20;// amount of damage done by neutral
+        }
+    }
+
+    void DamagingGreenCells()
+    {
+        int i = Random.Range(0, 100);
+        if (i > 20)
+        {
+            if (stamina >= MaxStamina)
+            {
+                stamina = 100;
+            }
+            else
+            {
+                stamina = stamina + 10;
+            }
+        }
+        if (i < 20)
+        {
+            Hp = Hp - 5;// amount of damage done by neutral
+        }
+    }
+
+
+    void CellReproduction()
+    {
+        int i = Random.Range(0, 100);
+        if (i > 10)
+        {
+            if (Reproduction == true)
+            {
+                SpawnChild();
+            }
+
+        }
+    }
+
 }
