@@ -27,13 +27,23 @@ public class StatusControl : MonoBehaviour
     public bool lastStand = false;
     public bool imortal = true;
     public bool startFight = false;
+    private bool executeOnce = false;
 
     private GameObject scriptControl;
+    private GameObject flockControlNeutral;
+    private GameObject flockControlGood;
+    private GameObject flockControlBad;
 
+    
 
     private void Start()
     {
         scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
+
+        flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
+        flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
+        flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
+
 
 
         // ObjectCell.GetComponent<Seek>().enabled = false();
@@ -54,7 +64,7 @@ public class StatusControl : MonoBehaviour
         //TESTING EXAMPLE
 
 
-        
+
 
     }
 
@@ -94,12 +104,12 @@ public class StatusControl : MonoBehaviour
                 Survival = (100 - HuntVar);
                 MaxStamina = stamina;
             }
-            if (executeBeforeStart == false)
+           /* if (executeBeforeStart == false)
             {
                 JustFlock();
                 flocking = true;
                 executeBeforeStart = true;
-            }
+            }*/
         }
         
 
@@ -205,7 +215,7 @@ public class StatusControl : MonoBehaviour
                 //and the cell colliding is another Neutral cell
                 if (this.gameObject.tag == "NeutralCells")
                 {
-                    CellReproduction()
+                    CellReproduction();
                 }
                 //if we are colliding with a Neutral cell
                 //and the cell colliding is another Good cell
@@ -280,8 +290,25 @@ public class StatusControl : MonoBehaviour
     {
         //Reproducing
         stamina = stamina - 20;
-        spawPos = CellPrefab.GetComponent<Transform>();
-        Instantiate(CellPrefab, this.transform.position, this.transform.rotation);
+        /*spawPos = CellPrefab.GetComponent<Transform>();
+        Instantiate(CellPrefab, this.transform.position, this.transform.rotation);*/
+        if (this.gameObject.tag == "GoodCells")
+        {
+            Flock mention2 = flockControlGood.GetComponent<Flock>();
+            mention2.spanwCell = true;
+        }
+        if (this.gameObject.tag == "BadCells")
+        {
+            Flock mention2 = flockControlBad.GetComponent<Flock>();
+            mention2.spanwCell = true;
+        }
+        if (this.gameObject.tag == "NeutralCells")
+        {
+            Flock mention2 = flockControlNeutral.GetComponent<Flock>();
+            mention2.spanwCell = true;
+        }
+
+
         Reproduction = false;
     }
 
@@ -292,10 +319,15 @@ public class StatusControl : MonoBehaviour
         // start flocking and reproduction
         if(stamina > StaminaModifier)
         {
-            // Target the the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } /// private bool red //// private bool neutral ) 
+            // Target the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } /// private bool red //// private bool neutral ) 
             if(timer >= -1)
             {
-                FindYourKind(timer);
+                if(executeOnce == false)
+                {
+                    FindYourKind(timer);
+                    executeOnce = true;
+                }
+                    
             }
         }
         else
@@ -304,6 +336,7 @@ public class StatusControl : MonoBehaviour
             timer = waitTime;
             Reproduction = false;
             heal = true;
+            executeOnce = false;
         }
 
     }
@@ -418,7 +451,7 @@ public class StatusControl : MonoBehaviour
 
     void Dead()
     {
-        Destroy(this.transform.parent.gameObject);
+        Destroy(this.transform.gameObject);
     }
 
 

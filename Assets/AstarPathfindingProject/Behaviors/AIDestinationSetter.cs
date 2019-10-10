@@ -20,6 +20,7 @@ namespace Pathfinding
       
         public Transform target;   /// THIS WERE TAKING changed to private to test how the tags are going to work
         public Transform target2Flee;  /// THIS WERE TAKING changed to private to test how the tags are going to work
+        public Transform target3LastStand;
         public bool flee = false;
         public bool lastStand = false;
         IAstarAI ai;
@@ -51,13 +52,17 @@ namespace Pathfinding
              if (flee == true)
              {
                  if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
-             }*/
+             }
+             if (lastStand == true)
+             {
+                if (target3LastStand != null && ai != null) ai.destination = target3LastStand.position;
+            }*/
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE 
 
 
 
-            if(lastStand == false)
-            { 
+            if (lastStand == false)
+            {
                 if (flee == false)
                 {
                     if (this.gameObject.tag == "GoodCells")
@@ -98,7 +103,7 @@ namespace Pathfinding
                     }
                 }
             }
-            else 
+            else
             if (lastStand == true)
             {
                 if (this.gameObject.tag == "GoodCells")

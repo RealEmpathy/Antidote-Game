@@ -27,6 +27,9 @@ public class Flock : MonoBehaviour
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
+    public bool spanwCell;
+    private int number = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +68,21 @@ public class Flock : MonoBehaviour
             }
             agent.Move(move);
         }
+        if(spanwCell == true)
+        {
+            number++;
+            FlockAgent newAgent = Instantiate(
+                agentPrefab,
+                Random.insideUnitCircle * startingCount * AgentDensity * Random.Range(-size, size),
+                Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
+                transform
+                );
+            newAgent.name = "Agent " + number;
+            newAgent.Initialize(this);
+            agents.Add(newAgent);
+            spanwCell = false;
+        }
+
     }
 
     List<Transform> GetNearbyObjects(FlockAgent agent)
