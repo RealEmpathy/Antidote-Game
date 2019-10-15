@@ -451,6 +451,24 @@ public class StatusControl : MonoBehaviour
 
     void Dead()
     {
+        if (this.gameObject.tag == "GoodCells")
+        {
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.GoodCells.Remove(this.gameObject);
+            mention.ChangeTarget();
+        }
+        if (this.gameObject.tag == "BadCells")
+        {
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.BadCells.Remove(this.gameObject);
+            mention.ChangeTarget();
+        }
+        if (this.gameObject.tag == "NeutralCells")
+        {
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.NeutralCells.Remove(this.gameObject);
+            mention.ChangeTarget();
+        }
         Destroy(this.transform.gameObject);
     }
 

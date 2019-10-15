@@ -80,6 +80,23 @@ public class Flock : MonoBehaviour
             newAgent.name = "Agent " + number;
             newAgent.Initialize(this);
             agents.Add(newAgent);
+
+            if (this.gameObject.tag == "GoodCells")
+            {
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.GoodCells.Add(this.gameObject);
+            }
+            if (this.gameObject.tag == "BadCells")
+            {
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.BadCells.Add(this.gameObject);
+            }
+            if (this.gameObject.tag == "NeutralCells")
+            {
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.NeutralCells.Add(this.gameObject);
+            }
+
             spanwCell = false;
         }
 
