@@ -65,7 +65,9 @@ namespace Pathfinding
         /// <summary>Updates the AI's destination every frame</summary>
         void Update()
         {
+            updateList();
             ChangeTarget();
+            
 
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
             if (lastStand == false)
@@ -86,7 +88,7 @@ namespace Pathfinding
             }
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE 
 
-
+            
 /*
             if (lastStand == false)
             {
@@ -161,6 +163,34 @@ namespace Pathfinding
             NeutralCells = GameObject.FindGameObjectsWithTag("NeutralCells").ToList();
         }
 
+        void updateList()
+        {
+            for (int i = 0; i < BadCells.Count; i++)
+            {
+                CreateList();
+                if (BadCells[i] == null)
+                {
+                    BadCells.Remove(BadCells[i].gameObject);
+                }
+            }
+            for (int i = 0; i < NeutralCells.Count; i++)
+            {
+                CreateList();
+                if (NeutralCells[i] == null)
+                {
+                    NeutralCells.Remove(NeutralCells[i].gameObject);
+                }
+            }
+            for (int i = 0; i < GoodCells.Count; i++)
+            {
+                CreateList();
+                if (GoodCells[i] == null)
+                {
+                    GoodCells.Remove(GoodCells[i].gameObject);
+                }
+            }
+        }
+
         public void ChangeTarget()
         {
             if ((flee == false) && (switching1 <= 0))
@@ -214,7 +244,7 @@ namespace Pathfinding
                             }
                         }
                         else
-                        {// cotinue editing here here here here here here here here herehere here here herehere here here
+                        {
                             BadCells.Remove(BadCells[i]); // add this to all the other ones
                         }
                     }
@@ -237,6 +267,10 @@ namespace Pathfinding
                                 }
                             }
                         }
+                        else
+                        {
+                            GoodCells.Remove(GoodCells[i]); // add this to all the other ones
+                        }
                     }
                 }
                 if (lastStand == true)
@@ -256,6 +290,10 @@ namespace Pathfinding
                                     target3LastStand = NeutralCells[i].GetComponent<Transform>();
                                 }
                             }
+                        }
+                        else
+                        {
+                            NeutralCells.Remove(NeutralCells[i]); // add this to all the other ones
                         }
                     }
                 }
@@ -282,6 +320,10 @@ namespace Pathfinding
                                 }
                             }
                         }
+                        else
+                        {
+                            GoodCells.Remove(GoodCells[i]); // add this to all the other ones
+                        }
                     }
                 }
                 if (flee == true)
@@ -300,6 +342,10 @@ namespace Pathfinding
                                 }
                             }
                         }
+                        else
+                        {
+                            BadCells.Remove(BadCells[i]); // add this to all the other ones
+                        }
                     }
                 }
                 if (lastStand == true)
@@ -317,6 +363,10 @@ namespace Pathfinding
                                     target3LastStand = NeutralCells[i].GetComponent<Transform>();
                                 }
                             }
+                        }
+                        else
+                        {
+                            NeutralCells.Remove(NeutralCells[i]); // add this to all the other ones
                         }
                     }
                 }
@@ -342,6 +392,10 @@ namespace Pathfinding
                                 }
                             }
                         }
+                        else
+                        {
+                            BadCells.Remove(BadCells[i]); // add this to all the other ones
+                        }
                     }
                 }
                 if (flee == true)
@@ -359,6 +413,10 @@ namespace Pathfinding
                                     target2Flee = NeutralCells[i].GetComponent<Transform>();
                                 }
                             }
+                        }
+                        else
+                        {
+                            NeutralCells.Remove(NeutralCells[i]); // add this to all the other ones
                         }
                     }
                 }
@@ -378,6 +436,10 @@ namespace Pathfinding
                                     target3LastStand = BadCells[i].GetComponent<Transform>();
                                 }
                             }
+                        }
+                        else
+                        {
+                            BadCells.Remove(BadCells[i]); // add this to all the other ones
                         }
                     }
                 }

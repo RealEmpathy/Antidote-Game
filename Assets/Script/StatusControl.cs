@@ -292,6 +292,7 @@ public class StatusControl : MonoBehaviour
         stamina = stamina - 20;
         /*spawPos = CellPrefab.GetComponent<Transform>();
         Instantiate(CellPrefab, this.transform.position, this.transform.rotation);*/
+        // fix version now spawn the cells inside the flock
         if (this.gameObject.tag == "GoodCells")
         {
             Flock mention2 = flockControlGood.GetComponent<Flock>();
@@ -451,25 +452,24 @@ public class StatusControl : MonoBehaviour
 
     void Dead()
     {
+        Destroy(this.transform.gameObject);
+        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         if (this.gameObject.tag == "GoodCells")
         {
-            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.GoodCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "BadCells")
         {
-            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.BadCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "NeutralCells")
         {
-            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.NeutralCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
-        Destroy(this.transform.gameObject);
+       
     }
 
 
