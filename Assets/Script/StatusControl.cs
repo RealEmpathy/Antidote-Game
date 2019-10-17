@@ -12,8 +12,8 @@ public class StatusControl : MonoBehaviour
     public float StaminaModifier;   //static value calculated when the program runs
     public float HuntVar;           //static value set by the player (works togather with Susvival variable)
     public float Survival;          // static value that will be calculated when the program runs
-    public float timer = 7;
-    public int waitTime = 3;
+    public float timer = 10;
+    public int waitTime = 7;
 
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
@@ -44,7 +44,8 @@ public class StatusControl : MonoBehaviour
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
 
-
+        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+        mention.flocking = true;
 
         // ObjectCell.GetComponent<Seek>().enabled = false();
         //AIDestination aIDestination = GetComponent<aiDestination>();
@@ -86,6 +87,8 @@ public class StatusControl : MonoBehaviour
                     Hunt = false;
                     heal = false;
                     lastStand = false;
+                    executeOnce = false;
+                    timer = waitTime;
                 }
                 else if (HuntVar > MaxStamina)
                 {
@@ -94,6 +97,8 @@ public class StatusControl : MonoBehaviour
                     Reproduction = false;
                     heal = false;
                     lastStand = false;
+                    executeOnce = false;
+                    timer = waitTime;
                 }
                 startFight = true;
                 imortal = false;
@@ -103,6 +108,8 @@ public class StatusControl : MonoBehaviour
                 MaxHp = Hp;
                 Survival = (100 - HuntVar);
                 MaxStamina = stamina;
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.flocking = false;
             }
            /* if (executeBeforeStart == false)
             {
@@ -142,6 +149,27 @@ public class StatusControl : MonoBehaviour
             {
                 Debug.Log("Last stand is on");
                 lastStandFunction();
+            }
+            if((lastStand == false)&& (heal == false)&& (Reproduction == false)&& (Hunt == false))
+            {
+                if (MaxStamina > HuntVar)
+                {
+                    Reproduction = true;
+                    Hunt = false;
+                    heal = false;
+                    lastStand = false;
+                    executeOnce = false;
+                    timer = waitTime;
+                }
+                else if (HuntVar > MaxStamina)
+                {
+                    Hunt = true;
+                    Reproduction = false;
+                    heal = false;
+                    lastStand = false;
+                    executeOnce = false;
+                    timer = waitTime;
+                }
             }
         }
 
@@ -313,51 +341,54 @@ public class StatusControl : MonoBehaviour
         Reproduction = false;
     }
 
- 
+    void JustFlock()
+    {
+        //TESTING THE SCRIPT BELOW
+        /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
+        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
+        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
+
+        // switch script to flock
+        scriptControl.GetComponent<FlockAgent>().enabled = true;
+
+        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+        mention.flocking = true;
+    }
+
     void Reproduce()
     {
         
         // start flocking and reproduction
         if(stamina > StaminaModifier)
         {
-            // Target the same cell with AllDestinationSetter (research on switching target) Maybe creating a bool to swtich Target inside the A*pathfinding. Like(private bool blue {target = targetblue; } /// private bool red //// private bool neutral ) 
-            if(timer >= -1)
-            {
-                if(executeOnce == false)
-                {
-                    FindYourKind(timer);
-                    executeOnce = true;
-                }
-                    
-            }
+            FindYourKind(timer);
         }
         else
         {
             //executeOnce = true;
             timer = waitTime;
             Reproduction = false;
-            heal = true;
             executeOnce = false;
+            Hunt = false;
+            lastStand = false;
+            heal = true;
+           
         }
 
     }
-    void JustFlock()
-    {
-        //TESTING THE SCRIPT BELOW
-        scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
-        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
-        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;
-
-        // switch script to flock
-        scriptControl.GetComponent<FlockAgent>().enabled = true;
-    }
+   
     float FindYourKind(float timer)
     {
         if (timer >= waitTime)
         {
-            timer -= Time.deltaTime;
-            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-            mention.flee = true;
+            if (executeOnce == false)
+            {
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                timer -= Time.deltaTime;
+                mention.flocking = false;
+                mention.flee = true;
+                executeOnce = true;
+            }
         }
         if(timer > 0)
         {
@@ -369,13 +400,16 @@ public class StatusControl : MonoBehaviour
             // desable seek script 
 
             //TESTING THE SCRIPT BELOW
-            scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
+            /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
             scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
-            scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;
+            scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
-            
+
+            Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            mention.flocking = true;
+
         }
 
         return timer;
@@ -383,15 +417,19 @@ public class StatusControl : MonoBehaviour
     void HuntYourEnemy()
     {
         // desable flock
+        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+        mention.flee = false;
+        mention.flocking = false;
         scriptControl.GetComponent<FlockAgent>().enabled = false;
+
         // switch script to seek
         scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
         scriptControl.GetComponent<Pathfinding.AIPath>().enabled = true;
         scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;
         
-        //make sure we are hunting the right target
-        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-        mention.flee = false;
+
+        
+
         flocking = false;
     }
 
@@ -405,8 +443,14 @@ public class StatusControl : MonoBehaviour
         }
         else if (Hp<Survival)
         {
+            //switching to something else, reseting everything
+            executeOnce = false;
             Hunt = false;
+            heal = false;
+            lastStand = false;
+            timer = waitTime;
             Reproduction = true;
+
            // executeOnce = true;
         }
 
@@ -417,21 +461,24 @@ public class StatusControl : MonoBehaviour
     {
         if(Hp>Survival)
         {
+            executeOnce = false;
+            lastStand = false;
+            timer = waitTime;
+            Reproduction = false;
+            heal = false;
             Hunt = true;
         }else
         if(Hp<Survival)
         {
-            if(flocking == false)
-            {
-                FindYourKind(timer);
-            }else
-            {
-                //continue flocking
-            }
-
+            FindYourKind(timer);
         }else
-        if((stamina<=0)&&(Hp<Survival))
+        if((stamina <= 0)&&(Hp < Survival))
         {
+            executeOnce = false;
+            timer = waitTime;
+            Reproduction = false;
+            heal = false;
+            Hunt = false;
             lastStand = true;
         }
 
@@ -443,10 +490,12 @@ public class StatusControl : MonoBehaviour
         {
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.lastStand = true;
+            mention.flocking = false;
         }
         else
         {
-            JustFlock(); //where the cell goes ot die
+            FindYourKind(timer);
+            //JustFlock(); //where the cell goes to die
         }
     }
 

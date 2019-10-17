@@ -139,10 +139,10 @@ MonoBehaviour:
   version: 2
   radius: 0.5
   height: 0.01
-  repathRate: 0.5
+  repathRate: 2
   canSearch: 1
   canMove: 1
-  maxSpeed: 7
+  maxSpeed: 10.17
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -153,11 +153,11 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 1
-  endReachedDistance: 0.2
+  slowdownDistance: 0.45
+  pickNextWaypointDist: 0.81
+  endReachedDistance: 0.28
   alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 0
+  slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &5846764300071453656
@@ -177,8 +177,18 @@ MonoBehaviour:
   target2Flee: {fileID: 8347201611676189533}
   target3LastStand: {fileID: 8347201611676189533, guid: 6e77230d6011f794c83aff768cbb5aed,
     type: 3}
+  GoodCell: {fileID: 0}
+  GoodCells: []
+  BadCell: {fileID: 0}
+  BadCells: []
+  NeutralCell: {fileID: 0}
+  NeutralCells: []
   flee: 0
   lastStand: 0
+  flocking: 0
+  switching1: 0
+  switching2: 0
+  switching3: 0
 --- !u!58 &7579050255881600229
 CircleCollider2D:
   m_ObjectHideFlags: 0

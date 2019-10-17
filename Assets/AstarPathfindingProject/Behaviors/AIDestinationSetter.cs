@@ -35,6 +35,8 @@ namespace Pathfinding
 
         public bool flee = false;
         public bool lastStand = false;
+        public bool flocking = false;
+
         public int switching1 = 0;
         public int switching2 = 0;
         public int switching3 = 0;
@@ -67,32 +69,38 @@ namespace Pathfinding
         {
             updateList();
             ChangeTarget();
-            
+
 
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
-            if (lastStand == false)
+            if (flocking == false)
             {
-                if (flee == false)
+                if (lastStand == false)
                 {
-                    if (target != null && ai != null) ai.destination = target.position;
+                    if (flee == false)
+                    {
+                        if (target != null && ai != null) ai.destination = target.position;
+                    }
+                    //enable target2Flee for the new target to take place
+                    if (flee == true)
+                    {
+                        if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
+                    }
                 }
-                //enable target2Flee for the new target to take place
-                if (flee == true)
+                if (lastStand == true)
                 {
-                    if (target2Flee != null && ai != null) ai.destination = target2Flee.position;
+                    if (target3LastStand != null && ai != null) ai.destination = target3LastStand.position;
                 }
-            }
-            if (lastStand == true)
-            {
-                if (target3LastStand != null && ai != null) ai.destination = target3LastStand.position;
             }
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE 
 
-            
-/*
-            if (lastStand == false)
+
+
+            if (flocking == true)
             {
-                if (flee == false)
+                // keep this commented out 
+                //
+
+              /*  if (flee == false)
                 {
                     if (this.gameObject.tag == "GoodCells")
                     {
@@ -130,31 +138,8 @@ namespace Pathfinding
                         //Debug.Log("this is a Neutral cell hunting Bad cells");
                         target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
                     }
-                }
+                }*/
             }
-            else
-            if (lastStand == true)
-            {
-                if (this.gameObject.tag == "GoodCells")
-                {
-                    //Debug.Log("this is a Good cell hunting Bad cells");
-                    target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
-                }
-
-                if (this.gameObject.tag == "BadCells")
-                {
-                    //Debug.Log("this is a Bad cell hunting Neutral cells");
-                    target = GameObject.FindGameObjectWithTag("GoodCells").GetComponent<Transform>();
-                }
-                if (this.gameObject.tag == "NeutralCells")
-                {
-                    //Debug.Log("this is a Neutral cell hunting Bad cells");
-                    target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                }
-            }
-*/
-
-
         }
         void CreateList()
         {
