@@ -61,6 +61,7 @@ namespace Pathfinding
         void Start()
         {
             CreateList();
+            updateList();
             FindTarget();
         }
 
@@ -69,7 +70,7 @@ namespace Pathfinding
         {
             updateList();
             ChangeTarget();
-
+            FindTarget();
 
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
             if (flocking == false)
@@ -174,6 +175,15 @@ namespace Pathfinding
                     GoodCells.Remove(GoodCells[i].gameObject);
                 }
             }
+            if (this.gameObject.tag == "GoodCells")
+                GoodCells.Remove(this.gameObject);
+
+            if (this.gameObject.tag == "BadCells")
+                BadCells.Remove(this.gameObject);
+
+            if (this.gameObject.tag == "NeutralCells")
+                NeutralCells.Remove(this.gameObject);
+
         }
 
         public void ChangeTarget()
@@ -218,7 +228,7 @@ namespace Pathfinding
                     {
                         if (BadCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(BadCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(BadCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -242,7 +252,7 @@ namespace Pathfinding
                     {
                         if (GoodCells[i].transform.position != null)
                         { 
-                            float dist = Vector3.Distance(GoodCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(GoodCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -266,7 +276,7 @@ namespace Pathfinding
                     {
                         if (NeutralCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(NeutralCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(NeutralCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -295,7 +305,7 @@ namespace Pathfinding
                     {
                         if (GoodCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(GoodCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(GoodCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -317,13 +327,19 @@ namespace Pathfinding
                     {
                         if (BadCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(BadCells[i].transform.position, transform.position);
-                            if (dist < lowestDist)
+                            if(BadCells[i].GetComponent<Transform>() == this.GetComponent<Transform>())
                             {
-                                lowestDist = dist;
-                                if (BadCells[i].GetComponent<Transform>() != null)
+
+                            }else
+                            {
+                                float dist = Vector2.Distance(BadCells[i].transform.position, transform.position);
+                                if (dist < lowestDist)
                                 {
-                                    target2Flee = BadCells[i].GetComponent<Transform>();
+                                    lowestDist = dist;
+                                    if (BadCells[i].GetComponent<Transform>() != null)
+                                    {
+                                        target2Flee = BadCells[i].GetComponent<Transform>();
+                                    }
                                 }
                             }
                         }
@@ -339,7 +355,7 @@ namespace Pathfinding
                     {
                         if (NeutralCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(NeutralCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(NeutralCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -367,7 +383,7 @@ namespace Pathfinding
                     {
                         if (BadCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(BadCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(BadCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
@@ -389,11 +405,11 @@ namespace Pathfinding
                     {
                         if (NeutralCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(NeutralCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(NeutralCells[i].transform.position, transform.position);
                             if (dist < lowestDist)
                             {
                                 lowestDist = dist;
-                                if (NeutralCells[i].GetComponent<Transform>() != null)
+                                if (NeutralCells[i].GetComponent<Transform>() != null )
                                 {
                                     target2Flee = NeutralCells[i].GetComponent<Transform>();
                                 }
@@ -411,7 +427,7 @@ namespace Pathfinding
                     {
                         if (BadCells[i].transform.position != null)
                         {
-                            float dist = Vector3.Distance(BadCells[i].transform.position, transform.position);
+                            float dist = Vector2.Distance(BadCells[i].transform.position, transform.position);
 
                             if (dist < lowestDist)
                             {
