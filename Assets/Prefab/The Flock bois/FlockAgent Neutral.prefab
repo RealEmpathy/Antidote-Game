@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 50
-  stamina: 70
+  stamina: 50
   StaminaModifier: 0
   HuntVar: 50
   Survival: 0

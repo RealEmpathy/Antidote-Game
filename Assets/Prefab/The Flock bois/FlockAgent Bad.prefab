@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0620eb94ac77f547a8d5e1bc6380f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 60
-  stamina: 70
+  Hp: 50
+  stamina: 50
   StaminaModifier: 0
   HuntVar: 50
   Survival: 0
