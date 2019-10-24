@@ -12,6 +12,8 @@ public class FlockAgent : MonoBehaviour
     Collider2D agentCollider;
     public Collider2D AgentCollider { get { return agentCollider; } }
 
+    public bool noFlock = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,10 @@ public class FlockAgent : MonoBehaviour
 
     public void Move(Vector2 velocity)
     {
-        transform.up = velocity;
-        transform.position += (Vector3)velocity * Time.deltaTime;
+        if(noFlock == false)
+        {
+            transform.up = velocity;
+            transform.position += (Vector3)velocity * Time.deltaTime;
+        }  
     }
 }

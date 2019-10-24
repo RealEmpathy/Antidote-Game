@@ -70,7 +70,6 @@ namespace Pathfinding
         {
             updateList();
             ChangeTarget();
-            FindTarget();
 
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
             if (flocking == false)

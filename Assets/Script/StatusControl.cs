@@ -132,22 +132,22 @@ public class StatusControl : MonoBehaviour
             // switch between the fuctions
             if (Hunt == true)
             {
-                Debug.Log("Hunt is on");
+                //Debug.Log("Hunt is on");
                 HuntFunciton();
             }
             if (Reproduction == true)
             {
-                Debug.Log("Reproduction is on");
+               // Debug.Log("Reproduction is on");
                 Reproduce();
             }
             if (heal == true)
             {
-                Debug.Log("Heal is on");
+               // Debug.Log("Heal is on");
                 Healing();
             }
             if (lastStand == true)
             {
-                Debug.Log("Last stand is on");
+                //Debug.Log("Last stand is on");
                 lastStandFunction();
             }
             if((lastStand == false)&& (heal == false)&& (Reproduction == false)&& (Hunt == false))
@@ -349,7 +349,10 @@ public class StatusControl : MonoBehaviour
         scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
 
         // switch script to flock
+
         scriptControl.GetComponent<FlockAgent>().enabled = true;
+        //FlockAgent mention2 = GetComponent<FlockAgent>();
+        //mention2.noFlock = false;
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
@@ -406,6 +409,8 @@ public class StatusControl : MonoBehaviour
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
+           /* FlockAgent mention2 = GetComponent<FlockAgent>();
+            mention2.noFlock = false;*/
 
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.flocking = true;
@@ -420,12 +425,17 @@ public class StatusControl : MonoBehaviour
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flee = false;
         mention.flocking = false;
+        
+
         scriptControl.GetComponent<FlockAgent>().enabled = false;
+        /*FlockAgent mention2 = GetComponent<FlockAgent>();
+        mention2.noFlock = true;*/
+
 
         // switch script to seek
-        scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
+        /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
         scriptControl.GetComponent<Pathfinding.AIPath>().enabled = true;
-        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;
+        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;*/
         
 
         
@@ -518,7 +528,7 @@ public class StatusControl : MonoBehaviour
             mention.NeutralCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
-       
+
     }
 
 

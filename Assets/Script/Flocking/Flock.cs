@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
     public int size;
 
@@ -55,6 +55,10 @@ public class Flock : MonoBehaviour
     {
         foreach (FlockAgent agent in agents)
         {
+            if(agent == null)
+            {
+                agents.Remove(agent);
+            }
             List<Transform> context = GetNearbyObjects(agent);
 
             //FOR DEMO ONLY
