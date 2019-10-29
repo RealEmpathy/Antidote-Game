@@ -34,9 +34,12 @@ public class StatusControl : MonoBehaviour
     private GameObject flockControlGood;
     private GameObject flockControlBad;
 
-    
+    private void Awake()
+    {
+        this.gameObject.SetActive(false);
+    }
 
-    private void Start()
+    private void OnEnable()
     {
         scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
 
@@ -75,7 +78,7 @@ public class StatusControl : MonoBehaviour
     {
         if (startFight == false)
         {
-            timer -= Time.deltaTime;
+            //timer -= Time.deltaTime;
             if(timer<=0)
             {
                 timer = waitTime;
@@ -429,7 +432,7 @@ public class StatusControl : MonoBehaviour
 
         scriptControl.GetComponent<FlockAgent>().enabled = false;
         /*FlockAgent mention2 = GetComponent<FlockAgent>();
-        mention2.noFlock = true;*/
+        mention2.noFlock. = true;*/
 
 
         // switch script to seek
@@ -625,5 +628,20 @@ public class StatusControl : MonoBehaviour
 
         }
     }
+
+    public void AdjustHunt(int newHunt)
+    {
+        HuntVar = newHunt;
+    }
+    public void AdjustReproduction(int newReproductin)
+    {
+        stamina = newReproductin;
+    }
+
+    public void AdjustHP(int newHP)
+    {
+        HuntVar = newHP;
+    }
+
 
 }

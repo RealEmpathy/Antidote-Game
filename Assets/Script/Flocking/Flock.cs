@@ -31,7 +31,12 @@ public class Flock : MonoBehaviour
     private int number = 100;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    void OnEnable()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
@@ -123,6 +128,11 @@ public class Flock : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void AdjustStartingCount(int newstartingCount)
+    {
+        startingCount = newstartingCount;
     }
 
 }
