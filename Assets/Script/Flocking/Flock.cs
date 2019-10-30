@@ -10,7 +10,7 @@ public class Flock : MonoBehaviour
     public int size;
 
     [Range(0, 30)]
-    public int startingCount = 100;
+    public float startingCount = 100;
     const float AgentDensity = 0.02f;
 
     [Range(1f, 100f)]
@@ -135,9 +135,18 @@ public class Flock : MonoBehaviour
         return null;
     }
 
-    public void AdjustStartingCount(int newstartingCount)
+    public void AdjustStartingCount(float newstartingCount)
     {
         startingCount = newstartingCount;
     }
 
+    public void ClearList(FlockAgent agent)
+    {
+        while(agents.Count> 0)
+        {
+            agents.Remove(agent);
+            Destroy(agent.gameObject); /// might need to update the other scripts
+                                       /// like Status Control and AIDestination Setter
+        }
+    }
 }

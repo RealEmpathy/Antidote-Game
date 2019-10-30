@@ -41,6 +41,7 @@ public class StatusControl : MonoBehaviour
 
     private void OnEnable()
     {
+        
         scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
 
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
@@ -49,6 +50,7 @@ public class StatusControl : MonoBehaviour
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
+
 
         // ObjectCell.GetComponent<Seek>().enabled = false();
         //AIDestination aIDestination = GetComponent<aiDestination>();
@@ -82,7 +84,15 @@ public class StatusControl : MonoBehaviour
             if(timer<=0)
             {
                 timer = waitTime;
-                // might have to take this out
+
+                // calculating the actual modifiers before running
+                StaminaModifier = (100 - stamina);
+                MaxHp = Hp;
+                Survival = (100 - HuntVar);
+                MaxStamina = stamina;
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.flocking = false;
+
                 if (MaxStamina > HuntVar)
                 {
                     // start with:
@@ -106,13 +116,7 @@ public class StatusControl : MonoBehaviour
                 startFight = true;
                 imortal = false;
 
-                // calculating the actual modifiers before running
-                StaminaModifier = (100 - stamina);
-                MaxHp = Hp;
-                Survival = (100 - HuntVar);
-                MaxStamina = stamina;
-                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-                mention.flocking = false;
+                
             }
            /* if (executeBeforeStart == false)
             {
@@ -629,16 +633,16 @@ public class StatusControl : MonoBehaviour
         }
     }
 
-    public void AdjustHunt(int newHunt)
+    public void AdjustHunt(float newHunt)
     {
         HuntVar = newHunt;
     }
-    public void AdjustReproduction(int newReproductin)
+    public void AdjustReproduction(float newReproductin)
     {
         stamina = newReproductin;
     }
 
-    public void AdjustHP(int newHP)
+    public void AdjustHP(float newHP)
     {
         Hp = newHP;
     }
