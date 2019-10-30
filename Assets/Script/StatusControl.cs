@@ -78,7 +78,7 @@ public class StatusControl : MonoBehaviour
     {
         if (startFight == false)
         {
-            //timer -= Time.deltaTime;
+            timer -= Time.deltaTime;
             if(timer<=0)
             {
                 timer = waitTime;
@@ -640,7 +640,7 @@ public class StatusControl : MonoBehaviour
 
     public void AdjustHP(int newHP)
     {
-        HuntVar = newHP;
+        Hp = newHP;
     }
 
 

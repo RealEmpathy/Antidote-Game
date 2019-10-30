@@ -9,7 +9,7 @@ public class Flock : MonoBehaviour
     public FlockBehavior behavior;
     public int size;
 
-    [Range(10, 500)]
+    [Range(0, 30)]
     public int startingCount = 100;
     const float AgentDensity = 0.02f;
 
@@ -38,6 +38,7 @@ public class Flock : MonoBehaviour
 
     void OnEnable()
     {
+        
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -52,6 +53,7 @@ public class Flock : MonoBehaviour
             newAgent.name = "Agent " + i;
             newAgent.Initialize(this);
             agents.Add(newAgent);
+            newAgent.gameObject.SetActive(true);
         }
     }
 
@@ -94,16 +96,19 @@ public class Flock : MonoBehaviour
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.GoodCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
             if (this.gameObject.tag == "BadCells")
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.BadCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
             if (this.gameObject.tag == "NeutralCells")
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.NeutralCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
 
             spanwCell = false;
