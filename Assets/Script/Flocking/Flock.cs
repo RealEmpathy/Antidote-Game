@@ -30,15 +30,15 @@ public class Flock : MonoBehaviour
     public bool spanwCell;
     private int number = 100;
 
+
     // Start is called before the first frame update
     private void Awake()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);    
     }
 
     void OnEnable()
     {
-        
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -54,6 +54,15 @@ public class Flock : MonoBehaviour
             newAgent.Initialize(this);
             agents.Add(newAgent);
             newAgent.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnDisable()
+    {
+        foreach (FlockAgent agent in agents)
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+            mention.Dead();
         }
     }
 
@@ -140,13 +149,4 @@ public class Flock : MonoBehaviour
         startingCount = newstartingCount;
     }
 
-    public void ClearList(FlockAgent agent)
-    {
-        while(agents.Count> 0)
-        {
-            agents.Remove(agent);
-            Destroy(agent.gameObject); /// might need to update the other scripts
-                                       /// like Status Control and AIDestination Setter
-        }
-    }
 }

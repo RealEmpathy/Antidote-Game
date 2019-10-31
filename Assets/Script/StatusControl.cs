@@ -516,7 +516,7 @@ public class StatusControl : MonoBehaviour
         }
     }
 
-    void Dead()
+    public void Dead()
     {
         Destroy(this.transform.gameObject);
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
