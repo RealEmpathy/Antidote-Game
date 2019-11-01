@@ -58,12 +58,12 @@ public class Flock : MonoBehaviour
     }
 
     public void OnDisable()
-    {
+    {    
         foreach (FlockAgent agent in agents)
         {
-            StatusControl mention = GetComponent<StatusControl>();
-            mention.Dead();
+            Destroy(agent.gameObject);
         }
+        agents = new List<FlockAgent>();
     }
 
     // Update is called once per frame

@@ -74,7 +74,7 @@ public class StatusControl : MonoBehaviour
 
     }
 
-   
+    
 
     void Update()
     {
@@ -646,6 +646,5 @@ public class StatusControl : MonoBehaviour
     {
         Hp = newHP;
     }
-
 
 }
