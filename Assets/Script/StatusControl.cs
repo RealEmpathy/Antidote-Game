@@ -29,6 +29,8 @@ public class StatusControl : MonoBehaviour
     public bool startFight = false;
     private bool executeOnce = false;
 
+    public bool endGame = false;
+
     private GameObject scriptControl;
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;

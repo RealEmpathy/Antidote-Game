@@ -31,6 +31,10 @@ public class Flock : MonoBehaviour
     public int number = 100;
     public int stopRep = 0;
 
+    private GameObject flockControlNeutral;
+    private GameObject flockControlGood;
+    private GameObject flockControlBad;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -56,6 +60,9 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
             newAgent.gameObject.SetActive(true);
         }
+        flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
+        flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
+        flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
     }
 
     public void OnDisable()
@@ -89,7 +96,31 @@ public class Flock : MonoBehaviour
             }
             agent.Move(move);
         }
-        if((spanwCell == true)&&(stopRep < 20))
+
+
+        //   END GAME CONDITION STARTS 
+        if (this.gameObject.tag == "GoodCells") //// start from here here here here
+        {
+            if(agents.Count == 0)
+            {
+                StatusControl mention = GetComponent<StatusControl>();
+                mention.endGame = true;
+            }
+            
+        }
+        if (this.gameObject.tag == "BadCells")
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+            mention.endGame = true;
+        }
+        if (this.gameObject.tag == "NeutralCells")
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+            mention.endGame = true;
+        }
+
+        //Reproduction starts
+        if ((spanwCell == true)&&(stopRep < 20))
         {
             stopRep++;
             number++;
