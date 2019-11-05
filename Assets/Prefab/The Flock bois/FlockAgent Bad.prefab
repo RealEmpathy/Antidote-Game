@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a010446deb5dcd3459e9fb553dda633e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noFlock: 0
 --- !u!114 &3965134651598324483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,10 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0620eb94ac77f547a8d5e1bc6380f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 50
-  stamina: 50
+  Hp: 75
+  stamina: 60
   StaminaModifier: 0
-  HuntVar: 50
+  HuntVar: 80
   Survival: 0
   timer: 7
   waitTime: 3
@@ -142,7 +143,7 @@ MonoBehaviour:
   repathRate: 2
   canSearch: 1
   canMove: 1
-  maxSpeed: 10.17
+  maxSpeed: 15
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -153,9 +154,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.45
-  pickNextWaypointDist: 0.81
-  endReachedDistance: 0.28
+  slowdownDistance: 0.49
+  pickNextWaypointDist: 20
+  endReachedDistance: 0.44
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1

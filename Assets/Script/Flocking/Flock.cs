@@ -28,7 +28,8 @@ public class Flock : MonoBehaviour
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
     public bool spanwCell;
-    private int number = 100;
+    public int number = 100;
+    public int stopRep = 0;
 
 
     // Start is called before the first frame update
@@ -88,8 +89,9 @@ public class Flock : MonoBehaviour
             }
             agent.Move(move);
         }
-        if(spanwCell == true)
+        if((spanwCell == true)&&(stopRep < 20))
         {
+            stopRep++;
             number++;
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
@@ -100,6 +102,7 @@ public class Flock : MonoBehaviour
             newAgent.name = "Agent " + number;
             newAgent.Initialize(this);
             agents.Add(newAgent);
+            newAgent.gameObject.SetActive(true);
 
             if (this.gameObject.tag == "GoodCells")
             {

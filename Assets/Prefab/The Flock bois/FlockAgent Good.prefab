@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0620eb94ac77f547a8d5e1bc6380f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 50
-  stamina: 50
+  Hp: 100
+  stamina: 59
   StaminaModifier: 0
   HuntVar: 50
   Survival: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   repathRate: 2
   canSearch: 1
   canMove: 1
-  maxSpeed: 10.17
+  maxSpeed: 15
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -155,7 +155,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.45
-  pickNextWaypointDist: 0.81
+  pickNextWaypointDist: 20
   endReachedDistance: 0.28
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1

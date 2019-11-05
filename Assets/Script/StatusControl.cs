@@ -522,16 +522,22 @@ public class StatusControl : MonoBehaviour
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         if (this.gameObject.tag == "GoodCells")
         {
+            Flock mention2 = flockControlGood.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.GoodCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "BadCells")
         {
+            Flock mention2 = flockControlBad.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.BadCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "NeutralCells")
         {
+            Flock mention2 = flockControlNeutral.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.NeutralCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
