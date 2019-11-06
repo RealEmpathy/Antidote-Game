@@ -1071,7 +1071,7 @@ MonoBehaviour:
   agents: []
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30
-  startingCount: 10
+  startingCount: 15
   driveFactor: 10
   maxSpeed: 8
   neighborRadius: 1.5
@@ -2958,9 +2958,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 85256831}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 30
+  m_MaxValue: 25
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3168,7 +3168,7 @@ MonoBehaviour:
   agents: []
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30
-  startingCount: 10
+  startingCount: 15
   driveFactor: 10
   maxSpeed: 8
   neighborRadius: 1.5

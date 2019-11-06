@@ -52,29 +52,35 @@ public class StatusControl : MonoBehaviour
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
+        if (this.gameObject.tag == "BadCells")
+        {
+            Hp  = Random.Range(60, 100);
+            stamina = Random.Range(80, 100); 
+            HuntVar = Random.Range(75, 95); 
+        }
 
 
-        // ObjectCell.GetComponent<Seek>().enabled = false();
-        //AIDestination aIDestination = GetComponent<aiDestination>();
-        //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
+            // ObjectCell.GetComponent<Seek>().enabled = false();
+            //AIDestination aIDestination = GetComponent<aiDestination>();
+            //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
 
 
-        //TESTING EXAMPLE
-        //TESTING EXAMPLE
-        // mention is a reference to the other function
-        // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
-        //CellsBehaviour mention = GetComponent<CellsBehaviour>();
+            //TESTING EXAMPLE
+            //TESTING EXAMPLE
+            // mention is a reference to the other function
+            // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
+            //CellsBehaviour mention = GetComponent<CellsBehaviour>();
 
-        //Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-        //mention.flee = true;
+            //Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            //mention.flee = true;
 
-        //TESTING EXAMPLE
-        //TESTING EXAMPLE
-
-
+            //TESTING EXAMPLE
+            //TESTING EXAMPLE
 
 
-    }
+
+
+        }
 
     
 

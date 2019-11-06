@@ -110,13 +110,21 @@ public class Flock : MonoBehaviour
         }
         if (this.gameObject.tag == "BadCells")
         {
-            StatusControl mention = GetComponent<StatusControl>();
-            mention.endGame = true;
+            if (agents.Count == 0)
+            {
+                StatusControl mention = GetComponent<StatusControl>();
+                mention.endGame = true;
+            }
+                
         }
         if (this.gameObject.tag == "NeutralCells")
         {
-            StatusControl mention = GetComponent<StatusControl>();
-            mention.endGame = true;
+            if (agents.Count == 0)
+            {
+                StatusControl mention = GetComponent<StatusControl>();
+                mention.endGame = true;
+            }
+                
         }
 
         //Reproduction starts
