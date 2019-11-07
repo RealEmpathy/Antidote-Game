@@ -5,12 +5,16 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
     public int size;
 
-    [Range(10, 500)]
-    public int startingCount = 100;
+    public int currentGood;
+    public int currentBad;
+    public int currentNeutral;
+
+    [Range(0, 30)]
+    public float startingCount = 100;
     const float AgentDensity = 0.02f;
 
     [Range(1f, 100f)]
@@ -28,10 +32,21 @@ public class Flock : MonoBehaviour
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
 
     public bool spanwCell;
-    private int number = 100;
+    public int number = 100;
+    public int stopRep = 0;
+
+    private GameObject flockControlNeutral;
+    private GameObject flockControlGood;
+    private GameObject flockControlBad;
+
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        this.gameObject.SetActive(false);    
+    }
+
+    void OnEnable()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
@@ -47,7 +62,20 @@ public class Flock : MonoBehaviour
             newAgent.name = "Agent " + i;
             newAgent.Initialize(this);
             agents.Add(newAgent);
+            newAgent.gameObject.SetActive(true);
         }
+        flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
+        flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
+        flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
+    }
+
+    public void OnDisable()
+    {    
+        foreach (FlockAgent agent in agents)
+        {
+            Destroy(agent.gameObject);
+        }
+        agents = new List<FlockAgent>();
     }
 
     // Update is called once per frame
@@ -55,6 +83,10 @@ public class Flock : MonoBehaviour
     {
         foreach (FlockAgent agent in agents)
         {
+            if(agent == null)
+            {
+                agents.Remove(agent);
+            }
             List<Transform> context = GetNearbyObjects(agent);
 
             //FOR DEMO ONLY
@@ -68,8 +100,54 @@ public class Flock : MonoBehaviour
             }
             agent.Move(move);
         }
-        if(spanwCell == true)
+
+
+        //   END GAME CONDITION STARTS 
+        if (this.gameObject.tag == "GoodCells") //// start from here here here here here here
         {
+            if(agents.Count == 0)
+            {
+                //StatusControl mention = GetComponent<StatusControl>();
+                //mention.endGame = true;
+
+            }else
+            {
+                currentGood = agents.Count;
+            }
+            
+        }
+        if (this.gameObject.tag == "BadCells")
+        {
+            if (agents.Count == 0)
+            {
+                StatusControl mention = GetComponent<StatusControl>();
+                //mention.endGame = true;
+            }
+            else
+            {
+                currentBad = agents.Count;
+            }
+                
+        }
+        if (this.gameObject.tag == "NeutralCells")
+        {
+            if (agents.Count == 0)
+            {
+                StatusControl mention = GetComponent<StatusControl>();
+                mention.endGame = true;
+                mention.finalNeutralNum = agents.Count;
+            }
+            else
+            {
+                currentNeutral = agents.Count;
+            }
+                
+        }
+
+        //Reproduction starts
+        if ((spanwCell == true)&&(stopRep < 20))
+        {
+            stopRep++;
             number++;
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
@@ -80,21 +158,25 @@ public class Flock : MonoBehaviour
             newAgent.name = "Agent " + number;
             newAgent.Initialize(this);
             agents.Add(newAgent);
+            newAgent.gameObject.SetActive(true);
 
             if (this.gameObject.tag == "GoodCells")
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.GoodCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
             if (this.gameObject.tag == "BadCells")
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.BadCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
             if (this.gameObject.tag == "NeutralCells")
             {
                 Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
                 mention.NeutralCells.Add(this.gameObject);
+                newAgent.gameObject.SetActive(true);
             }
 
             spanwCell = false;
@@ -119,6 +201,11 @@ public class Flock : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void AdjustStartingCount(float newstartingCount)
+    {
+        startingCount = newstartingCount;
     }
 
 }
