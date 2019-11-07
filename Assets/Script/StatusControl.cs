@@ -15,6 +15,11 @@ public class StatusControl : MonoBehaviour
     public float timer = 10;
     public int waitTime = 7;
 
+    //final numbers of cell in the at the end of game
+    public int finalNeutralNum;
+    public int finalGoodNum;
+    public int finalBadNum;
+
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
     public GameObject CellPrefab;    // the prefab of the new cell
@@ -30,6 +35,8 @@ public class StatusControl : MonoBehaviour
     private bool executeOnce = false;
 
     public bool endGame = false;
+    public bool AggTest = false;
+    
 
     private GameObject scriptControl;
     private GameObject flockControlNeutral;
@@ -54,9 +61,9 @@ public class StatusControl : MonoBehaviour
         mention.flocking = true;
         if (this.gameObject.tag == "BadCells")
         {
-            Hp  = Random.Range(60, 100);
-            stamina = Random.Range(80, 100); 
-            HuntVar = Random.Range(75, 95); 
+            Hp  = Random.Range(10, 90);
+            stamina = Random.Range(10, 90); 
+            HuntVar = Random.Range(10, 90);
         }
 
 
@@ -86,6 +93,7 @@ public class StatusControl : MonoBehaviour
 
     void Update()
     {
+        
         if (startFight == false)
         {
             timer -= Time.deltaTime;
@@ -188,25 +196,25 @@ public class StatusControl : MonoBehaviour
             }
         }
 
-        
+        StopGame();
 
 
-        
-/*         // will change code from the bottom 
-        //or maybe delete it 
-        if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
-        {
-            Reproduction = true;
-            Hunt = false;
-        }
-        else
-        if (HuntVar < StaminaModifier)
-        {
 
-            Reproduction = false;
-            //Hunt();
+        /*         // will change code from the bottom 
+                //or maybe delete it 
+                if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
+                {
+                    Reproduction = true;
+                    Hunt = false;
+                }
+                else
+                if (HuntVar < StaminaModifier)
+                {
 
-        }*/
+                    Reproduction = false;
+                    //Hunt();
+
+                }*/
     }
  
 
@@ -509,13 +517,14 @@ public class StatusControl : MonoBehaviour
 
     }
 
-    void lastStandFunction()
+    public void lastStandFunction()
     {
-        if(HuntVar >= 65)
+        if(HuntVar >= 80)
         {
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.lastStand = true;
             mention.flocking = false;
+            lastStand = true;
         }
         else
         {
@@ -660,5 +669,23 @@ public class StatusControl : MonoBehaviour
     {
         Hp = newHP;
     }
+
+    public void StopGame()
+    {
+        if(endGame == true)
+        {
+            //call canvas game object and set other objects to be inactive.
+            
+        }
+        if(AggTest == true)
+        {
+            //calling lastStand fuction
+            lastStandFunction();
+            if (lastStand == true)
+                endGame = true;
+        }
+
+    }
+
 
 }

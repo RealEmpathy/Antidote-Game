@@ -9,6 +9,10 @@ public class Flock : MonoBehaviour
     public FlockBehavior behavior;
     public int size;
 
+    public int currentGood;
+    public int currentBad;
+    public int currentNeutral;
+
     [Range(0, 30)]
     public float startingCount = 100;
     const float AgentDensity = 0.02f;
@@ -99,12 +103,16 @@ public class Flock : MonoBehaviour
 
 
         //   END GAME CONDITION STARTS 
-        if (this.gameObject.tag == "GoodCells") //// start from here here here here
+        if (this.gameObject.tag == "GoodCells") //// start from here here here here here here
         {
             if(agents.Count == 0)
             {
-                StatusControl mention = GetComponent<StatusControl>();
-                mention.endGame = true;
+                //StatusControl mention = GetComponent<StatusControl>();
+                //mention.endGame = true;
+
+            }else
+            {
+                currentGood = agents.Count;
             }
             
         }
@@ -113,7 +121,11 @@ public class Flock : MonoBehaviour
             if (agents.Count == 0)
             {
                 StatusControl mention = GetComponent<StatusControl>();
-                mention.endGame = true;
+                //mention.endGame = true;
+            }
+            else
+            {
+                currentBad = agents.Count;
             }
                 
         }
@@ -123,6 +135,11 @@ public class Flock : MonoBehaviour
             {
                 StatusControl mention = GetComponent<StatusControl>();
                 mention.endGame = true;
+                mention.finalNeutralNum = agents.Count;
+            }
+            else
+            {
+                currentNeutral = agents.Count;
             }
                 
         }

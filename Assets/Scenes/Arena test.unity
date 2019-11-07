@@ -1071,6 +1071,9 @@ MonoBehaviour:
   agents: []
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30
+  currentGood: 0
+  currentBad: 0
+  currentNeutral: 0
   startingCount: 15
   driveFactor: 10
   maxSpeed: 8
@@ -2960,7 +2963,7 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 25
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3168,6 +3171,9 @@ MonoBehaviour:
   agents: []
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30
+  currentGood: 0
+  currentBad: 0
+  currentNeutral: 0
   startingCount: 15
   driveFactor: 10
   maxSpeed: 8
@@ -5039,6 +5045,9 @@ MonoBehaviour:
   agents: []
   behavior: {fileID: 11400000, guid: 8e276bf7fddc053418f6be67173f6140, type: 2}
   size: 30
+  currentGood: 0
+  currentBad: 0
+  currentNeutral: 0
   startingCount: 10
   driveFactor: 10
   maxSpeed: 8
