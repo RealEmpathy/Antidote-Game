@@ -70,7 +70,6 @@ namespace Pathfinding
         {
             updateList();
             ChangeTarget();
-            FindTarget();
 
             //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE //ORIGINAL CODE HERE
             if (flocking == false)
@@ -214,18 +213,20 @@ namespace Pathfinding
         void FindTarget()
         {
 
-            float lowestDist = Mathf.Infinity;
+           // float lowestDist = Mathf.Infinity;
 
 
             //starting the good cell conditions
             if (this.gameObject.tag == "GoodCells")
             {
-                if(flee == false)
+                float lowestDist = Mathf.Infinity;
+                if (flee == false)
                 {
                     //we are a good cell hunting
                     //this is for target
                     for (int i = 0; i < BadCells.Count; i++)
                     {
+
                         if (BadCells[i].transform.position != null)
                         {
                             float dist = Vector2.Distance(BadCells[i].transform.position, transform.position);
@@ -250,6 +251,7 @@ namespace Pathfinding
                     //this is for target2Flee
                     for (int i = 0; i < GoodCells.Count; i++)
                     {
+                        RemoveSelfFromList();
                         if (GoodCells[i].transform.position != null)
                         { 
                             float dist = Vector2.Distance(GoodCells[i].transform.position, transform.position);
@@ -298,6 +300,7 @@ namespace Pathfinding
             //starting the Bad cell conditions
             if (this.gameObject.tag == "BadCells")
             {
+                float lowestDist = Mathf.Infinity;
                 if (flee == false)
                 {
                    
@@ -325,6 +328,7 @@ namespace Pathfinding
                 {
                     for (int i = 0; i < BadCells.Count; i++)
                     {
+                        RemoveSelfFromList();
                         if (BadCells[i].transform.position != null)
                         {
                             if(BadCells[i].GetComponent<Transform>() == this.GetComponent<Transform>())
@@ -377,6 +381,7 @@ namespace Pathfinding
             //starting the Neutral cell conditions
             if (this.gameObject.tag == "NeutralCells")
             {
+                float lowestDist = Mathf.Infinity;
                 if (flee == false)
                 {
                     for (int i = 0; i < BadCells.Count; i++)
@@ -403,13 +408,14 @@ namespace Pathfinding
                 {
                     for (int i = 0; i < NeutralCells.Count; i++)
                     {
+                        RemoveSelfFromList();
                         if (NeutralCells[i].transform.position != null)
                         {
                             float dist = Vector2.Distance(NeutralCells[i].transform.position, transform.position);
-                            if (dist < lowestDist)
+                            if (dist < lowestDist && dist > 1) /// here here here here here here here here
                             {
                                 lowestDist = dist;
-                                if (NeutralCells[i].GetComponent<Transform>() != null )
+                                if (NeutralCells[i].gameObject != this.gameObject)
                                 {
                                     target2Flee = NeutralCells[i].GetComponent<Transform>();
                                 }
@@ -445,6 +451,17 @@ namespace Pathfinding
                     }
                 }
             }
+        }
+        void RemoveSelfFromList()
+        {
+            if (this.gameObject.tag == "GoodCells")
+                GoodCells.Remove(this.gameObject);
+
+            if (this.gameObject.tag == "BadCells")
+                BadCells.Remove(this.gameObject);
+
+            if (this.gameObject.tag == "NeutralCells")
+                NeutralCells.Remove(this.gameObject);
         }
     }
 }

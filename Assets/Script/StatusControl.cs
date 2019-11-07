@@ -15,6 +15,11 @@ public class StatusControl : MonoBehaviour
     public float timer = 10;
     public int waitTime = 7;
 
+    //final numbers of cell in the at the end of game
+    public int finalNeutralNum;
+    public int finalGoodNum;
+    public int finalBadNum;
+
     //will determine where to spaw a child of a cell
     public Transform spawPos;        //location to spaw children
     public GameObject CellPrefab;    // the prefab of the new cell
@@ -29,15 +34,23 @@ public class StatusControl : MonoBehaviour
     public bool startFight = false;
     private bool executeOnce = false;
 
+    public bool endGame = false;
+    public bool AggTest = false;
+    
+
     private GameObject scriptControl;
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
 
-    
-
-    private void Start()
+    private void Awake()
     {
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        
         scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
 
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
@@ -46,40 +59,56 @@ public class StatusControl : MonoBehaviour
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
-
-        // ObjectCell.GetComponent<Seek>().enabled = false();
-        //AIDestination aIDestination = GetComponent<aiDestination>();
-        //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
-
-
-        //TESTING EXAMPLE
-        //TESTING EXAMPLE
-        // mention is a reference to the other function
-        // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
-        //CellsBehaviour mention = GetComponent<CellsBehaviour>();
-
-        //Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-        //mention.flee = true;
-
-        //TESTING EXAMPLE
-        //TESTING EXAMPLE
+        if (this.gameObject.tag == "BadCells")
+        {
+            Hp  = Random.Range(10, 90);
+            stamina = Random.Range(10, 90); 
+            HuntVar = Random.Range(10, 90);
+        }
 
 
+            // ObjectCell.GetComponent<Seek>().enabled = false();
+            //AIDestination aIDestination = GetComponent<aiDestination>();
+            //CellsBehaviour cellsBehaviour = GetComponent<CellsBehaviour>();
 
 
-    }
+            //TESTING EXAMPLE
+            //TESTING EXAMPLE
+            // mention is a reference to the other function
+            // if you want to control another variable from another function you just use "  mention.TheNameOfTheVariable = New value  "
+            //CellsBehaviour mention = GetComponent<CellsBehaviour>();
 
-   
+            //Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+            //mention.flee = true;
+
+            //TESTING EXAMPLE
+            //TESTING EXAMPLE
+
+
+
+
+        }
+
+    
 
     void Update()
     {
+        
         if (startFight == false)
         {
             timer -= Time.deltaTime;
             if(timer<=0)
             {
                 timer = waitTime;
-                // might have to take this out
+
+                // calculating the actual modifiers before running
+                StaminaModifier = (100 - stamina);
+                MaxHp = Hp;
+                Survival = (100 - HuntVar);
+                MaxStamina = stamina;
+                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
+                mention.flocking = false;
+
                 if (MaxStamina > HuntVar)
                 {
                     // start with:
@@ -103,13 +132,7 @@ public class StatusControl : MonoBehaviour
                 startFight = true;
                 imortal = false;
 
-                // calculating the actual modifiers before running
-                StaminaModifier = (100 - stamina);
-                MaxHp = Hp;
-                Survival = (100 - HuntVar);
-                MaxStamina = stamina;
-                Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-                mention.flocking = false;
+                
             }
            /* if (executeBeforeStart == false)
             {
@@ -132,22 +155,22 @@ public class StatusControl : MonoBehaviour
             // switch between the fuctions
             if (Hunt == true)
             {
-                Debug.Log("Hunt is on");
+                //Debug.Log("Hunt is on");
                 HuntFunciton();
             }
             if (Reproduction == true)
             {
-                Debug.Log("Reproduction is on");
+               // Debug.Log("Reproduction is on");
                 Reproduce();
             }
             if (heal == true)
             {
-                Debug.Log("Heal is on");
+               // Debug.Log("Heal is on");
                 Healing();
             }
             if (lastStand == true)
             {
-                Debug.Log("Last stand is on");
+                //Debug.Log("Last stand is on");
                 lastStandFunction();
             }
             if((lastStand == false)&& (heal == false)&& (Reproduction == false)&& (Hunt == false))
@@ -173,25 +196,25 @@ public class StatusControl : MonoBehaviour
             }
         }
 
-        
+        StopGame();
 
 
-        
-/*         // will change code from the bottom 
-        //or maybe delete it 
-        if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
-        {
-            Reproduction = true;
-            Hunt = false;
-        }
-        else
-        if (HuntVar < StaminaModifier)
-        {
 
-            Reproduction = false;
-            //Hunt();
+        /*         // will change code from the bottom 
+                //or maybe delete it 
+                if ((stamina > StaminaModifier) && (HuntVar > StaminaModifier))
+                {
+                    Reproduction = true;
+                    Hunt = false;
+                }
+                else
+                if (HuntVar < StaminaModifier)
+                {
 
-        }*/
+                    Reproduction = false;
+                    //Hunt();
+
+                }*/
     }
  
 
@@ -349,7 +372,10 @@ public class StatusControl : MonoBehaviour
         scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
 
         // switch script to flock
+
         scriptControl.GetComponent<FlockAgent>().enabled = true;
+        //FlockAgent mention2 = GetComponent<FlockAgent>();
+        //mention2.noFlock = false;
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
@@ -406,6 +432,8 @@ public class StatusControl : MonoBehaviour
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
+           /* FlockAgent mention2 = GetComponent<FlockAgent>();
+            mention2.noFlock = false;*/
 
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.flocking = true;
@@ -420,12 +448,17 @@ public class StatusControl : MonoBehaviour
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flee = false;
         mention.flocking = false;
+        
+
         scriptControl.GetComponent<FlockAgent>().enabled = false;
+        /*FlockAgent mention2 = GetComponent<FlockAgent>();
+        mention2.noFlock. = true;*/
+
 
         // switch script to seek
-        scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
+        /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
         scriptControl.GetComponent<Pathfinding.AIPath>().enabled = true;
-        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;
+        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;*/
         
 
         
@@ -484,13 +517,14 @@ public class StatusControl : MonoBehaviour
 
     }
 
-    void lastStandFunction()
+    public void lastStandFunction()
     {
-        if(HuntVar >= 65)
+        if(HuntVar >= 80)
         {
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.lastStand = true;
             mention.flocking = false;
+            lastStand = true;
         }
         else
         {
@@ -499,26 +533,32 @@ public class StatusControl : MonoBehaviour
         }
     }
 
-    void Dead()
+    public void Dead()
     {
         Destroy(this.transform.gameObject);
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         if (this.gameObject.tag == "GoodCells")
         {
+            Flock mention2 = flockControlGood.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.GoodCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "BadCells")
         {
+            Flock mention2 = flockControlBad.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.BadCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
         if (this.gameObject.tag == "NeutralCells")
         {
+            Flock mention2 = flockControlNeutral.GetComponent<Flock>();
+            mention2.stopRep--;
             mention.NeutralCells.Remove(this.gameObject);
             mention.ChangeTarget();
         }
-       
+
     }
 
 
@@ -615,5 +655,37 @@ public class StatusControl : MonoBehaviour
 
         }
     }
+
+    public void AdjustHunt(float newHunt)
+    {
+        HuntVar = newHunt;
+    }
+    public void AdjustReproduction(float newReproductin)
+    {
+        stamina = newReproductin;
+    }
+
+    public void AdjustHP(float newHP)
+    {
+        Hp = newHP;
+    }
+
+    public void StopGame()
+    {
+        if(endGame == true)
+        {
+            //call canvas game object and set other objects to be inactive.
+            
+        }
+        if(AggTest == true)
+        {
+            //calling lastStand fuction
+            lastStandFunction();
+            if (lastStand == true)
+                endGame = true;
+        }
+
+    }
+
 
 }
