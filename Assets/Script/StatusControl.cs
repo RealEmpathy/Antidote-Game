@@ -36,12 +36,15 @@ public class StatusControl : MonoBehaviour
 
     public bool endGame = false;
     public bool AggTest = false;
-    
+    public bool win = false;
+    public bool lose = false;
+
 
     private GameObject scriptControl;
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
+    private GameObject Results;
 
     private void Awake()
     {
@@ -196,7 +199,7 @@ public class StatusControl : MonoBehaviour
             }
         }
 
-        StopGame();
+        //StopGame();
 
 
 
@@ -670,22 +673,42 @@ public class StatusControl : MonoBehaviour
         Hp = newHP;
     }
 
-    public void StopGame()
+/*    public void StopGame()
     {
         if(endGame == true)
         {
             //call canvas game object and set other objects to be inactive.
-            
+            if(win == true)
+            {
+
+                Results = GameObject.Find("Success UI");
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+                Results.gameObject.SetActive(true);
+            }
+            if(lose == true)
+            {
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+                Results = GameObject.Find("Fail UI");
+                Results.gameObject.SetActive(true);
+            }
         }
         if(AggTest == true)
         {
             //calling lastStand fuction
             lastStandFunction();
-            if (lastStand == true)
+            if (lastStand == false)
+            {
                 endGame = true;
+                win = true;
+            }
+                
         }
 
-    }
+    }*/
 
 
 }

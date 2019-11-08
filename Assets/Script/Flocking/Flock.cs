@@ -38,12 +38,18 @@ public class Flock : MonoBehaviour
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
+    private GameObject Results;
+
+    public bool endGame = false;
+    public bool win = false;
+    public bool lose = false;
+
 
 
     // Start is called before the first frame update
     private void Awake()
     {
-        this.gameObject.SetActive(false);    
+        this.gameObject.SetActive(false);
     }
 
     void OnEnable()
@@ -55,7 +61,7 @@ public class Flock : MonoBehaviour
         {
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
-                Random.insideUnitCircle * startingCount * AgentDensity*Random.Range(-size, size),
+                Random.insideUnitCircle * startingCount * AgentDensity * Random.Range(-size, size),
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
                 );
@@ -70,7 +76,7 @@ public class Flock : MonoBehaviour
     }
 
     public void OnDisable()
-    {    
+    {
         foreach (FlockAgent agent in agents)
         {
             Destroy(agent.gameObject);
@@ -81,9 +87,10 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         foreach (FlockAgent agent in agents)
         {
-            if(agent == null)
+            if (agent == null)
             {
                 agents.Remove(agent);
             }
@@ -103,49 +110,66 @@ public class Flock : MonoBehaviour
 
 
         //   END GAME CONDITION STARTS 
-        if (this.gameObject.tag == "GoodCells") //// start from here here here here here here
+        if (this.gameObject.tag == "FlockGood") //// start from here here here here here here
         {
-            if(agents.Count == 0)
+            if (agents.Count == 0)
             {
-                //StatusControl mention = GetComponent<StatusControl>();
-                //mention.endGame = true;
-
-            }else
+                endGame = true;
+                lose = true;
+                currentGood = 0;
+            }
+            else
             {
                 currentGood = agents.Count;
             }
-            
+
         }
-        if (this.gameObject.tag == "BadCells")
+        if (this.gameObject.tag == "FlockBad")
         {
             if (agents.Count == 0)
             {
                 StatusControl mention = GetComponent<StatusControl>();
-                //mention.endGame = true;
+                mention.AggTest = true;
+                if (mention.AggTest == true)
+                {
+                    //calling lastStand fuction
+                    mention.lastStandFunction();
+                    if (mention.lastStand == false)
+                    {
+                        endGame = true;
+                        win = true;
+                    }
+
+                }
+                currentBad = 0;
+                
             }
             else
             {
                 currentBad = agents.Count;
             }
-                
+
         }
-        if (this.gameObject.tag == "NeutralCells")
+        if (this.gameObject.tag == "FlockNeutral")
         {
             if (agents.Count == 0)
             {
                 StatusControl mention = GetComponent<StatusControl>();
                 mention.endGame = true;
-                mention.finalNeutralNum = agents.Count;
+                endGame = true;
+                lose = true;
+                mention.lose = true;
+                
             }
             else
             {
                 currentNeutral = agents.Count;
             }
-                
+
         }
 
         //Reproduction starts
-        if ((spanwCell == true)&&(stopRep < 20))
+        if ((spanwCell == true) && (stopRep < 20))
         {
             stopRep++;
             number++;
@@ -181,7 +205,8 @@ public class Flock : MonoBehaviour
 
             spanwCell = false;
         }
-
+        
+        StopGame();
     }
 
     List<Transform> GetNearbyObjects(FlockAgent agent)
@@ -208,4 +233,31 @@ public class Flock : MonoBehaviour
         startingCount = newstartingCount;
     }
 
+
+    public void StopGame()
+    {
+        if (endGame == true)
+        {
+            //call canvas game object and set other objects to be inactive.
+            if (win == true)
+            {
+                Results = GameObject.Find("Success UI");
+                Results.gameObject.SetActive(true);
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+                
+            }
+            if (lose == true)
+            {
+                Results = GameObject.Find("Fail UI");
+                Results.gameObject.SetActive(true);
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+               
+            }
+        }
+
+    }
 }
