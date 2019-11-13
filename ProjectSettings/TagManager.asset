@@ -7,6 +7,9 @@ TagManager:
   - BadCells
   - GoodCells
   - NeutralCells
+  - FlockGood
+  - FlockBad
+  - FlockNeutral
   layers:
   - Default
   - TransparentFX
