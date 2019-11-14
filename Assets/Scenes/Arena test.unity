@@ -1317,6 +1317,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 241911073}
+        m_MethodName: AdjustGoodHunt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1058322683}
+        m_MethodName: AdjustGoodHunt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874292552}
+        m_MethodName: AdjustGoodHunt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &175333187
@@ -1621,7 +1654,9 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  GoodHuntVar: 0
   NewCell: {fileID: 0}
+  Reference: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0
@@ -4722,7 +4757,9 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  GoodHuntVar: 0
   NewCell: {fileID: 0}
+  Reference: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0
@@ -6758,7 +6795,9 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  GoodHuntVar: 0
   NewCell: {fileID: 0}
+  Reference: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0

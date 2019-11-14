@@ -34,11 +34,13 @@ public class Flock : MonoBehaviour
     public bool spanwCell;
     public int number = 100;
     public int stopRep = 0;
+    public float GoodHuntVar;
 
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
     public GameObject NewCell;
+    public GameObject Reference;
     private GameObject Results;
 
     public bool endGame = false;
@@ -75,6 +77,7 @@ public class Flock : MonoBehaviour
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
+       
     }
 
     public void OnDisable()
@@ -89,7 +92,7 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         foreach (FlockAgent agent in agents)
         {
             if (agent == null)
@@ -151,37 +154,14 @@ public class Flock : MonoBehaviour
             if (agents.Count == 0)
             {
                 StatusControl mention = GetComponent<StatusControl>();
-                int i = 0;
-                Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
-                while( GameObject.FindGameObjectsWithTag("GoodCells") == null)
-                {
-                    Results = GameObject.FindGameObjectsWithTag("GoodCells")[i];
-                    i++;
-                    if (i == 150)
-                        break;
-                }
-
-                float a = Results.GetComponent<StatusControl>().HuntVar;
+                float a = GoodHuntVar;
                 float b = mention.aggressiveNumber;
                
                 //// start from here here here here here here
-
-
                 if(a >= b)
                 {
-                    //calling lastStand fuction
-                    mention.lastStandFunction();
-                    /*foreach (flockControlGood.GetComponent<FlockAgent>().Flock agent in agents)
-                    {
-
-                    }*/
-
-                    //flockControlGood.GetComponent<Flock>().agents.FindAll;
-                    if (mention.lastStand == false)
-                    {
-                        endGame = true;
-                        win = true;
-                    }
+                    //enabling last stand
+                    mention.lastStand = true;
 
                 }
                 currentBad = 0;
@@ -278,6 +258,11 @@ public class Flock : MonoBehaviour
     public void ResetRep(int reset = 0)
     {
         stopRep = reset;
+    }
+
+    public void AdjustGoodHunt(float newHunt)
+    {
+        GoodHuntVar = newHunt;
     }
 
 
