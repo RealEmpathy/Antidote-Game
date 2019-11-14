@@ -14,6 +14,9 @@ public class StatusControl : MonoBehaviour
     public float Survival;          // static value that will be calculated when the program runs
     public float timer = 10;
     public int waitTime = 7;
+    public int aggressiveNumber = 80;
+
+    public Vector3 currentLocation;
 
     //final numbers of cell in the at the end of game
     public int finalNeutralNum;
@@ -62,6 +65,7 @@ public class StatusControl : MonoBehaviour
 
         Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
         mention.flocking = true;
+
         if (this.gameObject.tag == "BadCells")
         {
             Hp  = Random.Range(10, 90);
@@ -144,12 +148,26 @@ public class StatusControl : MonoBehaviour
                 executeBeforeStart = true;
             }*/
         }
-        
+
+        Flock mention2 = flockControlNeutral.GetComponent<Flock>();
+        if (mention2.agents.Count == 0)
+        {
+            if(this.gameObject.tag == "GoodCells")
+            {
+                lastStand = true;
+            }
+                
+        }
 
         if (imortal == false)
         {
             HpManager(); //control and update Hp and stamina variables
-
+            if(Hunt == false)
+            {
+                Pathfinding.AIPath mention = GetComponent<Pathfinding.AIPath>();
+                
+                mention.maxSpeed = 15;
+            }
             if (Hp <= 0)
             {// control when the cell die
                 Dead();
@@ -159,6 +177,8 @@ public class StatusControl : MonoBehaviour
             if (Hunt == true)
             {
                 //Debug.Log("Hunt is on");
+                Pathfinding.AIPath mention = GetComponent<Pathfinding.AIPath>();
+                mention.maxSpeed = 25;
                 HuntFunciton();
             }
             if (Reproduction == true)
@@ -314,10 +334,101 @@ public class StatusControl : MonoBehaviour
 
             }
         }
-        
-
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        /*Create a prefab for Good Cells with the exat name:
+                                                          GoodCells
+        */
+        if (imortal == false)
+        {
+            //if we are colliding with a Good cell
+            if (other.gameObject.tag == "GoodCells")
+            {
+                //if we are colliding with a Good cell
+                //and the cell colliding is another Good cell
+                if (this.gameObject.tag == "GoodCells")
+                {
+                    CellReproduction();
+                }
+
+                //if we are colliding with a Good cell
+                //and the cell colliding is Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    if (lastStand == true)
+                        DamagingGreenCells();
+                }
+
+                //if we are colliding with a Good cell
+                //and the cell colliding is a Bad cell
+                if (this.gameObject.tag == "BadCells")
+                {
+                    BadCellAttack();
+                }
+
+            }
+
+            //if we are colliding with a Neutral cell
+            if (other.gameObject.tag == "NeutralCells")
+            {
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is a Bad cell
+                if (this.gameObject.tag == "BadCells")
+                {
+                    DamagingGreenCells();
+                }
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is another Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    CellReproduction();
+                }
+                //if we are colliding with a Neutral cell
+                //and the cell colliding is another Good cell
+                if (this.gameObject.tag == "GoodCells")
+                {
+                    if (lastStand == true)
+                    {
+                        DamagingGreenCells();
+                    }
+
+                }
+
+
+
+            }
+
+            //if we are colliding with a Bad cell
+            if (other.gameObject.tag == "BadCells")
+            {
+                //if we are colliding with a Bad cell
+                //and the cell colliding is a Good cell
+                if (this.gameObject.tag == "GoodCells")
+                {
+                    GoodCellAttack();
+                }
+
+                //if we are colliding with a Bad cell
+                //and the cell colliding is a Neutral cell
+                if (this.gameObject.tag == "NeutralCells")
+                {
+                    GreenCellAttack();
+                }
+
+                //if we are colliding with a Bad cell
+                //and the cell colliding is another Bad cell
+                if (this.gameObject.tag == "BadCells")
+                {
+                    CellReproduction();
+                }
+
+
+
+            }
+        }
+    }
 
     void HpManager()
     {
@@ -350,17 +461,26 @@ public class StatusControl : MonoBehaviour
         if (this.gameObject.tag == "GoodCells")
         {
             Flock mention2 = flockControlGood.GetComponent<Flock>();
+
+            //currentLocation = this.gameObject.transform.position;
+            //string name = this.gameObject.name;
+            mention2.NewCell = this.gameObject;  
+
             mention2.spanwCell = true;
         }
         if (this.gameObject.tag == "BadCells")
         {
+            //currentLocation = this.transform.position;
             Flock mention2 = flockControlBad.GetComponent<Flock>();
             mention2.spanwCell = true;
+            mention2.NewCell = this.gameObject;
         }
         if (this.gameObject.tag == "NeutralCells")
         {
+            //currentLocation = this.transform.position;
             Flock mention2 = flockControlNeutral.GetComponent<Flock>();
             mention2.spanwCell = true;
+            mention2.NewCell = this.gameObject;
         }
 
 
@@ -435,8 +555,9 @@ public class StatusControl : MonoBehaviour
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
-           /* FlockAgent mention2 = GetComponent<FlockAgent>();
-            mention2.noFlock = false;*/
+            
+            /* FlockAgent mention2 = GetComponent<FlockAgent>();
+             mention2.noFlock = false;*/
 
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.flocking = true;
@@ -452,6 +573,7 @@ public class StatusControl : MonoBehaviour
         mention.flee = false;
         mention.flocking = false;
         
+
 
         scriptControl.GetComponent<FlockAgent>().enabled = false;
         /*FlockAgent mention2 = GetComponent<FlockAgent>();
@@ -522,7 +644,7 @@ public class StatusControl : MonoBehaviour
 
     public void lastStandFunction()
     {
-        if(HuntVar >= 80)
+        if(HuntVar >= aggressiveNumber)
         {
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.lastStand = true;

@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8347201611676189533}
-  - component: {fileID: 8347201611676189532}
   - component: {fileID: 5594473464838577125}
   - component: {fileID: 3965134651598324483}
   - component: {fileID: 8271828990308471621}
   - component: {fileID: 795768348830718843}
   - component: {fileID: 5846764300071453656}
-  - component: {fileID: 7579050255881600229}
   - component: {fileID: 4301183645556323961}
+  - component: {fileID: 3886005927410989027}
+  - component: {fileID: 8082027393384473718}
   m_Layer: 9
   m_Name: FlockAgent Good
   m_TagString: GoodCells
@@ -39,22 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8347201611676189532
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347201611676189534}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0036726296, y: 0.08544731}
-  serializedVersion: 2
-  m_Radius: 0.38190898
 --- !u!114 &5594473464838577125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,13 +64,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0620eb94ac77f547a8d5e1bc6380f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  stamina: 59
+  Hp: 91
+  stamina: 41
   StaminaModifier: 0
   HuntVar: 50
   Survival: 0
   timer: 7
   waitTime: 3
+  finalNeutralNum: 0
+  finalGoodNum: 0
+  finalBadNum: 0
   spawPos: {fileID: 8347201611676189533}
   CellPrefab: {fileID: 8347201611676189534}
   Reproduction: 0
@@ -97,6 +84,10 @@ MonoBehaviour:
   lastStand: 0
   imortal: 1
   startFight: 0
+  endGame: 0
+  AggTest: 0
+  win: 0
+  lose: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.5
+  radius: 1.06
   height: 0.01
-  repathRate: 2
+  repathRate: 1
   canSearch: 1
   canMove: 1
   maxSpeed: 15
@@ -154,9 +145,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.45
-  pickNextWaypointDist: 20
-  endReachedDistance: 0.28
+  slowdownDistance: 2
+  pickNextWaypointDist: 15
+  endReachedDistance: 1.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
@@ -190,22 +181,6 @@ MonoBehaviour:
   switching1: 0
   switching2: 0
   switching3: 0
---- !u!58 &7579050255881600229
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8347201611676189534}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.08076179}
-  serializedVersion: 2
-  m_Radius: 0.6422106
 --- !u!50 &4301183645556323961
 Rigidbody2D:
   serializedVersion: 4
@@ -227,6 +202,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &3886005927410989027
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347201611676189534}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0025216043, y: 0}
+  m_Size: {x: 0.5958211, y: 1.4135437}
+  m_Direction: 0
+--- !u!70 &8082027393384473718
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347201611676189534}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0025216043, y: 0}
+  m_Size: {x: 0.5958211, y: 1.4135437}
+  m_Direction: 0
 --- !u!1 &8960160133209071431
 GameObject:
   m_ObjectHideFlags: 0

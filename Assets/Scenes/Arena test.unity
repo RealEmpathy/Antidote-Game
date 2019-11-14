@@ -680,13 +680,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86526117}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.952454, y: 2.6073775, z: -5105.365}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -317.92245, y: -307.81232, z: 874.85596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 757372355}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 652166595}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &86526119
 MonoBehaviour:
@@ -703,6 +703,9 @@ MonoBehaviour:
   finalNeutralNum: 0
   finalGoodNum: 0
   finalBadNum: 0
+  art: []
+  success: {fileID: 0}
+  fail: {fileID: 0}
   show: 0
 --- !u!1 &112457166
 GameObject:
@@ -1618,6 +1621,7 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  NewCell: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0
@@ -2265,6 +2269,39 @@ MonoBehaviour:
       - m_Target: {fileID: 241911072}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 241911073}
+        m_MethodName: ResetRep
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1874292552}
+        m_MethodName: ResetRep
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1058322683}
+        m_MethodName: ResetRep
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3213,6 +3250,58 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &652166593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652166595}
+  - component: {fileID: 652166594}
+  m_Layer: 0
+  m_Name: Result
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &652166594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652166593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c431c06db5fc764fa83fb0f433fc21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalNeutralNum: 0
+  finalGoodNum: 0
+  finalBadNum: 0
+  art: []
+  success: {fileID: 757372358}
+  fail: {fileID: 175333191}
+  show: 0
+--- !u!4 &652166595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652166593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 354.8749, y: 310.4197, z: -5980.221}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 86526118}
+  - {fileID: 700506025}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700506024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,13 +3326,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700506024}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.952454, y: 2.6073775, z: -5105.365}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -317.92245, y: -307.81232, z: 874.85596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 175333188}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 652166595}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &700506026
 MonoBehaviour:
@@ -3260,6 +3349,9 @@ MonoBehaviour:
   finalNeutralNum: 0
   finalGoodNum: 0
   finalBadNum: 0
+  art: []
+  success: {fileID: 0}
+  fail: {fileID: 0}
   show: 0
 --- !u!1 &722723102
 GameObject:
@@ -4644,6 +4736,7 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  NewCell: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0
@@ -6812,6 +6905,7 @@ MonoBehaviour:
   spanwCell: 0
   number: 100
   stopRep: 0
+  NewCell: {fileID: 0}
   endGame: 0
   win: 0
   lose: 0

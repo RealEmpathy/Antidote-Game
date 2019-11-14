@@ -10,6 +10,11 @@ public class Hide : MonoBehaviour
     public int finalBadNum;
     Text Display;
 
+    public List<Canvas> art = new List<Canvas>();
+
+    public Canvas success;
+    public Canvas fail;
+
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
@@ -18,10 +23,39 @@ public class Hide : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
+        /*foreach (Canvas canvas in art)
+        {
+            Destroy(canvas.gameObject);
+        }
+        art = new List<Canvas>();
+        success = art[0];
+        fail = art[1];*/
+        
     }
     private void OnEnable()
     {
+        this.gameObject.SetActive(true);
+        write();
+    }
+    void OnDisable()
+    {
+        foreach (Canvas canvas in art)
+        {
+            Destroy(canvas.gameObject);
+        }
+        art = new List<Canvas>();
+        success = art[0];
+        fail = art[1];
+
+        this.gameObject.SetActive(false);
+    }
+
+
+
+    void write()
+    {
+        //this.gameObject.GetComponent<Hide>().enabled = true;
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
@@ -46,9 +80,4 @@ public class Hide : MonoBehaviour
             Display.text = finalNeutralNum.ToString();
         }
     }
-    void OnDisable()
-    {
-        this.gameObject.SetActive(false);
-    }
-
 }

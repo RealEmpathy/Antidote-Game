@@ -52,9 +52,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0036726296, y: 0.08544731}
+  m_Offset: {x: 0.0036726296, y: 0.03289461}
   serializedVersion: 2
-  m_Radius: 0.38190898
+  m_Radius: 0.43446168
 --- !u!114 &5594473464838577125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +87,9 @@ MonoBehaviour:
   Survival: 0
   timer: 7
   waitTime: 3
+  finalNeutralNum: 0
+  finalGoodNum: 0
+  finalBadNum: 0
   spawPos: {fileID: 8347201611676189533}
   CellPrefab: {fileID: 8347201611676189534}
   Reproduction: 0
@@ -97,6 +100,10 @@ MonoBehaviour:
   lastStand: 0
   imortal: 1
   startFight: 0
+  endGame: 0
+  AggTest: 0
+  win: 0
+  lose: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.5
+  radius: 1.06
   height: 0.01
   repathRate: 1
   canSearch: 1
@@ -154,9 +161,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.45
-  pickNextWaypointDist: 20
-  endReachedDistance: 0.28
+  slowdownDistance: 2
+  pickNextWaypointDist: 15
+  endReachedDistance: 1.5
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1
@@ -203,9 +210,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.08076179}
+  m_Offset: {x: 0, y: 0.012215972}
   serializedVersion: 2
-  m_Radius: 0.6422106
+  m_Radius: 0.50072324
 --- !u!50 &4301183645556323961
 Rigidbody2D:
   serializedVersion: 4
