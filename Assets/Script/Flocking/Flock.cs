@@ -38,11 +38,13 @@ public class Flock : MonoBehaviour
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
+    public GameObject NewCell;
     private GameObject Results;
 
     public bool endGame = false;
     public bool win = false;
     public bool lose = false;
+    
 
 
 
@@ -94,6 +96,7 @@ public class Flock : MonoBehaviour
             {
                 agents.Remove(agent);
             }
+
             List<Transform> context = GetNearbyObjects(agent);
 
             //FOR DEMO ONLY
@@ -106,17 +109,36 @@ public class Flock : MonoBehaviour
                 move = move.normalized * maxSpeed;
             }
             agent.Move(move);
+         
         }
 
 
         //   END GAME CONDITION STARTS 
-        if (this.gameObject.tag == "FlockGood") //// start from here here here here here here
+        if(this.gameObject.tag == "FlockGood") 
         {
             if (agents.Count == 0)
             {
-                endGame = true;
-                lose = true;
-                currentGood = 0;
+                Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
+                StatusControl mention = GetComponent<StatusControl>();
+                if (Results.GetComponent<StatusControl>().HuntVar >= mention.aggressiveNumber)
+                {
+                    //calling lastStand fuction
+                    mention.lastStandFunction();
+                    if (mention.lastStand == false)
+                    {
+                        endGame = true;
+                        win = true;
+                        currentGood = 0;
+                    }
+                    else if(mention.lastStand == true)
+                    {
+                        endGame = true;
+                        win = true;
+                        currentGood = 0;
+                    }
+
+                }
+               
             }
             else
             {
@@ -129,11 +151,32 @@ public class Flock : MonoBehaviour
             if (agents.Count == 0)
             {
                 StatusControl mention = GetComponent<StatusControl>();
-                mention.AggTest = true;
-                if (mention.AggTest == true)
+                int i = 0;
+                Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
+                while( GameObject.FindGameObjectsWithTag("GoodCells") == null)
+                {
+                    Results = GameObject.FindGameObjectsWithTag("GoodCells")[i];
+                    i++;
+                    if (i == 150)
+                        break;
+                }
+
+                float a = Results.GetComponent<StatusControl>().HuntVar;
+                float b = mention.aggressiveNumber;
+               
+                //// start from here here here here here here
+
+
+                if(a >= b)
                 {
                     //calling lastStand fuction
                     mention.lastStandFunction();
+                    /*foreach (flockControlGood.GetComponent<FlockAgent>().Flock agent in agents)
+                    {
+
+                    }*/
+
+                    //flockControlGood.GetComponent<Flock>().agents.FindAll;
                     if (mention.lastStand == false)
                     {
                         endGame = true;
@@ -142,7 +185,7 @@ public class Flock : MonoBehaviour
 
                 }
                 currentBad = 0;
-                
+
             }
             else
             {
@@ -154,12 +197,9 @@ public class Flock : MonoBehaviour
         {
             if (agents.Count == 0)
             {
-                StatusControl mention = GetComponent<StatusControl>();
-                mention.endGame = true;
                 endGame = true;
                 lose = true;
-                mention.lose = true;
-                
+                currentNeutral = 0;
             }
             else
             {
@@ -173,9 +213,12 @@ public class Flock : MonoBehaviour
         {
             stopRep++;
             number++;
+            /*StatusControl mention2 = GetComponent<StatusControl>();
+            Vector3 location = mention2.currentLocation;*/
+            
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
-                Random.insideUnitCircle * startingCount * AgentDensity * Random.Range(-size, size),
+                NewCell.GetComponent<Transform>().position,
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
                 );
@@ -232,6 +275,10 @@ public class Flock : MonoBehaviour
     {
         startingCount = newstartingCount;
     }
+    public void ResetRep(int reset = 0)
+    {
+        stopRep = reset;
+    }
 
 
     public void StopGame()
@@ -242,22 +289,25 @@ public class Flock : MonoBehaviour
             if (win == true)
             {
                 Results = GameObject.Find("Success UI");
-                Results.gameObject.SetActive(true);
-                flockControlNeutral.gameObject.SetActive(false);
-                flockControlBad.gameObject.SetActive(false);
-                flockControlGood.gameObject.SetActive(false);
-                
+                Results.gameObject.GetComponent<Hide>().enabled = true;
+
+                //script.enabled = true;
+                flockControlNeutral.GetComponent<Hide>().enabled = false;
+                flockControlBad.GetComponent<Hide>().enabled = false;
+                flockControlGood.GetComponent<Hide>().enabled = false;
+
             }
             if (lose == true)
             {
                 Results = GameObject.Find("Fail UI");
-                Results.gameObject.SetActive(true);
-                flockControlNeutral.gameObject.SetActive(false);
-                flockControlBad.gameObject.SetActive(false);
-                flockControlGood.gameObject.SetActive(false);
+                Results.gameObject.GetComponent<Hide>().enabled = true;
+
+                flockControlNeutral.GetComponent<Hide>().enabled = false;
+                flockControlBad.GetComponent<Hide>().enabled = false;
+                flockControlGood.GetComponent<Hide>().enabled = false;
                
             }
         }
-
     }
+
 }
