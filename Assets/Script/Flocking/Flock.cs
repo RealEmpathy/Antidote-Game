@@ -46,7 +46,12 @@ public class Flock : MonoBehaviour
     public bool endGame = false;
     public bool win = false;
     public bool lose = false;
-    
+
+    //test variables
+    private int u = 0;
+    private float a = 0;
+    private float b = 0;
+    //test variables ends
 
 
 
@@ -121,9 +126,18 @@ public class Flock : MonoBehaviour
         {
             if (agents.Count == 0)
             {
-                Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
                 StatusControl mention = GetComponent<StatusControl>();
-                if (Results.GetComponent<StatusControl>().HuntVar >= mention.aggressiveNumber)
+                Debug.Log(u);
+                if (u < 1){ 
+                    Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
+                    a = Results.GetComponent<StatusControl>().HuntVar;
+                    b = mention.aggressiveNumber;
+                    u = 100;
+
+                    
+                }
+                
+                if (a >= b)
                 {
                     //calling lastStand fuction
                     mention.lastStandFunction();
