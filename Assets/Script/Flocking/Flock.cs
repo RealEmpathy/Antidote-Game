@@ -43,6 +43,8 @@ public class Flock : MonoBehaviour
     public GameObject Reference;
     private GameObject Results;
 
+    public GameObject Panel;
+
     public bool endGame = false;
     public bool win = false;
     public bool lose = false;
@@ -59,6 +61,7 @@ public class Flock : MonoBehaviour
     private void Awake()
     {
         this.gameObject.SetActive(false);
+        Panel.gameObject.SetActive(true);
     }
 
     void OnEnable()
@@ -82,7 +85,21 @@ public class Flock : MonoBehaviour
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
-       
+
+        //getting the values from good cells for comparison later below
+        //getting the values from good cells for comparison later below
+        if (u == 0 && this.gameObject.tag == "FlockGood")
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+
+            Results = GameObject.FindGameObjectsWithTag("GoodCells")[1];
+            a = Results.GetComponent<StatusControl>().HuntVar;
+            Debug.Log(a);
+            b = 80;
+            u++;
+            Debug.Log(u);
+        }
+        
     }
 
     public void OnDisable()
@@ -121,86 +138,8 @@ public class Flock : MonoBehaviour
         }
 
 
-        //   END GAME CONDITION STARTS 
-        if(this.gameObject.tag == "FlockGood") 
-        {
-            if (agents.Count == 0)
-            {
-                StatusControl mention = GetComponent<StatusControl>();
-                Debug.Log(u);
-                if (u < 1){ 
-                    Results = GameObject.FindGameObjectsWithTag("GoodCells")[0];
-                    a = Results.GetComponent<StatusControl>().HuntVar;
-                    b = mention.aggressiveNumber;
-                    u = 100;
-
-                    
-                }
-                
-                if (a >= b)
-                {
-                    //calling lastStand fuction
-                    mention.lastStandFunction();
-                    if (mention.lastStand == false)
-                    {
-                        endGame = true;
-                        win = true;
-                        currentGood = 0;
-                    }
-                    else if(mention.lastStand == true)
-                    {
-                        endGame = true;
-                        win = true;
-                        currentGood = 0;
-                    }
-
-                }
-               
-            }
-            else
-            {
-                currentGood = agents.Count;
-            }
-
-        }
-        if (this.gameObject.tag == "FlockBad")
-        {
-            if (agents.Count == 0)
-            {
-                StatusControl mention = GetComponent<StatusControl>();
-                float a = GoodHuntVar;
-                float b = mention.aggressiveNumber;
-               
-                //// start from here here here here here here
-                if(a >= b)
-                {
-                    //enabling last stand
-                    mention.lastStand = true;
-
-                }
-                currentBad = 0;
-
-            }
-            else
-            {
-                currentBad = agents.Count;
-            }
-
-        }
-        if (this.gameObject.tag == "FlockNeutral")
-        {
-            if (agents.Count == 0)
-            {
-                endGame = true;
-                lose = true;
-                currentNeutral = 0;
-            }
-            else
-            {
-                currentNeutral = agents.Count;
-            }
-
-        }
+       
+        
 
         //Reproduction starts
         if ((spanwCell == true) && (stopRep < 20))
@@ -287,8 +226,9 @@ public class Flock : MonoBehaviour
             //call canvas game object and set other objects to be inactive.
             if (win == true)
             {
-                Results = GameObject.Find("Success UI");
-                Results.gameObject.GetComponent<Hide>().enabled = true;
+                //Results = GameObject.Find("Success UI");
+                Hide mention = GetComponent<Hide>();
+                mention.showS = true;
 
                 //script.enabled = true;
                 flockControlNeutral.GetComponent<Hide>().enabled = false;
@@ -298,8 +238,9 @@ public class Flock : MonoBehaviour
             }
             if (lose == true)
             {
-                Results = GameObject.Find("Fail UI");
-                Results.gameObject.GetComponent<Hide>().enabled = true;
+                //Results = GameObject.Find("Fail UI");
+                Hide mention = GetComponent<Hide>();
+                mention.showF = true;
 
                 flockControlNeutral.GetComponent<Hide>().enabled = false;
                 flockControlBad.GetComponent<Hide>().enabled = false;

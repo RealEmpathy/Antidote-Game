@@ -788,7 +788,7 @@ public class StatusControl : MonoBehaviour
         Hp = newHP;
     }
 
-    public void  NoLastStandLogic()
+    public void  NoLastStandLogic() // here here here here here here here 
     {
         if (this.gameObject.tag == "GoodCell") // we are a God cell
         {

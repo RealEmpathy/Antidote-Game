@@ -10,45 +10,46 @@ public class Hide : MonoBehaviour
     public int finalBadNum;
     Text Display;
 
-    public List<Canvas> art = new List<Canvas>();
-
-    public Canvas success;
-    public Canvas fail;
+    public GameObject success;
+    public GameObject fail;
 
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
 
-    public bool show;
+    public bool show = false;
+    public bool showS = false;
+    public bool showF = false;
     // Start is called before the first frame update
     void Awake()
     {
-        this.gameObject.SetActive(false);
-        /*foreach (Canvas canvas in art)
+        this.gameObject.SetActive(true);
+        success.SetActive(show);
+        fail.SetActive(show);
+    }
+    public void Update()
+    {
+        if(showS == true)
         {
-            Destroy(canvas.gameObject);
+            success.SetActive(showS);
         }
-        art = new List<Canvas>();
-        success = art[0];
-        fail = art[1];*/
-        
+        if (showF == true)
+        {
+            fail.SetActive(showF);
+        }
     }
     private void OnEnable()
     {
         this.gameObject.SetActive(true);
+        success.SetActive(show);
+        fail.SetActive(show);
         write();
     }
     void OnDisable()
     {
-        foreach (Canvas canvas in art)
-        {
-            Destroy(canvas.gameObject);
-        }
-        art = new List<Canvas>();
-        success = art[0];
-        fail = art[1];
+        success.SetActive(false);
+        fail.SetActive(false);
 
-        this.gameObject.SetActive(false);
     }
 
 
