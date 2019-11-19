@@ -44,6 +44,10 @@ public class Flock : MonoBehaviour
     private GameObject Results;
 
     public GameObject Panel;
+    public GameObject GoodFlock;
+    public GameObject BadFlock;
+    public GameObject NeutralFlock;
+
 
     public bool endGame = false;
     public bool win = false;
@@ -88,7 +92,8 @@ public class Flock : MonoBehaviour
 
         //getting the values from good cells for comparison later below
         //getting the values from good cells for comparison later below
-        if (u == 0 && this.gameObject.tag == "FlockGood")
+
+        /*if (u == 0 && this.gameObject.tag == "FlockGood")
         {
             StatusControl mention = GetComponent<StatusControl>();
 
@@ -98,7 +103,7 @@ public class Flock : MonoBehaviour
             b = 80;
             u++;
             Debug.Log(u);
-        }
+        }*/
         
     }
 
@@ -114,6 +119,46 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(GoodFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+            endGame = true;
+            lose = true;
+            
+        }
+        // here here here here here here here here here here here here
+        // the solution will probably be make all the bools here and not work with 
+        //Status control. The code above works (somewhat) but the code below does not
+        if (BadFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+            if (this.gameObject.tag == "FlockGood")
+            {
+                mention.lastStand = true;
+            }
+            if (this.gameObject.tag == "FlockNeutral")
+            {
+                mention.lastStand = true;
+            }
+        }
+
+        if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+            StatusControl mention = GetComponent<StatusControl>();
+            if (this.gameObject.tag == "FlockBad")
+            {
+                mention.lastStand = true;
+            }
+            if (this.gameObject.tag == "FlockGood")
+            {
+                mention.lastStand = true;
+            }
+        }
+
+
+
+
+
 
         foreach (FlockAgent agent in agents)
         {
@@ -227,25 +272,23 @@ public class Flock : MonoBehaviour
             if (win == true)
             {
                 //Results = GameObject.Find("Success UI");
-                Hide mention = GetComponent<Hide>();
-                mention.showS = true;
+                Panel.GetComponent<Hide>().showS = true;
 
                 //script.enabled = true;
-                flockControlNeutral.GetComponent<Hide>().enabled = false;
-                flockControlBad.GetComponent<Hide>().enabled = false;
-                flockControlGood.GetComponent<Hide>().enabled = false;
+                flockControlNeutral.SetActive(false);
+                flockControlBad.SetActive(false);
+                flockControlGood.SetActive(false);
 
             }
             if (lose == true)
             {
                 //Results = GameObject.Find("Fail UI");
-                Hide mention = GetComponent<Hide>();
-                mention.showF = true;
+                Panel.GetComponent<Hide>().showF = true;
 
-                flockControlNeutral.GetComponent<Hide>().enabled = false;
-                flockControlBad.GetComponent<Hide>().enabled = false;
-                flockControlGood.GetComponent<Hide>().enabled = false;
-               
+                flockControlNeutral.SetActive(false);
+                flockControlBad.SetActive(false);
+                flockControlGood.SetActive(false);
+
             }
         }
     }
