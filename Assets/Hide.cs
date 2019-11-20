@@ -17,33 +17,38 @@ public class Hide : MonoBehaviour
     private GameObject flockControlGood;
     private GameObject flockControlBad;
 
-    public bool show = false;
     public bool showS = false;
     public bool showF = false;
     // Start is called before the first frame update
     void Awake()
     {
         this.gameObject.SetActive(true);
-        success.SetActive(show);
-        fail.SetActive(show);
+        success.SetActive(false);
+        fail.SetActive(false);
     }
     public void Update()
     {
-        if(showS == true)
+        if (gameObject.activeInHierarchy == true) // here here here here here here 
         {
-            success.SetActive(showS);
+            if (showS == true)
+            {
+                success.SetActive(showS);
+                write();
+            }
+            if (showF == true)
+            {
+                fail.SetActive(showF);
+                write();
+            }
         }
-        if (showF == true)
-        {
-            fail.SetActive(showF);
-        }
+
     }
     private void OnEnable()
     {
         this.gameObject.SetActive(true);
-        success.SetActive(show);
-        fail.SetActive(show);
-        write();
+        success.SetActive(false);
+        fail.SetActive(false);
+        
     }
     void OnDisable()
     {
@@ -61,7 +66,7 @@ public class Hide : MonoBehaviour
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
 
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
         if (this.gameObject.tag == "FlockGood")
         {
             Flock mention2 = flockControlGood.GetComponent<Flock>();

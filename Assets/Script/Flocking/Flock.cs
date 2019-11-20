@@ -44,6 +44,8 @@ public class Flock : MonoBehaviour
     private GameObject Results;
 
     public GameObject Panel;
+    public GameObject Splicer;
+
     public GameObject GoodFlock;
     public GameObject BadFlock;
     public GameObject NeutralFlock;
@@ -144,15 +146,20 @@ public class Flock : MonoBehaviour
 
         if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
         {
-            StatusControl mention = GetComponent<StatusControl>();
-            if (this.gameObject.tag == "FlockBad")
+            foreach (FlockAgent agent in agents)
             {
-                mention.lastStand = true;
+                StatusControl mention = GetComponent<StatusControl>();
+                if (this.gameObject.tag == "FlockBad")
+                {
+                    mention.lastStand = true;
+                }
+                if (this.gameObject.tag == "FlockGood")
+                {
+                    mention.lastStand = true;
+                }
             }
-            if (this.gameObject.tag == "FlockGood")
-            {
-                mention.lastStand = true;
-            }
+
+           
         }
 
 
@@ -275,19 +282,20 @@ public class Flock : MonoBehaviour
                 Panel.GetComponent<Hide>().showS = true;
 
                 //script.enabled = true;
-                flockControlNeutral.SetActive(false);
-                flockControlBad.SetActive(false);
-                flockControlGood.SetActive(false);
+                NeutralFlock.SetActive(false);
+                BadFlock.SetActive(false);
+                GoodFlock.SetActive(false);
 
             }
             if (lose == true)
             {
                 //Results = GameObject.Find("Fail UI");
-                Panel.GetComponent<Hide>().showF = true;
+                Panel.GetComponent<Hide>().showS = true; // cahnge to showF later
+                Splicer.SetActive(true);
 
-                flockControlNeutral.SetActive(false);
-                flockControlBad.SetActive(false);
-                flockControlGood.SetActive(false);
+                NeutralFlock.SetActive(false);
+                BadFlock.SetActive(false);
+                GoodFlock.SetActive(false);
 
             }
         }
