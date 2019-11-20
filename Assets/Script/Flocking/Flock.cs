@@ -158,7 +158,6 @@ public class Flock : MonoBehaviour
                     mention.lastStand = true;
                 }
             }
-
            
         }
 
@@ -286,17 +285,22 @@ public class Flock : MonoBehaviour
                 BadFlock.SetActive(false);
                 GoodFlock.SetActive(false);
 
+                endGame = false;
+                win = false;
+
             }
             if (lose == true)
             {
                 //Results = GameObject.Find("Fail UI");
-                Panel.GetComponent<Hide>().showS = true; // cahnge to showF later
+                Panel.GetComponent<Hide>().showF = true; // cahnge to showF later
                 Splicer.SetActive(true);
 
                 NeutralFlock.SetActive(false);
                 BadFlock.SetActive(false);
                 GoodFlock.SetActive(false);
 
+                endGame = false;
+                lose = false;
             }
         }
     }

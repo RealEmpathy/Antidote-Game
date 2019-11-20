@@ -3457,6 +3457,9 @@ MonoBehaviour:
   finalBadNum: 0
   success: {fileID: 86526117}
   fail: {fileID: 700506024}
+  GoodFlock: {fileID: 1874292551}
+  NeutralFlock: {fileID: 241911072}
+  BadFlock: {fileID: 1058322682}
   showS: 0
   showF: 0
 --- !u!4 &652166595

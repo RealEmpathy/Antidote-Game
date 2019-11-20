@@ -63,7 +63,7 @@ public class StatusControl : MonoBehaviour
     private void OnEnable()
     {
         
-        scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
+        //scriptControl = this.gameObject; // DO NOT DELET THIS LINE EVER
 
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
@@ -147,12 +147,7 @@ public class StatusControl : MonoBehaviour
 
                 
             }
-           /* if (executeBeforeStart == false)
-            {
-                JustFlock();
-                flocking = true;
-                executeBeforeStart = true;
-            }*/
+           
         }
 
 
@@ -486,23 +481,6 @@ public class StatusControl : MonoBehaviour
         Reproduction = false;
     }
 
-    void JustFlock()
-    {
-        //TESTING THE SCRIPT BELOW
-        /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
-        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
-        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
-
-        // switch script to flock
-
-        scriptControl.GetComponent<FlockAgent>().enabled = true;
-        //FlockAgent mention2 = GetComponent<FlockAgent>();
-        //mention2.noFlock = false;
-
-        Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
-        mention.flocking = true;
-    }
-
     void Reproduce()
     {
         
@@ -545,12 +523,6 @@ public class StatusControl : MonoBehaviour
            
         if(timer <= 0)
         {
-            // desable seek script 
-
-            //TESTING THE SCRIPT BELOW
-            /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = false;
-            scriptControl.GetComponent<Pathfinding.AIPath>().enabled = false;
-            scriptControl.GetComponent<Pathfinding.Seeker>().enabled = false;*/
 
             // switch script to flock
             scriptControl.GetComponent<FlockAgent>().enabled = true;
@@ -572,20 +544,7 @@ public class StatusControl : MonoBehaviour
         mention.flee = false;
         mention.flocking = false;
         
-
-
         scriptControl.GetComponent<FlockAgent>().enabled = false;
-        /*FlockAgent mention2 = GetComponent<FlockAgent>();
-        mention2.noFlock. = true;*/
-
-
-        // switch script to seek
-        /*scriptControl.GetComponent<Pathfinding.AIDestinationSetter>().enabled = true;
-        scriptControl.GetComponent<Pathfinding.AIPath>().enabled = true;
-        scriptControl.GetComponent<Pathfinding.Seeker>().enabled = true;*/
-        
-
-        
 
         flocking = false;
     }

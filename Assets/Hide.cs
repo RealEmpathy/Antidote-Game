@@ -17,6 +17,10 @@ public class Hide : MonoBehaviour
     private GameObject flockControlGood;
     private GameObject flockControlBad;
 
+    public GameObject GoodFlock;
+    public GameObject NeutralFlock;
+    public GameObject BadFlock;
+
     public bool showS = false;
     public bool showF = false;
     // Start is called before the first frame update
@@ -33,11 +37,13 @@ public class Hide : MonoBehaviour
             if (showS == true)
             {
                 success.SetActive(showS);
+                showS = false;
                 write();
             }
             if (showF == true)
             {
                 fail.SetActive(showF);
+                showF = false;
                 write();
             }
         }
@@ -67,23 +73,16 @@ public class Hide : MonoBehaviour
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
 
         //this.gameObject.SetActive(true);
-        if (this.gameObject.tag == "FlockGood")
-        {
-            Flock mention2 = flockControlGood.GetComponent<Flock>();
-            finalGoodNum = mention2.currentGood;
-            Display.text = finalGoodNum.ToString();
-        }
-        if (this.gameObject.tag == "FlockBad")
-        {
-            Flock mention2 = flockControlBad.GetComponent<Flock>();
-            finalBadNum = mention2.currentBad;
-            Display.text = finalBadNum.ToString();
-        }
-        if (this.gameObject.tag == "FlockNeutral")
-        {
-            Flock mention2 = flockControlNeutral.GetComponent<Flock>();
-            finalNeutralNum = mention2.currentNeutral;
-            Display.text = finalNeutralNum.ToString();
-        }
+          
+        finalGoodNum = GoodFlock.GetComponent<Flock>().agents.Count;
+        Display.text = finalGoodNum.ToString();
+        
+          
+        finalBadNum = BadFlock.GetComponent<Flock>().agents.Count;
+        Display.text = finalBadNum.ToString();
+
+        finalNeutralNum = NeutralFlock.GetComponent<Flock>().agents.Count;
+        Display.text = finalNeutralNum.ToString();
+        
     }
 }

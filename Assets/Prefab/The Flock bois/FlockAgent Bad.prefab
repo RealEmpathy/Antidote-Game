@@ -65,13 +65,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0620eb94ac77f547a8d5e1bc6380f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 75
+  Hp: 80
   stamina: 60
   StaminaModifier: 0
   HuntVar: 80
   Survival: 0
   timer: 7
   waitTime: 3
+  aggressiveNumber: 80
+  currentLocation: {x: 0, y: 0, z: 0}
   finalNeutralNum: 0
   finalGoodNum: 0
   finalBadNum: 0
@@ -89,6 +91,9 @@ MonoBehaviour:
   AggTest: 0
   win: 0
   lose: 0
+  BadCellsDead: 0
+  GoodCellsDead: 0
+  NeutralCellsDead: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
