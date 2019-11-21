@@ -34,10 +34,12 @@ public class Hide : MonoBehaviour
             {
                 success.SetActive(showS);
                 write();
+                showS = false;
             }
             if (showF == true)
             {
                 fail.SetActive(showF);
+                showF = false;
                 write();
             }
         }

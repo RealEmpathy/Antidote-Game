@@ -352,8 +352,14 @@ public class StatusControl : MonoBehaviour
                 if (this.gameObject.tag == "NeutralCells")
                 {
                     if (lastStand == true)
+                    {
                         DamagingGreenCells();
+                        Debug.Log("DamagingGreenCells");
+                    }
+                        
                 }
+               
+                        
 
                 //if we are colliding with a Good cell
                 //and the cell colliding is a Bad cell
@@ -386,6 +392,7 @@ public class StatusControl : MonoBehaviour
                     if (lastStand == true)
                     {
                         DamagingGreenCells();
+                        Debug.Log("DamagingGreenCells");
                     }
 
                 }
@@ -544,7 +551,7 @@ public class StatusControl : MonoBehaviour
         mention.flee = false;
         mention.flocking = false;
         
-        scriptControl.GetComponent<FlockAgent>().enabled = false;
+        //scriptControl.GetComponent<FlockAgent>().enabled = false;
 
         flocking = false;
     }
@@ -607,15 +614,16 @@ public class StatusControl : MonoBehaviour
             Pathfinding.AIDestinationSetter mention = GetComponent<Pathfinding.AIDestinationSetter>();
             mention.lastStand = true;
             mention.flocking = false;
-            //lastStand = true;
-            Debug.Log("aggressive last Stad is on");
-            LastStandLogic();
+            mention.flee = false;
+            lastStand = true;
+            Debug.Log("aggressive lastStad is on");
+            //LastStandLogic();
 
         }
         else // the cell is not aggresive
         {
-            Debug.Log(" NOT aggressive last Stad is on");
-            NoLastStandLogic();
+            Debug.Log(" NOT aggressive lastStad is on");
+            //NoLastStandLogic();
         }
     }
 
@@ -756,184 +764,184 @@ public class StatusControl : MonoBehaviour
         Hp = newHP;
     }
 
-    public void  NoLastStandLogic() // here here here here here here here 
-    {
-        if (this.gameObject.tag == "GoodCell") // we are a God cell
-        {
-            // we are checking the Neutral cells numbers to see if they are dead
-            Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
-            if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the
-            {
-                NeutralFlockReference.lose = true;
-                NeutralFlockReference.endGame = true;
-            }
+    /* public void  NoLastStandLogic() // here here here here here here here 
+     {
+         if (this.gameObject.tag == "GoodCell") // we are a God cell
+         {
+             // we are checking the Neutral cells numbers to see if they are dead
+             Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
+             if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the
+             {
+                 NeutralFlockReference.lose = true;
+                 NeutralFlockReference.endGame = true;
+             }
 
-            // we are checking the Bad cells numbers to see if they are dead
-            Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
-            if (BadFlockReference.agents.Count == 0)
-            {
-                BadFlockReference.win = true;
-                BadFlockReference.endGame = true;
-            }
+             // we are checking the Bad cells numbers to see if they are dead
+             Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
+             if (BadFlockReference.agents.Count == 0)
+             {
+                 BadFlockReference.win = true;
+                 BadFlockReference.endGame = true;
+             }
 
-        }
-        if (this.gameObject.tag == "BadCell") // we are a bad cell
-        {
-            Hunt = true; // turning hunt on for the bad cell to go faster
+         }
+         if (this.gameObject.tag == "BadCell") // we are a bad cell
+         {
+             Hunt = true; // turning hunt on for the bad cell to go faster
 
-            // we are checking the Good cells numbers to see if they are dead
-            Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
-            if (GoodFlockReference.agents.Count == 0)
-            {
-                GoodFlockReference.lose = true;
-                GoodFlockReference.endGame = true;
-            }
+             // we are checking the Good cells numbers to see if they are dead
+             Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
+             if (GoodFlockReference.agents.Count == 0)
+             {
+                 GoodFlockReference.lose = true;
+                 GoodFlockReference.endGame = true;
+             }
 
-            // we are checking the Neutral cells numbers to see if they are dead
-            Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
-            if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the
-            {
-                NeutralFlockReference.lose = true;
-                NeutralFlockReference.endGame = true;
-            }
-
-
-        }
-        if (this.gameObject.tag == "NeutralCell") // we are a neutral cell
-        {
-
-            // we are checking the Bad cells numbers to see if they are dead
-            Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
-            if (BadFlockReference.agents.Count == 0)
-            {
-                BadFlockReference.win = true;
-                BadFlockReference.endGame = true;
-            }
+             // we are checking the Neutral cells numbers to see if they are dead
+             Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
+             if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the
+             {
+                 NeutralFlockReference.lose = true;
+                 NeutralFlockReference.endGame = true;
+             }
 
 
-        }
-    }
+         }
+         if (this.gameObject.tag == "NeutralCell") // we are a neutral cell
+         {
 
-    public void LastStandLogic()
-    {
-        if (this.gameObject.tag == "GoodCells") // we are a God cell
-        {
-            // we are checking the Neutral cells numbers to see if they are dead
-            Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
-            if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the game
-            {
-                NeutralFlockReference.lose = true;
-                NeutralFlockReference.endGame = true;
-            }
-
-        }
-        if (this.gameObject.tag == "BadCells") // we are a bad cell
-        {
-            Hunt = true; // turning hunt on for the bad cell to go faster
-
-            // we are checking the Good cells numbers to see if they are dead
-            Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
-            if (GoodFlockReference.agents.Count == 0)
-            {
-                GoodFlockReference.lose = true;
-                GoodFlockReference.endGame = true;
-            }
-
-            // we are checking the Neutral cells numbers to see if they are dead
-            Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
-            if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the game
-            {
-                NeutralFlockReference.lose = true;
-                NeutralFlockReference.endGame = true;
-            }
+             // we are checking the Bad cells numbers to see if they are dead
+             Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
+             if (BadFlockReference.agents.Count == 0)
+             {
+                 BadFlockReference.win = true;
+                 BadFlockReference.endGame = true;
+             }
 
 
-        }
-        if (this.gameObject.tag == "NeutralCells") // we are a neutral cell
-        {
+         }
+     }
 
-            // we are checking the Bad cells numbers to see if they are dead
-            Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
+     public void LastStandLogic()
+     {
+         if (this.gameObject.tag == "GoodCells") // we are a God cell
+         {
+             // we are checking the Neutral cells numbers to see if they are dead
+             Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
+             if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the game
+             {
+                 NeutralFlockReference.lose = true;
+                 NeutralFlockReference.endGame = true;
+             }
 
-            // we are checking the Good cells numbers to see if they are dead
-            Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
+         }
+         if (this.gameObject.tag == "BadCells") // we are a bad cell
+         {
+             Hunt = true; // turning hunt on for the bad cell to go faster
 
-            if (BadFlockReference.agents.Count == 0 && GoodFlockReference.agents.Count == 0)
-            {
-                BadFlockReference.win = true;
-                GoodFlockReference.win = true;
-                BadFlockReference.endGame = true; 
-                GoodFlockReference.endGame = true;
-            }
+             // we are checking the Good cells numbers to see if they are dead
+             Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
+             if (GoodFlockReference.agents.Count == 0)
+             {
+                 GoodFlockReference.lose = true;
+                 GoodFlockReference.endGame = true;
+             }
 
-        }
-    }
-
-    public void setLastStandActive() // not working here here here here here here here
-    {
-        // we are checking the Bad cells numbers to see if they are dead
-        //Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
-
-        if (BadCellsDead == true)
-        {
-            lastStand = true;
-        }
-
-        // we are checking the Neutral cells numbers to see if they are dead
-        //Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
-        if (GoodCellsDead == true) // all greens died // you lost the game
-        {
-            lastStand = true;
-        }
+             // we are checking the Neutral cells numbers to see if they are dead
+             Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
+             if (NeutralFlockReference.agents.Count == 0) // all greens died // you lost the game
+             {
+                 NeutralFlockReference.lose = true;
+                 NeutralFlockReference.endGame = true;
+             }
 
 
+         }
+         if (this.gameObject.tag == "NeutralCells") // we are a neutral cell
+         {
 
-        // we are checking the Good cells numbers to see if they are dead
-        //Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
-        if (NeutralCellsDead == true)
-        {
-            lastStand = true;
-        }
+             // we are checking the Bad cells numbers to see if they are dead
+             Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
 
+             // we are checking the Good cells numbers to see if they are dead
+             Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
 
-    }
+             if (BadFlockReference.agents.Count == 0 && GoodFlockReference.agents.Count == 0)
+             {
+                 BadFlockReference.win = true;
+                 GoodFlockReference.win = true;
+                 BadFlockReference.endGame = true; 
+                 GoodFlockReference.endGame = true;
+             }
 
-    /*    public void StopGame()
-        {
-            if(endGame == true)
-            {
-                //call canvas game object and set other objects to be inactive.
-                if(win == true)
-                {
-
-                    Results = GameObject.Find("Success UI");
-                    flockControlNeutral.gameObject.SetActive(false);
-                    flockControlBad.gameObject.SetActive(false);
-                    flockControlGood.gameObject.SetActive(false);
-                    Results.gameObject.SetActive(true);
-                }
-                if(lose == true)
-                {
-                    flockControlNeutral.gameObject.SetActive(false);
-                    flockControlBad.gameObject.SetActive(false);
-                    flockControlGood.gameObject.SetActive(false);
-                    Results = GameObject.Find("Fail UI");
-                    Results.gameObject.SetActive(true);
-                }
-            }
-            if(AggTest == true)
-            {
-                //calling lastStand fuction
-                lastStandFunction();
-                if (lastStand == false)
-                {
-                    endGame = true;
-                    win = true;
-                }
-
-            }
-
-        }*/
-
-
+         }*/
 }
+
+/*  public void setLastStandActive() // not working here here here here here here here
+  {
+      // we are checking the Bad cells numbers to see if they are dead
+      //Flock BadFlockReference = flockControlBad.GetComponent<Flock>();
+
+      if (BadCellsDead == true)
+      {
+          lastStand = true;
+      }
+
+      // we are checking the Neutral cells numbers to see if they are dead
+      //Flock NeutralFlockReference = flockControlNeutral.GetComponent<Flock>();
+      if (GoodCellsDead == true) // all greens died // you lost the game
+      {
+          lastStand = true;
+      }
+
+
+
+      // we are checking the Good cells numbers to see if they are dead
+      //Flock GoodFlockReference = flockControlGood.GetComponent<Flock>();
+      if (NeutralCellsDead == true)
+      {
+          lastStand = true;
+      }
+
+
+  }*/
+
+/*    public void StopGame()
+    {
+        if(endGame == true)
+        {
+            //call canvas game object and set other objects to be inactive.
+            if(win == true)
+            {
+
+                Results = GameObject.Find("Success UI");
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+                Results.gameObject.SetActive(true);
+            }
+            if(lose == true)
+            {
+                flockControlNeutral.gameObject.SetActive(false);
+                flockControlBad.gameObject.SetActive(false);
+                flockControlGood.gameObject.SetActive(false);
+                Results = GameObject.Find("Fail UI");
+                Results.gameObject.SetActive(true);
+            }
+        }
+        if(AggTest == true)
+        {
+            //calling lastStand fuction
+            lastStandFunction();
+            if (lastStand == false)
+            {
+                endGame = true;
+                win = true;
+            }
+
+        }
+
+    }
+
+
+}*/

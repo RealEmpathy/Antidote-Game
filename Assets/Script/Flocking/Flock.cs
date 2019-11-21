@@ -55,6 +55,8 @@ public class Flock : MonoBehaviour
     public bool win = false;
     public bool lose = false;
 
+    private float timer = 5;
+
     //test variables
     private int u = 0;
     private float a = 0;
@@ -72,6 +74,11 @@ public class Flock : MonoBehaviour
 
     void OnEnable()
     {
+        win = false;
+        lose = false;
+        endGame = false;
+        timer = 5;
+        u = 0;
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -106,11 +113,14 @@ public class Flock : MonoBehaviour
             u++;
             Debug.Log(u);
         }*/
-        
+
     }
 
     public void OnDisable()
     {
+        win = false;
+        lose = false;
+        endGame = false;
         foreach (FlockAgent agent in agents)
         {
             Destroy(agent.gameObject);
@@ -122,50 +132,7 @@ public class Flock : MonoBehaviour
     void Update()
     {
 
-        if(GoodFlock.GetComponent<Flock>().agents.Count == 0)
-        {
-            endGame = true;
-            lose = true;
-            
-        }
-        // here here here here here here here here here here here here
-        // the solution will probably be make all the bools here and not work with 
-        //Status control. The code above works (somewhat) but the code below does not
-        if (BadFlock.GetComponent<Flock>().agents.Count == 0)
-        {
-            StatusControl mention = GetComponent<StatusControl>();
-            if (this.gameObject.tag == "FlockGood")
-            {
-                mention.lastStand = true;
-            }
-            if (this.gameObject.tag == "FlockNeutral")
-            {
-                mention.lastStand = true;
-            }
-        }
-
-        if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
-        {
-            foreach (FlockAgent agent in agents)
-            {
-                StatusControl mention = GetComponent<StatusControl>();
-                if (this.gameObject.tag == "FlockBad")
-                {
-                    mention.lastStand = true;
-                }
-                if (this.gameObject.tag == "FlockGood")
-                {
-                    mention.lastStand = true;
-                }
-            }
-
-           
-        }
-
-
-
-
-
+        StopGameCall();
 
         foreach (FlockAgent agent in agents)
         {
@@ -271,6 +238,89 @@ public class Flock : MonoBehaviour
     }
 
 
+    public void StopGameCall()
+    {
+        //this is in case all the Neutral cells died
+        if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+            endGame = true;
+            lose = true;
+        }
+        
+        //this is in case all the good cells died
+        if (GoodFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+            // this first if is checking if the player is still wining without the Good cells
+            if (BadFlock.GetComponent<Flock>().agents.Count > NeutralFlock.GetComponent<Flock>().agents.Count)
+            {
+                //if he is not winning the timer will start
+                timer -= Time.deltaTime;
+            }
+
+            //in case the player wins without the good cells
+            if (BadFlock.GetComponent<Flock>().agents.Count == 0)
+            {
+                endGame = true;
+                win = true;
+            }
+
+            // when the timer runs out
+            if (timer <= 0)
+            {
+                endGame = true;
+                lose = true;
+            }
+
+        }
+
+
+        //this is in case all the Bad cells died
+        if (BadFlock.GetComponent<Flock>().agents.Count == 0)
+        {
+
+            if (GoodHuntVar >= 80) //last stand is true
+            {
+                // game breakes here here here here here here here here
+                if (this.gameObject.tag == "FlockGood")
+                {
+                    StatusControl mention = GetComponent<StatusControl>();
+                    foreach (FlockAgent agent in agents)
+                    {
+                        mention.lastStand = true;
+                    }
+
+                } 
+
+                if (GoodFlock.GetComponent<Flock>().agents.Count == 0)
+                {
+                    endGame = true;
+                    win = true;
+                }
+                else if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
+                {
+                    endGame = true;
+                    lose = true;
+                }
+
+            }
+            else //last stand is false
+            {
+                if (NeutralFlock.GetComponent<Flock>().agents.Count > GoodFlock.GetComponent<Flock>().agents.Count)
+                {
+                    endGame = true;
+                    win = true;
+                }
+                else if (NeutralFlock.GetComponent<Flock>().agents.Count < GoodFlock.GetComponent<Flock>().agents.Count)
+                {
+                    // the line of code below might change to a "partial win scenario"
+                    endGame = true;
+                    win = true;
+                }
+            }
+
+        }
+    }
+
     public void StopGame()
     {
         if (endGame == true)
@@ -280,6 +330,7 @@ public class Flock : MonoBehaviour
             {
                 //Results = GameObject.Find("Success UI");
                 Panel.GetComponent<Hide>().showS = true;
+                Splicer.SetActive(true);
 
                 //script.enabled = true;
                 NeutralFlock.SetActive(false);
@@ -290,7 +341,7 @@ public class Flock : MonoBehaviour
             if (lose == true)
             {
                 //Results = GameObject.Find("Fail UI");
-                Panel.GetComponent<Hide>().showS = true; // cahnge to showF later
+                Panel.GetComponent<Hide>().showF = true; // cahnge to showF later
                 Splicer.SetActive(true);
 
                 NeutralFlock.SetActive(false);
