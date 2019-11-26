@@ -54,6 +54,7 @@ public class Flock : MonoBehaviour
     public bool endGame = false;
     public bool win = false;
     public bool lose = false;
+    public bool lastStand = false;
 
     private float timer = 5;
 
@@ -278,10 +279,10 @@ public class Flock : MonoBehaviour
         if (BadFlock.GetComponent<Flock>().agents.Count == 0)
         {
 
-            if (GoodHuntVar >= 80) //last stand is true
+            if (GoodHuntVar >= 70) //last stand is true
             {
                 // game breakes here here here here here here here here
-                if (this.gameObject.tag == "FlockGood")
+                /*if (this.gameObject.tag == "FlockGood")
                 {
                     StatusControl mention = GetComponent<StatusControl>();
                     foreach (FlockAgent agent in agents)
@@ -289,7 +290,8 @@ public class Flock : MonoBehaviour
                         mention.lastStand = true;
                     }
 
-                } 
+                } */
+                lastStand = true;
 
                 if (GoodFlock.GetComponent<Flock>().agents.Count == 0)
                 {

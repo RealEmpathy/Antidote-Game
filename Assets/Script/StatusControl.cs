@@ -14,7 +14,7 @@ public class StatusControl : MonoBehaviour
     public float Survival;          // static value that will be calculated when the program runs
     public float timer = 10;
     public int waitTime = 7;
-    public int aggressiveNumber = 80;
+    public int aggressiveNumber = 70;
 
     public Vector3 currentLocation;
 
@@ -75,9 +75,9 @@ public class StatusControl : MonoBehaviour
         // this part generate random Values for BadCells
         if (this.gameObject.tag == "BadCells")
         {
-            Hp = Random.Range(10, 90);
-            stamina = Random.Range(10, 90);
-            HuntVar = Random.Range(10, 90);
+            Hp = Random.Range(10, 40);
+            stamina = Random.Range(10, 40);
+            HuntVar = Random.Range(10, 40);
         }
 
 
@@ -212,6 +212,22 @@ public class StatusControl : MonoBehaviour
                 }
             }
         }
+        
+        if(this.gameObject.tag == "GoodCells")
+        {
+            if (flockControlGood.GetComponent<Flock>().lastStand == true)
+            {
+                lastStand = true;
+            }
+        }
+        if (this.gameObject.tag == "NeutralCells")
+        {
+            if (flockControlNeutral.GetComponent<Flock>().lastStand == true)
+            {
+                lastStand = true;
+            }
+        }
+
 
         //StopGame();
 
@@ -241,7 +257,7 @@ public class StatusControl : MonoBehaviour
         /*Create a prefab for Good Cells with the exat name:
                                                           GoodCells
         */
-        if(imortal == false)
+        if (imortal == false)
         {
             //if we are colliding with a Good cell
             if (other.gameObject.tag == "GoodCells")
@@ -258,8 +274,14 @@ public class StatusControl : MonoBehaviour
                 if (this.gameObject.tag == "NeutralCells")
                 {
                     if (lastStand == true)
-                        DamagingGreenCells();
+                    {
+                        GreenCellAttack();
+                        //Debug.Log("DamagingGreenCells");
+                    }
+
                 }
+
+
 
                 //if we are colliding with a Good cell
                 //and the cell colliding is a Bad cell
@@ -292,6 +314,7 @@ public class StatusControl : MonoBehaviour
                     if (lastStand == true)
                     {
                         DamagingGreenCells();
+                        // Debug.Log("DamagingGreenCells");
                     }
 
                 }
@@ -353,14 +376,12 @@ public class StatusControl : MonoBehaviour
                 {
                     if (lastStand == true)
                     {
-                        DamagingGreenCells();
-                        Debug.Log("DamagingGreenCells");
+                        GreenCellAttack();
+                        //Debug.Log("DamagingGreenCells");
                     }
                         
                 }
                
-                        
-
                 //if we are colliding with a Good cell
                 //and the cell colliding is a Bad cell
                 if (this.gameObject.tag == "BadCells")
@@ -391,8 +412,8 @@ public class StatusControl : MonoBehaviour
                 {
                     if (lastStand == true)
                     {
-                        DamagingGreenCells();
-                        Debug.Log("DamagingGreenCells");
+                        DamagingGreenCells(); 
+                       // Debug.Log("DamagingGreenCells");
                     }
 
                 }
@@ -449,6 +470,10 @@ public class StatusControl : MonoBehaviour
         if (Hp > 0 && stamina <= 0)
         {   // Check when Stamina runs out
             Hp -= Time.deltaTime;
+            if(stamina < -5)
+            {
+                stamina = 0;
+            }
         }
     }
 
@@ -673,6 +698,25 @@ public class StatusControl : MonoBehaviour
         if (i < 50)
         {
             Hp = Hp - 20;
+        }
+    }
+    void GoodCellLastStandAttack()
+    {
+        int i = Random.Range(0, 100);
+        if (i < HuntVar)
+        {
+            if (stamina >= MaxStamina)
+            {
+                stamina = 100;
+            }
+            else
+            {
+                stamina = stamina + 10;
+            }
+        }
+        if (i < HuntVar)
+        {
+            Hp = Hp - 5;
         }
     }
 
