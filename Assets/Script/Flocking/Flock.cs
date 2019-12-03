@@ -58,13 +58,6 @@ public class Flock : MonoBehaviour
 
     private float timer = 5;
 
-    //test variables
-    private int u = 0;
-    private float a = 0;
-    private float b = 0;
-    //test variables ends
-
-
 
     // Start is called before the first frame update
     private void Awake()
@@ -79,7 +72,7 @@ public class Flock : MonoBehaviour
         lose = false;
         endGame = false;
         timer = 5;
-        u = 0;
+
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -99,21 +92,6 @@ public class Flock : MonoBehaviour
         flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
         flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
         flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
-
-        //getting the values from good cells for comparison later below
-        //getting the values from good cells for comparison later below
-
-        /*if (u == 0 && this.gameObject.tag == "FlockGood")
-        {
-            StatusControl mention = GetComponent<StatusControl>();
-
-            Results = GameObject.FindGameObjectsWithTag("GoodCells")[1];
-            a = Results.GetComponent<StatusControl>().HuntVar;
-            Debug.Log(a);
-            b = 80;
-            u++;
-            Debug.Log(u);
-        }*/
 
     }
 
@@ -244,6 +222,7 @@ public class Flock : MonoBehaviour
         //this is in case all the Neutral cells died
         if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
         {
+            GetCurrentCellNumbers();
             endGame = true;
             lose = true;
         }
@@ -261,6 +240,7 @@ public class Flock : MonoBehaviour
             //in case the player wins without the good cells
             if (BadFlock.GetComponent<Flock>().agents.Count == 0)
             {
+                GetCurrentCellNumbers();
                 endGame = true;
                 win = true;
             }
@@ -268,6 +248,7 @@ public class Flock : MonoBehaviour
             // when the timer runs out
             if (timer <= 0)
             {
+                GetCurrentCellNumbers();
                 endGame = true;
                 lose = true;
             }
@@ -281,25 +262,18 @@ public class Flock : MonoBehaviour
 
             if (GoodHuntVar >= 70) //last stand is true
             {
-                // game breakes here here here here here here here here
-                /*if (this.gameObject.tag == "FlockGood")
-                {
-                    StatusControl mention = GetComponent<StatusControl>();
-                    foreach (FlockAgent agent in agents)
-                    {
-                        mention.lastStand = true;
-                    }
-
-                } */
+               
                 lastStand = true;
 
                 if (GoodFlock.GetComponent<Flock>().agents.Count == 0)
                 {
+                    GetCurrentCellNumbers();
                     endGame = true;
                     win = true;
                 }
                 else if (NeutralFlock.GetComponent<Flock>().agents.Count == 0)
                 {
+                    GetCurrentCellNumbers();
                     endGame = true;
                     lose = true;
                 }
@@ -309,12 +283,14 @@ public class Flock : MonoBehaviour
             {
                 if (NeutralFlock.GetComponent<Flock>().agents.Count > GoodFlock.GetComponent<Flock>().agents.Count)
                 {
+                    GetCurrentCellNumbers();
                     endGame = true;
                     win = true;
                 }
                 else if (NeutralFlock.GetComponent<Flock>().agents.Count < GoodFlock.GetComponent<Flock>().agents.Count)
                 {
-                    // the line of code below might change to a "partial win scenario"
+                    GetCurrentCellNumbers();
+                    // the line of code below might change to a "partial win scenario" later
                     endGame = true;
                     win = true;
                 }
@@ -332,6 +308,9 @@ public class Flock : MonoBehaviour
             {
                 //Results = GameObject.Find("Success UI");
                 Panel.GetComponent<Hide>().showS = true;
+                Panel.GetComponent<Hide>().finalGoodNum = currentGood;
+                Panel.GetComponent<Hide>().finalBadNum = currentBad;
+                Panel.GetComponent<Hide>().finalNeutralNum = currentNeutral;
                 Splicer.SetActive(true);
 
                 //script.enabled = true;
@@ -343,7 +322,10 @@ public class Flock : MonoBehaviour
             if (lose == true)
             {
                 //Results = GameObject.Find("Fail UI");
-                Panel.GetComponent<Hide>().showF = true; // cahnge to showF later
+                Panel.GetComponent<Hide>().showF = true;
+                Panel.GetComponent<Hide>().finalGoodNum = currentGood;
+                Panel.GetComponent<Hide>().finalBadNum = currentBad;
+                Panel.GetComponent<Hide>().finalNeutralNum = currentNeutral;
                 Splicer.SetActive(true);
 
                 NeutralFlock.SetActive(false);
@@ -352,6 +334,13 @@ public class Flock : MonoBehaviour
 
             }
         }
+    }
+    
+    public void GetCurrentCellNumbers()
+    {
+        currentNeutral = NeutralFlock.GetComponent<Flock>().agents.Count;
+        currentBad = BadFlock.GetComponent<Flock>().agents.Count;
+        currentGood = GoodFlock.GetComponent<Flock>().agents.Count;
     }
 
 }

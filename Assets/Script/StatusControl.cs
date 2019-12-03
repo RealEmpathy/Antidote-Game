@@ -75,9 +75,9 @@ public class StatusControl : MonoBehaviour
         // this part generate random Values for BadCells
         if (this.gameObject.tag == "BadCells")
         {
-            Hp = Random.Range(10, 40);
-            stamina = Random.Range(10, 40);
-            HuntVar = Random.Range(10, 40);
+            Hp = Random.Range(40, 80);
+            stamina = Random.Range(20, 90);
+            HuntVar = Random.Range(50, 85);
         }
 
 

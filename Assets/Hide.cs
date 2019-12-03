@@ -8,7 +8,14 @@ public class Hide : MonoBehaviour
     public int finalNeutralNum;
     public int finalGoodNum;
     public int finalBadNum;
-    Text Display;
+
+    public Text SDisplayNeutral;
+    public Text SDisplayGood;
+    public Text SDisplayBad;
+
+    public Text FDisplayNeutral;
+    public Text FDisplayGood;
+    public Text FDisplayBad;
 
     public GameObject success;
     public GameObject fail;
@@ -28,19 +35,20 @@ public class Hide : MonoBehaviour
     }
     public void Update()
     {
-        if (gameObject.activeInHierarchy == true) // here here here here here here 
+        if (gameObject.activeInHierarchy == true)
         {
-            if (showS == true)
+            if (showS)
             {
                 success.SetActive(showS);
                 write();
                 showS = false;
             }
-            if (showF == true)
+            if (showF)
             {
                 fail.SetActive(showF);
-                showF = false;
                 write();
+                showF = false;
+                
             }
         }
 
@@ -50,42 +58,29 @@ public class Hide : MonoBehaviour
         this.gameObject.SetActive(true);
         success.SetActive(false);
         fail.SetActive(false);
-        
     }
     void OnDisable()
     {
         success.SetActive(false);
         fail.SetActive(false);
-
     }
-
-
 
     void write()
     {
-        //this.gameObject.GetComponent<Hide>().enabled = true;
-        flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
-        flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
-        flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
+        
+        if(showS == true)
+        {
+            SDisplayGood.text = finalGoodNum.ToString();
+            SDisplayBad.text = finalBadNum.ToString();
+            SDisplayNeutral.text = finalNeutralNum.ToString();
+        }
+        if (showF == true)
+        {
+            FDisplayGood.text = finalGoodNum.ToString();
+            FDisplayBad.text = finalBadNum.ToString();
+            FDisplayNeutral.text = finalNeutralNum.ToString();
+        }
 
-        //this.gameObject.SetActive(true);
-        if (this.gameObject.tag == "FlockGood")
-        {
-            Flock mention2 = flockControlGood.GetComponent<Flock>();
-            finalGoodNum = mention2.currentGood;
-            Display.text = finalGoodNum.ToString();
-        }
-        if (this.gameObject.tag == "FlockBad")
-        {
-            Flock mention2 = flockControlBad.GetComponent<Flock>();
-            finalBadNum = mention2.currentBad;
-            Display.text = finalBadNum.ToString();
-        }
-        if (this.gameObject.tag == "FlockNeutral")
-        {
-            Flock mention2 = flockControlNeutral.GetComponent<Flock>();
-            finalNeutralNum = mention2.currentNeutral;
-            Display.text = finalNeutralNum.ToString();
-        }
+        
     }
 }
