@@ -259,10 +259,8 @@ public class Flock : MonoBehaviour
         //this is in case all the Bad cells died
         if (BadFlock.GetComponent<Flock>().agents.Count == 0)
         {
-
-            if (GoodHuntVar >= 70) //last stand is true
+            if (GoodHuntVar >= StatusControl.GetHuntVar()) //last stand is true
             {
-               
                 lastStand = true;
 
                 if (GoodFlock.GetComponent<Flock>().agents.Count == 0)
