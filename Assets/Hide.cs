@@ -20,13 +20,9 @@ public class Hide : MonoBehaviour
     public GameObject success;
     public GameObject fail;
 
-    private GameObject flockControlNeutral;
-    private GameObject flockControlGood;
-    private GameObject flockControlBad;
-
     public bool showS = false;
     public bool showF = false;
-    // Start is called before the first frame update
+
     void Awake()
     {
         this.gameObject.SetActive(true);

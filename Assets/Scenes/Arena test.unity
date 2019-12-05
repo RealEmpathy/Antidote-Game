@@ -2657,7 +2657,7 @@ Transform:
   m_LocalScale: {x: 1.93, y: 2.29, z: 2.13}
   m_Children: []
   m_Father: {fileID: 1935641239}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &494336599
 PolygonCollider2D:
@@ -5106,61 +5106,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090442353}
   m_CullTransparentMesh: 0
---- !u!1 &1090736369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1090736370}
-  - component: {fileID: 1090736371}
-  m_Layer: 0
-  m_Name: Cell Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1090736370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090736369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1935641239}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1090736371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090736369}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef68ce6dd3c843449c864eb1db356d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawPos: {fileID: 1090736370}
-  BadcellPrefab: {fileID: 8347201611676189534, guid: 769b8ea7c65bf7c4db508dac4c027cb9,
-    type: 3}
-  GoodcellPrefab: {fileID: 8347201611676189534, guid: 7275c4525e0b44140a194527bc173b3c,
-    type: 3}
-  NeutralcellPrefab: {fileID: 8347201611676189534, guid: 08f24b9f47b5573459908510d6a4f55d,
-    type: 3}
-  numberOfGoodCells: 50
-  numberOfNeutralCells: 50
-  numberOfBadCells: 50
-  center: {x: 0, y: 0}
-  size: {x: 6.3, y: 6.3}
 --- !u!1 &1112527205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7713,7 +7658,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 53.636806, y: 53.636806, z: 0}
   m_Children:
-  - {fileID: 1090736370}
   - {fileID: 494336598}
   m_Father: {fileID: 0}
   m_RootOrder: 3

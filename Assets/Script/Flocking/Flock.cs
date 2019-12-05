@@ -36,12 +36,8 @@ public class Flock : MonoBehaviour
     public int stopRep = 0;
     public float GoodHuntVar;
 
-    private GameObject flockControlNeutral;
-    private GameObject flockControlGood;
-    private GameObject flockControlBad;
     public GameObject NewCell;
     public GameObject Reference;
-    private GameObject Results;
 
     public GameObject Panel;
     public GameObject Splicer;
@@ -89,9 +85,7 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
             newAgent.gameObject.SetActive(true);
         }
-        flockControlNeutral = GameObject.Find("Flock");   // DO NOT DELET THIS LINE EVER
-        flockControlGood = GameObject.Find("Flock Good"); // DO NOT DELET THIS LINE EVER
-        flockControlBad = GameObject.Find("Flock Bad");   // DO NOT DELET THIS LINE EVER
+
 
     }
 
@@ -304,7 +298,6 @@ public class Flock : MonoBehaviour
             //call canvas game object and set other objects to be inactive.
             if (win == true)
             {
-                //Results = GameObject.Find("Success UI");
                 Panel.GetComponent<Hide>().showS = true;
                 Panel.GetComponent<Hide>().finalGoodNum = currentGood;
                 Panel.GetComponent<Hide>().finalBadNum = currentBad;
@@ -319,7 +312,6 @@ public class Flock : MonoBehaviour
             }
             if (lose == true)
             {
-                //Results = GameObject.Find("Fail UI");
                 Panel.GetComponent<Hide>().showF = true;
                 Panel.GetComponent<Hide>().finalGoodNum = currentGood;
                 Panel.GetComponent<Hide>().finalBadNum = currentBad;

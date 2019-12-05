@@ -97,48 +97,8 @@ namespace Pathfinding
 
             if (flocking == true)
             {
-                // keep this commented out 
-                //
-
-              /*  if (flee == false)
-                {
-                    if (this.gameObject.tag == "GoodCells")
-                    {
-                        //Debug.Log("this is a Good cell hunting Bad cells");
-                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                    }
-
-                    if (this.gameObject.tag == "BadCells")
-                    {
-                        //Debug.Log("this is a Bad cell hunting Neutral cells");
-                        target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
-                    }
-                    if (this.gameObject.tag == "NeutralCells")
-                    {
-                        //Debug.Log("this is a Neutral cell hunting Bad cells");
-                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                    }
-                }
-
-                if (flee == true)
-                {
-                    if (this.gameObject.tag == "GoodCells")
-                    {
-                        //Debug.Log("this is a Good cell hunting Bad cells");
-                        target = GameObject.FindGameObjectWithTag("GoodCells").GetComponent<Transform>();
-                    }
-
-                    if (this.gameObject.tag == "BadCells")
-                    {
-                        //Debug.Log("this is a Bad cell hunting Neutral cells");
-                        target = GameObject.FindGameObjectWithTag("BadCells").GetComponent<Transform>();
-                    }
-                    if (this.gameObject.tag == "NeutralCells")
-                    {
-                        //Debug.Log("this is a Neutral cell hunting Bad cells");
-                        target = GameObject.FindGameObjectWithTag("NeutralCells").GetComponent<Transform>();
-                    }
-                }*/
+                //when flocking is true
+              // DO NOT USE AI Destination Setter
             }
         }
         void CreateList()
@@ -212,10 +172,6 @@ namespace Pathfinding
 
         void FindTarget()
         {
-
-           // float lowestDist = Mathf.Infinity;
-
-
             //starting the good cell conditions
             if (this.gameObject.tag == "GoodCells")
             {
