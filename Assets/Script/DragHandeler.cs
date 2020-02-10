@@ -9,11 +9,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject cube1, cube2, cube3, cube4, cube5;
     Vector3 startPosition;
     Transform StartParent;
-    
+
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
+
         DraggedItem = gameObject;
         var newObject = Instantiate(DraggedItem, startPosition, Quaternion.identity, DraggedItem.transform.parent);
         newObject.name = DraggedItem.name;
@@ -30,14 +31,18 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         //DraggedItem = null;
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        // GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == StartParent)
         {
             //transform.position = startPosition;
             Destroy(DraggedItem);
         }
 
-     
-        
+
+
+    }
+    public void DeleteColor()
+    {
+        Destroy(this.gameObject);
     }
 }

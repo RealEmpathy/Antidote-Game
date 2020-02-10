@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class SlotManager : MonoBehaviour, IDropHandler
 {
-  public GameObject colors
+    public GameObject parent;
+
+    public GameObject colors
     {
         get
         {
@@ -23,6 +25,12 @@ public class SlotManager : MonoBehaviour, IDropHandler
         if(!colors)
         {
             DragHandeler.DraggedItem.transform.SetParent(transform);
+        }
+        else
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            DragHandeler.DraggedItem.transform.SetParent(transform);
+            //parent.transform.GetChild(0).gameObject;
         }
     }
 }
