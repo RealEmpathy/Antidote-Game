@@ -28,8 +28,11 @@ public class SlotManager : MonoBehaviour, IDropHandler
         }
         else
         {
-            Destroy(transform.GetChild(0).gameObject);
-            DragHandeler.DraggedItem.transform.SetParent(transform);
+            if(this.gameObject.tag != "Nodrop")
+            {
+                Destroy(transform.GetChild(0).gameObject);
+                DragHandeler.DraggedItem.transform.SetParent(transform);
+            }
             //parent.transform.GetChild(0).gameObject;
         }
     }

@@ -15,6 +15,7 @@ TagManager:
   - red
   - black
   - yellow
+  - Nodrop
   layers:
   - Default
   - TransparentFX
