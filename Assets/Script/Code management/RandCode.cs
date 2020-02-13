@@ -17,9 +17,8 @@ public class RandCode : MonoBehaviour
     public int reproduction;
     public int HP;
     public int cellNum;
+    private GameObject Slot;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         if (startCode == false)
@@ -44,30 +43,39 @@ public class RandCode : MonoBehaviour
         }
     }
 
-    public void GetInput1(string guess1)
+    public void GetInput1()
     {
-        int i = int.Parse(guess1);
+        Slot = GameObject.Find("Slot1");
+        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
         AllGuess[0] = i;
+        
     }
-    public void GetInput2(string guess2)
+    public void GetInput2()
     {
-        int i = int.Parse(guess2);
+        Slot = GameObject.Find("Slot2");
+        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
         AllGuess[1] = i;
+        
     }
-    public void GetInput3(string guess3)
+    public void GetInput3()
     {
-        int i = int.Parse(guess3);
+        Slot = GameObject.Find("Slot3");
+        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
         AllGuess[2] = i;
+        
     }
-    public void GetInput4(string guess4)
+    public void GetInput4()
     {
 
-        int i = int.Parse(guess4);
+        Slot = GameObject.Find("Slot4");
+        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
         AllGuess[3] = i;
     }
-    public void GetInput5(string guess5)
+    public void GetInput5()
     {
-        int i = int.Parse(guess5);
+        Slot = GameObject.Find("Slot5");
+        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
+        //int i = int.Parse(guess5); this was the way used to connect to the digit box
         AllGuess[4] = i;
         /*for (int j = 0; j < 5; j++)
         {
@@ -130,7 +138,17 @@ public class RandCode : MonoBehaviour
 
         for (int j = 0; j < 4; j++)
         {
-            Debug.Log("this is percentage" + percentage[j]);
+            if(j == 0)
+                aggro = percentage[j];
+
+            if (j == 1)
+                reproduction = percentage[j];
+
+            if (j == 2)
+                HP = percentage[j];
+
+            if (j == 3)
+                cellNum = percentage[j];
         }
     }
     

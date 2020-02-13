@@ -10,12 +10,12 @@ TagManager:
   - FlockGood
   - FlockBad
   - FlockNeutral
-  - blue
-  - green
-  - red
-  - black
-  - yellow
   - Nodrop
+  - slot1
+  - slot2
+  - slot3
+  - slot4
+  - slot5
   layers:
   - Default
   - TransparentFX
