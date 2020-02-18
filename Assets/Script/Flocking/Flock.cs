@@ -14,7 +14,7 @@ public class Flock : MonoBehaviour
     public int currentNeutral;
 
     [Range(0, 30)]
-    public float startingCount = 100;
+    public static float startingCount = 100;
     const float AgentDensity = 0.02f;
 
     [Range(1f, 100f)]
@@ -196,10 +196,10 @@ public class Flock : MonoBehaviour
         return null;
     }
 
-    public void AdjustStartingCount(float newstartingCount)
+    /*public void AdjustStartingCount(float newstartingCount)
     {
         startingCount = newstartingCount;
-    }
+    }*/
     public void ResetRep(int reset = 0)
     {
         stopRep = reset;

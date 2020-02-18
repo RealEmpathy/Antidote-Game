@@ -8,8 +8,8 @@ public class StatusControl : MonoBehaviour
 {
     //control hp and stamina lvls
     public float Hp;              //Not a constant value that will help with statements
-    private float MaxHp;          //static value that will not change
-    public float stamina;         //actual Max stamina
+    public static float MaxHp;          //static value that will not change
+    public static float stamina;         //actual Max stamina
     private float MaxStamina;     //not a constant value: set by the player
     public float StaminaModifier;   //static value calculated when the program runs
     public static float HuntVar;           //static value set by the player (works togather with Susvival variable)
@@ -32,6 +32,9 @@ public class StatusControl : MonoBehaviour
     private GameObject flockControlNeutral;
     private GameObject flockControlGood;
     private GameObject flockControlBad;
+
+
+
 
     private void Awake()
     {
@@ -651,19 +654,19 @@ public class StatusControl : MonoBehaviour
         }
     }
 
-    public void AdjustHunt(float newHunt)
+   /* public static void AdjustHunt(float newHunt)
     {
         HuntVar = newHunt;
     }
-    public void AdjustReproduction(float newReproductin)
+    public static void  AdjustReproduction(float newReproductin)
     {
         stamina = newReproductin;
     }
 
-    public void AdjustHP(float newHP)
+    public static void AdjustHP(float newHP)
     {
         Hp = newHP;
-    }
+    }*/
 
     private void SetStart()
     {

@@ -119,6 +119,7 @@ public class RandCode : MonoBehaviour
                     if(list1[g]==list2[h])
                     {
                         halfMatches++;
+                        list1[g] = -99;
                         list2[h] = 99;
                     }
                 }
@@ -139,16 +140,31 @@ public class RandCode : MonoBehaviour
         for (int j = 0; j < 4; j++)
         {
             if(j == 0)
+            {
                 aggro = percentage[j];
+                StatusControl.HuntVar = aggro;
+            }
+                
 
             if (j == 1)
+            {
                 reproduction = percentage[j];
+                StatusControl.stamina = reproduction;
+            }
+
 
             if (j == 2)
+            {
                 HP = percentage[j];
+                StatusControl.MaxHp = HP;
+            }
+                
 
             if (j == 3)
+            {
                 cellNum = percentage[j];
+                Flock.startingCount = cellNum;
+            }
         }
     }
     
