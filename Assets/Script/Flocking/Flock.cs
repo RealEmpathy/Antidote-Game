@@ -14,7 +14,7 @@ public class Flock : MonoBehaviour
     public int currentNeutral;
 
     [Range(0, 30)]
-    public static float startingCount = 100;
+    public static float startingCount;
     const float AgentDensity = 0.02f;
 
     [Range(1f, 100f)]

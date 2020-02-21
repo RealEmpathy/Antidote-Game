@@ -163,7 +163,9 @@ public class RandCode : MonoBehaviour
             if (j == 3)
             {
                 cellNum = percentage[j];
-                Flock.startingCount = cellNum;
+                float percent = (cellNum/100);
+                float correctnumber = Mathf.Floor(percent * 25);
+                Flock.startingCount = correctnumber;
             }
         }
     }
