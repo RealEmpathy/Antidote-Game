@@ -17,6 +17,7 @@ public class RandCode : MonoBehaviour
     public int reproduction;
     public int HP;
     public int cellNum;
+    public float correctnumber;
     private GameObject Slot;
 
     void Start()
@@ -163,9 +164,12 @@ public class RandCode : MonoBehaviour
             if (j == 3)
             {
                 cellNum = percentage[j];
-                float percent = (cellNum/100);
-                float correctnumber = Mathf.Floor(percent * 25);
-                Flock.startingCount = correctnumber;
+                
+
+                correctnumber = (cellNum * 25);
+
+                Flock.GoodCellstartingCount = Mathf.Floor(correctnumber/100);
+                Debug.Log(Flock.GoodCellstartingCount);
             }
         }
     }

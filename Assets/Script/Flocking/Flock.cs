@@ -14,7 +14,8 @@ public class Flock : MonoBehaviour
     public int currentNeutral;
 
     [Range(0, 30)]
-    public static float startingCount;
+    public float startingCount = 20;
+    public static float GoodCellstartingCount;
     const float AgentDensity = 0.02f;
 
     [Range(1f, 100f)]
@@ -64,6 +65,12 @@ public class Flock : MonoBehaviour
 
     void OnEnable()
     {
+        if (this.gameObject.tag == "FlockGood")
+        {
+            startingCount = GoodCellstartingCount;
+        }
+
+        Debug.Log(startingCount + " this is StartingCount");
         win = false;
         lose = false;
         endGame = false;

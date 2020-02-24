@@ -43,6 +43,9 @@ public class StatusControl : MonoBehaviour
 
     private void OnEnable()
     {
+        /*Debug.Log(HuntVar + " this is HuntVar");
+        Debug.Log(stamina + " this is stamina");
+        Debug.Log(MaxHp + " this is Maxhp");*/
         flockControlNeutral = GameObject.Find("Flock"); // reference to the game object called "Flock"
         flockControlGood = GameObject.Find("Flock Good"); // reference to the game object called "Flock Good"
         flockControlBad = GameObject.Find("Flock Bad"); // reference to the game object called "Flock Bad"
