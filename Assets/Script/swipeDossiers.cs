@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class swipeDossiers : MonoBehaviour
 {
     public GameObject scrollbar;
+    public GameObject blueLetter;
     private float scroll_pos = 0;
     private float[] pos;
 
@@ -52,4 +53,17 @@ public class swipeDossiers : MonoBehaviour
             }
         }
     }
+    public void Request()
+    {
+        LeanTween.moveY(blueLetter, 1, 1).setEaseInOutCubic();
+    }
+    public void RequestYes()
+    {
+
+    }
+    public void RequestNo()
+    {
+
+    }
+
 }
