@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class swipeDossiers : MonoBehaviour
 {
@@ -9,12 +10,7 @@ public class swipeDossiers : MonoBehaviour
     public GameObject blueLetter;
     private float scroll_pos = 0;
     private float[] pos;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool requestDone = false;
 
     // Update is called once per frame
     void Update()
@@ -55,15 +51,24 @@ public class swipeDossiers : MonoBehaviour
     }
     public void Request()
     {
-        LeanTween.moveY(blueLetter, 1, 1).setEaseInOutCubic();
+        LeanTween.moveY(blueLetter, 0, 1).setEaseInOutCubic();
     }
-    public void RequestYes()
+    void RequestYes()
     {
-
+        if(!requestDone)
+        {
+            LeanTween.moveY(blueLetter, 11, 1).setEaseInOutCubic();
+            requestDone = true;
+        }
+        else
+        {
+            Debug.Log("You already requested for today");
+        }
+        
     }
     public void RequestNo()
     {
-
+        LeanTween.moveY(blueLetter, -11, 1).setEaseInOutCubic();
     }
 
 }
