@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dossiers Binders.unity
     guid: 3ebb4efae9f871f46897b537b219803f
+  - enabled: 1
+    path: Assets/Scenes/resultsMenu.unity
+    guid: 287c17345f059c34392ba06eccd9c984
   m_configObjects: {}
