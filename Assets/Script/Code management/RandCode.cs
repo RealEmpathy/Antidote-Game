@@ -47,36 +47,36 @@ public class RandCode : MonoBehaviour
     public void GetInput1()
     {
         Slot = GameObject.Find("Slot1");
-        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
+        //int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name); // this is the old way to get the input
+        int i = int.Parse(Slot.GetComponent<SlotManager>().number); // now "number is keeping the values"
         AllGuess[0] = i;
         
     }
     public void GetInput2()
     {
         Slot = GameObject.Find("Slot2");
-        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
+        int i = int.Parse(Slot.GetComponent<SlotManager>().number);
         AllGuess[1] = i;
-        
+
     }
     public void GetInput3()
     {
         Slot = GameObject.Find("Slot3");
-        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
+        int i = int.Parse(Slot.GetComponent<SlotManager>().number);
         AllGuess[2] = i;
-        
+
     }
     public void GetInput4()
     {
 
         Slot = GameObject.Find("Slot4");
-        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
+        int i = int.Parse(Slot.GetComponent<SlotManager>().number);
         AllGuess[3] = i;
     }
     public void GetInput5()
     {
         Slot = GameObject.Find("Slot5");
-        int i = int.Parse(Slot.gameObject.transform.GetChild(0).gameObject.name);
-        //int i = int.Parse(guess5); this was the way used to connect to the digit box
+        int i = int.Parse(Slot.GetComponent<SlotManager>().number);
         AllGuess[4] = i;
         /*for (int j = 0; j < 5; j++)
         {
