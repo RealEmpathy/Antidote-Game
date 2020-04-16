@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 19247f25021807e4da18d3c4adcb66b4
+guid: be6454e1007309e41a20a1d4c27ec434
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5362414550720269833
-    second: FlockAgent Bad_0
+      213: -7534895974485276359
+    second: BlinkerSpriteSheet_0
   - first:
-      213: 2152860798586299851
-    second: FlockAgent Bad_1
-  - first:
-      213: -6732980320535809207
-    second: FlockAgent Bad_2
+      213: -1332481976671686409
+    second: BlinkerSpriteSheet_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -91,29 +88,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlockAgent Bad_0
+      name: BlinkerSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 913
-        height: 2258
+        width: 148
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +106,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a1c06bda387aef4dba07d15aede04e9
-      internalID: -5362414550720269833
+      spriteID: 6b5685aa32565284fac422b256c64e8d
+      internalID: -7534895974485276359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FlockAgent Bad_1
+      name: BlinkerSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 913
+        x: 148
         y: 0
-        width: 913
-        height: 2258
+        width: 148
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,29 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1613e3a8a8229594ea2360fca3aba80e
-      internalID: 2152860798586299851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FlockAgent Bad_2
-      rect:
-        serializedVersion: 2
-        x: 1826
-        y: 0
-        width: 913
-        height: 2258
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 080e83066be1ebc48ba28488394c75d1
-      internalID: -6732980320535809207
+      spriteID: 346d7a483a4b2ea4989499e86d4b35fc
+      internalID: -1332481976671686409
       vertices: []
       indices: 
       edges: []

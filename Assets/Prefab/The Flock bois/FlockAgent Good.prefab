@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a010446deb5dcd3459e9fb553dda633e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noFlock: 0
 --- !u!114 &3965134651598324483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,29 +64,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 91
-  stamina: 41
   StaminaModifier: 0
-  HuntVar: 50
   Survival: 0
   timer: 7
   waitTime: 3
-  finalNeutralNum: 0
-  finalGoodNum: 0
-  finalBadNum: 0
-  spawPos: {fileID: 8347201611676189533}
-  CellPrefab: {fileID: 8347201611676189534}
+  currentLocation: {x: 0, y: 0, z: 0}
   Reproduction: 0
   Hunt: 0
   flocking: 0
   heal: 0
-  executeBeforeStart: 0
   lastStand: 0
   imortal: 1
   startFight: 0
-  endGame: 0
-  AggTest: 0
-  win: 0
-  lose: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,8 +203,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0025216043, y: 0}
-  m_Size: {x: 0.5958211, y: 1.4135437}
+  m_Offset: {x: 0.012073338, y: 0.052541852}
+  m_Size: {x: 0.5666312, y: 1.30846}
   m_Direction: 0
 --- !u!70 &8082027393384473718
 CapsuleCollider2D:
@@ -231,8 +219,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0025216043, y: 0}
-  m_Size: {x: 0.5958211, y: 1.4135437}
+  m_Offset: {x: 0.0149923265, y: 0.061298847}
+  m_Size: {x: 0.5607932, y: 1.290946}
   m_Direction: 0
 --- !u!1 &8960160133209071431
 GameObject:
@@ -260,8 +248,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8960160133209071431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0.024, y: -0.294, z: 0}
+  m_LocalScale: {x: 0.16114604, y: 0.1624695, z: 1.575165}
   m_Children: []
   m_Father: {fileID: 8347201611676189533}
   m_RootOrder: 0
@@ -304,7 +292,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: -4976647980848188646, guid: c2608d05ae01a5b4c865b0e8fd0e2c53,
+  m_Sprite: {fileID: -2600582419284888748, guid: 389fb1290d8b781498d33d15109fb413,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

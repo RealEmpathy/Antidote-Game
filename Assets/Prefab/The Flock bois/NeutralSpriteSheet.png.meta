@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: c2608d05ae01a5b4c865b0e8fd0e2c53
+guid: a1543cc97eecad44886c451c018eb4dc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4976647980848188646
-    second: FlockAgent Good_0
+      213: -2413474018145096401
+    second: NeutralSpriteSheet_0
   - first:
-      213: -8248397571149844694
-    second: FlockAgent Good_1
+      213: -7547372035884959810
+    second: NeutralSpriteSheet_1
   - first:
-      213: 2008038225148608820
-    second: FlockAgent Good_2
+      213: 6598177925488441635
+    second: NeutralSpriteSheet_2
+  - first:
+      213: -4207632812787665454
+    second: NeutralSpriteSheet_3
+  - first:
+      213: 6334619860721595360
+    second: NeutralSpriteSheet_4
+  - first:
+      213: 927124788974667491
+    second: NeutralSpriteSheet_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -91,29 +100,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlockAgent Good_0
+      name: NeutralSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 918
-        height: 1476
+        width: 846
+        height: 801
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9d9ac02a817d1a48813390bdb900cd8
-      internalID: -4976647980848188646
+      spriteID: 559eb31c064d4764b802ed9a7dad2de1
+      internalID: -2413474018145096401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FlockAgent Good_1
+      name: NeutralSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 918
+        x: 846
         y: 0
-        width: 918
-        height: 1476
+        width: 846
+        height: 801
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc041c5e0de272b4782c4d53e5d68c9a
-      internalID: -8248397571149844694
+      spriteID: bafc3f5070cef4147b5a867ddf94d0f0
+      internalID: -7547372035884959810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FlockAgent Good_2
+      name: NeutralSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 1836
+        x: 1692
         y: 0
-        width: 918
-        height: 1476
+        width: 846
+        height: 801
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21c1c8da011479e4381720f59d719257
-      internalID: 2008038225148608820
+      spriteID: 58d30e7b83a7b014c8246cc2abb00ea0
+      internalID: 6598177925488441635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NeutralSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2538
+        y: 0
+        width: 846
+        height: 801
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af579b62f4a945489f8ca132d77d414
+      internalID: -4207632812787665454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NeutralSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 3384
+        y: 0
+        width: 846
+        height: 801
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c0531fe954d3048ad4b9d9d1d39b1c
+      internalID: 6334619860721595360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NeutralSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 4230
+        y: 0
+        width: 846
+        height: 801
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3dc635c85918384981eeca429338d43
+      internalID: 927124788974667491
       vertices: []
       indices: 
       edges: []

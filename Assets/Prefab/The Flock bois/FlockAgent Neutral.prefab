@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a010446deb5dcd3459e9fb553dda633e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noFlock: 0
 --- !u!114 &3965134651598324483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,29 +80,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 70
-  stamina: 50
   StaminaModifier: 0
-  HuntVar: 50
   Survival: 0
   timer: 7
   waitTime: 3
-  finalNeutralNum: 0
-  finalGoodNum: 0
-  finalBadNum: 0
-  spawPos: {fileID: 8347201611676189533}
-  CellPrefab: {fileID: 8347201611676189534}
+  currentLocation: {x: 0, y: 0, z: 0}
   Reproduction: 0
   Hunt: 0
   flocking: 0
   heal: 0
-  executeBeforeStart: 0
   lastStand: 0
   imortal: 1
   startFight: 0
-  endGame: 0
-  AggTest: 0
-  win: 0
-  lose: 0
 --- !u!114 &8271828990308471621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +248,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8960160133209071431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: -0.004, y: 0.061, z: 0}
+  m_LocalScale: {x: 0.16274817, y: 0.16274817, z: 1.6274817}
   m_Children: []
   m_Father: {fileID: 8347201611676189533}
   m_RootOrder: 0
@@ -304,7 +292,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: -3767556025781247118, guid: 128aefbfee11eae4fba8d581fa2824f3,
+  m_Sprite: {fileID: -2413474018145096401, guid: a1543cc97eecad44886c451c018eb4dc,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -326,7 +314,7 @@ Animator:
   m_GameObject: {fileID: 8960160133209071431}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b925a36dd2841164881e8a12cc4af6ab, type: 2}
+  m_Controller: {fileID: 9100000, guid: f593ce7427217fb40b3d338cbbd551c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

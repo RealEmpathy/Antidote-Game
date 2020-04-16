@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 128aefbfee11eae4fba8d581fa2824f3
+guid: da9f163e68b053b4e919c1b41eaa6d0d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3767556025781247118
-    second: FlockAgent Neutral_0
+      213: -3298379367213889015
+    second: PathogenSpriteSheet_0
   - first:
-      213: -7689788278898853482
-    second: FlockAgent Neutral_1
+      213: -8341531903482252664
+    second: PathogenSpriteSheet_1
   - first:
-      213: 5003850195807625746
-    second: FlockAgent Neutral_2
+      213: 8416325428006380835
+    second: PathogenSpriteSheet_2
+  - first:
+      213: 5407153622507503548
+    second: PathogenSpriteSheet_3
+  - first:
+      213: -1213992935062636612
+    second: PathogenSpriteSheet_4
+  - first:
+      213: -4601758723960170200
+    second: PathogenSpriteSheet_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -91,29 +100,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlockAgent Neutral_0
+      name: PathogenSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 970
-        height: 973
+        width: 918
+        height: 901
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8f76c4c6f4c1374b9efb8b593933606
-      internalID: -3767556025781247118
+      spriteID: 2104456c7fcc60e4187b93ba6339afb7
+      internalID: -3298379367213889015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FlockAgent Neutral_1
+      name: PathogenSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 970
+        x: 918
         y: 0
-        width: 970
-        height: 973
+        width: 918
+        height: 901
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 244bb1a7003c1b44c8476d7503b4cdc2
-      internalID: -7689788278898853482
+      spriteID: bababf9f5fe310141a8597330b63232f
+      internalID: -8341531903482252664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FlockAgent Neutral_2
+      name: PathogenSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 1940
+        x: 1836
         y: 0
-        width: 970
-        height: 973
+        width: 918
+        height: 901
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d01de017cba29a7468a7da9d4066dc1f
-      internalID: 5003850195807625746
+      spriteID: 64797a9ae104c3b49bc1d0905f0a00c5
+      internalID: 8416325428006380835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PathogenSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2754
+        y: 0
+        width: 918
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7617cf837ca1f4081eb85a304b1310
+      internalID: 5407153622507503548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PathogenSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 3672
+        y: 0
+        width: 918
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09618df817593d4286650e33d92e513
+      internalID: -1213992935062636612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PathogenSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 4590
+        y: 0
+        width: 918
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ff80451718f6e43a8daf546def3b1f
+      internalID: -4601758723960170200
       vertices: []
       indices: 
       edges: []
