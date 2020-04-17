@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Results : MonoBehaviour
+public class results : MonoBehaviour
 {
     public int remainNeutral = 0;
     public int remainBad = 0;
     public int remainGood = 0;
-    public int deadNeutral = 0;
-    public int deadBad = 0;
-    public int deadGood = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +21,8 @@ public class Results : MonoBehaviour
 
     public void result()
     {
-        remainNeutral = GetComponent<Flock>().currentNeutral;
-        remainBad = GetComponent<Flock>().currentBad;
-        remainGood = GetComponent<Flock>().currentGood;
-        
+        remainNeutral = GetComponent<Hide>().finalNeutralNum;
+        remainBad = GetComponent<Hide>().finalBadNum;
+        remainGood = GetComponent<Hide>().finalGoodNum;
     }
 }
