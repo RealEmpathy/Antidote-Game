@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 151916099}
   - component: {fileID: 151916098}
   m_Layer: 5
-  m_Name: Character Name here (5)
+  m_Name: Dr. V Wilson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 172822193}
   - component: {fileID: 172822192}
   m_Layer: 5
-  m_Name: Character Name here (9)
+  m_Name: Name McNameson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,15 +966,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "\u201CDr.\u201D Victoria Wilson\r\n\nEthnicity: Caucasian\r\n\nSpecialization:\nCellular
+    Reproduction\r\n\nBio:\r\n\tLittle miss Wilson is not actually a doctor but the
+    daughter of one of our investors. She aspires of being a doctor in the future
+    but is currently still in middle school. Despite her lofty goals, she is in a
+    perpetual state of boredom, fits, and frustration. Her constant complaints, lackadaisical
+    attitude, and general loudness is enough to make anyone, even the cells, not want
+    to reproduce."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1043,12 +1041,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 257324739}
-    characterCount: 666
+    characterCount: 487
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 79
+    wordCount: 76
     linkCount: 0
-    lineCount: 20
+    lineCount: 18
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1088,7 +1086,7 @@ GameObject:
   - component: {fileID: 279249746}
   - component: {fileID: 279249745}
   m_Layer: 5
-  m_Name: Character Name here (7)
+  m_Name: Eunice "G" Nubbins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1283,15 +1281,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n\n\t\t\t\tsigned by \n\t\t\t\t           Sally"
+  m_text: "Dr. Sandra Sando\r\n\r\r\nEthnicity: French\r\n\nSpecialization:\nCellular
+    Aggression\r\n\n\nBio:\r\n\tMademoiselle Sando is a fiery French woman. Despite
+    her demure and poise, she is a sly genius. She is domineering and takes control
+    of each lab she joins. This has led to malicious rumors about her sass and abrasiveness
+    infecting the specimens she works with.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1336,7 +1330,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 660
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1360,12 +1354,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 305498593}
-    characterCount: 680
+    characterCount: 348
     spriteCount: 0
-    spaceCount: 116
-    wordCount: 92
+    spaceCount: 59
+    wordCount: 54
     linkCount: 0
-    lineCount: 22
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1645,15 +1639,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "Eunice \u201CGrandma\u201D Nubbins\r\n\r\nEthnicity: African\r\n\nSpecialization:\nCellular
+    Strength\r\n\nBio:\r\n\tGrandma Nubbins is oldest, sweetest, scientist we have
+    on staff. She is a veteran of the medical community gaining her PhD in Biochemistry,
+    Epidemiology, and Medicine in 1975, 1986, and 2020, respectively. If she offers
+    you cookies you better accept. She will either happily give you the cookies or
+    forcefully.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1722,12 +1713,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 542730975}
-    characterCount: 666
+    characterCount: 404
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 63
+    wordCount: 59
     linkCount: 0
-    lineCount: 20
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1808,15 +1799,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "Jooke Augsli\r\n\r\r\nEthnicity: Polynesian\r\n\nSpecialization:\nCellular
+    Reproduction\r\n\nBio:\r\n\tDr. Augsli is an interesting character. They went
+    to college in a small town in North Dakota that has little to no medical reputation,
+    yet they are among the top Virologists in the world today. They\u2019ve painstakingly
+    studied 89% of all known diseases, cured and uncured, and have gained an incredible
+    wealth of knowledge about how cells reproduce!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1885,12 +1873,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 673761161}
-    characterCount: 666
+    characterCount: 436
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 70
+    wordCount: 66
     linkCount: 0
-    lineCount: 20
+    lineCount: 17
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1930,7 +1918,7 @@ GameObject:
   - component: {fileID: 690706752}
   - component: {fileID: 690706751}
   m_Layer: 5
-  m_Name: Character Name here (3)
+  m_Name: Dr. Isiah Thoft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2125,15 +2113,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "Dr. Elliot Wilson\r\n\r\nEthnicity: ??\r\n\nSpecialization:\nCellular Aggression\r\n\nBio:\r\n\tDr.
+    Wilson, no relation to Victoria Wilson, is an odd specimen in his own right. He
+    is unlike any person we have come across in the past. There are times when he
+    shows the physical traits of a goat, and other times like a red creature of some
+    kind. Despite his appearance he has a knack for controlling the specimens actions.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2202,12 +2186,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 695428281}
-    characterCount: 666
+    characterCount: 409
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 74
+    wordCount: 69
     linkCount: 0
-    lineCount: 20
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2639,7 +2623,7 @@ GameObject:
   - component: {fileID: 1087752352}
   - component: {fileID: 1087752351}
   m_Layer: 5
-  m_Name: Character Name here (6)
+  m_Name: Dr. E Wilson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2793,7 +2777,7 @@ GameObject:
   - component: {fileID: 1117857249}
   - component: {fileID: 1117857248}
   m_Layer: 5
-  m_Name: Character Name here (8)
+  m_Name: Jooke Augsli
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2988,15 +2972,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n\n\t\t\t\tsigned by \n\t\t\t\t           Sally"
+  m_text: "Daniel Rhys\r\n\r\nEthnicity: Hispanic\r\n\nSpecialization: \nCellular
+    Strength\r\n\nBio:\r\n\tLieutenant Rhys was a medic in the United States Marine
+    Corp. After his second tour in the middle east he was honorably discharged. When
+    he returned home, he dove into the study of life and what makes the world tick.
+    After four years of college at The Ohio State, Rhys Graduated with a Bachelor
+    of Science in Biology. Rumor around the labs he has worked at, is that he is so
+    tough that it transfers into the specimens he researches. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3041,7 +3023,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 660
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3065,12 +3047,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1145250871}
-    characterCount: 680
+    characterCount: 516
     spriteCount: 0
-    spaceCount: 116
-    wordCount: 92
+    spaceCount: 94
+    wordCount: 88
     linkCount: 0
-    lineCount: 22
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3151,15 +3133,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n\n\t\t\t\tsigned by \n\t\t\t\t           Sally"
+  m_text: "Dr. Isiah Thooft\r\n\r\nEthnicity: Greek\r\n\nSpecialization:\nStarting
+    Cells\r\n\nBio:\r\n\tDr. Thooft is one of our more\u2026 normal of our hires.
+    He studied for six years at the University of Athens gaining his Master\u2019s
+    in Medicine. He was especially skilled at starting cultures. Not much else to
+    report on this man. Overall super normal.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3204,7 +3182,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 660
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3228,12 +3206,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1178233385}
-    characterCount: 680
+    characterCount: 326
     spriteCount: 0
-    spaceCount: 116
-    wordCount: 92
+    spaceCount: 57
+    wordCount: 53
     linkCount: 0
-    lineCount: 22
+    lineCount: 14
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3785,7 +3763,7 @@ GameObject:
   - component: {fileID: 1466627531}
   - component: {fileID: 1466627530}
   m_Layer: 5
-  m_Name: Character Name here (2)
+  m_Name: Daniel Rhys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4418,15 +4396,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "Name McNameson\r\n\r\nEthnicity: ??\r\n\nSpecialization:\n??\r\n\nBio:\r\n\tVery
+    little is known about McNameson. They are an enigma that we can\u2019t begin to
+    comprehend. However, we like them and they have proven useful in the past. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4495,12 +4467,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1595885663}
-    characterCount: 666
+    characterCount: 219
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 40
+    wordCount: 33
     linkCount: 0
-    lineCount: 20
+    lineCount: 13
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -4704,15 +4676,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lorem ipsum dolor sit amet.\n\nConsectetur adipiscing elit. Donec ut posuere
-    felis, in facilisis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing
-    elit. Duis libero tellus, sollicitudin ac dignissim vel, accumsan non lectus.
-    Donec orci ante, molestie at tempor quis, feugiat efficitur dolor. Aliquam erat
-    volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-    per inceptos himenaeos. Nam in consequat est.\r\n\r\nNulla iaculis velit fermentum
-    posuere semper. Nullam blandit elementum orci vel sagittis. Phasellus dapibus
-    orci convallis dolor commodo porttitor. Suspendisse maximus posuere dolor sit
-    amet vestibulum. \n\n signed by \t\t\t\t\t Sally"
+  m_text: "\u201CSilly\u201D Sally Cho\r\n\r\nEthnicity: Asian\r\n\nSpecialization:\nStarting
+    Cells\r\n\nBio:\r\n\tDr. Cho first got her started her medical career with Epidemiology
+    at Stanford University. After three years of studying she decided to shift her
+    attentions away from the study of diseases and their habits to treatment. She
+    finished Stanford with a PhD in Biochemistry. Her years of study have given her
+    a keen insight into culture populations the lab desires. Dr. Cho also has a budding
+    comedy career at the local pub!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4781,12 +4751,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1745675985}
-    characterCount: 666
+    characterCount: 499
     spriteCount: 0
-    spaceCount: 102
-    wordCount: 92
+    spaceCount: 84
+    wordCount: 81
     linkCount: 0
-    lineCount: 20
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5065,7 +5035,7 @@ GameObject:
   - component: {fileID: 2008099767}
   - component: {fileID: 2008099766}
   m_Layer: 5
-  m_Name: Character Name here (4)
+  m_Name: Dr. Sandra Sando
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5374,7 +5344,7 @@ GameObject:
   - component: {fileID: 2129892891}
   - component: {fileID: 2129892890}
   m_Layer: 5
-  m_Name: Character Name here (10)
+  m_Name: '"Silly" Sally Cho'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
